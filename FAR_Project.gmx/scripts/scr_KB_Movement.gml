@@ -14,7 +14,7 @@ if(argument_count == 3)
 }
 else //Set default movement variables
 {   
-    friction          = 0.1;
+    //friction          = 0.1;
     moveSpeedCurrent  = 0.2;
     moveSpeedMax      = 1.1;
 }

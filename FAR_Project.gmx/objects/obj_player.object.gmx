@@ -25,12 +25,36 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>//MOV VARIABLES
-friction = 0.05
+            <string>canMove = true
+//MOV VARIABLES
+//friction = 0.2
 
 //GAMEPAD VARIABLES
 xaxis     = 0;
 yaxis     = 0;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>canMove = true
 </string>
           </argument>
         </arguments>
@@ -53,7 +77,8 @@ yaxis     = 0;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>script_execute(scr_KB_Movement, 0.1, 0.3, 1.5); //friction, speedGain, speedTop
+            <string>    script_execute(scr_KB_Movement, 1, 2, 4);
+ //friction, speedGain, speedTop
 //script_execute(scr_move_axis, xaxis, yaxis, 0.5, 1 )
 
 </string>
