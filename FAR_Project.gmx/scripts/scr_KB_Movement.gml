@@ -1,9 +1,10 @@
 //script_execute(scr_Movement, friction, speedGain, speedTop)
+
 //Bind keys
 moveUp      = ord("W");
+moveLeft    = ord("A");
 moveDown    = ord("S");
 moveRight   = ord("D");
-moveLeft    = ord("A");
 
 //Set movement variables;
 if(argument_count == 3)

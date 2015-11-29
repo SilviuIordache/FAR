@@ -18,6 +18,7 @@
     <script>scripts\scr_PAD_Movement.gml</script>
     <script>scripts\scr_get_gamepad_input.gml</script>
     <script>scripts\scr_move_axis.gml</script>
+    <script>scripts\scr_Movement.gml</script>
   </scripts>
   <objects name="objects">
     <object>objects\obj_player</object>
