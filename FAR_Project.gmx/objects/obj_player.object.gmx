@@ -30,12 +30,17 @@
 //friction = 0.2
 
 //CONTROL VARIABLES
-controlDevice = KEYBOARD
+//controlDevice = KEYBOARD
 //controlDevice = GAMEPAD
 
 //GAMEPAD VARIABLES
 xaxis     = 0;
 yaxis     = 0;
+
+global.canShootBolts = true;
+global.shootBoltsCD  = 20;
+global.boltSpeed     = 3;
+
 </string>
           </argument>
         </arguments>
@@ -58,7 +63,7 @@ yaxis     = 0;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>canMove = true
+            <string> global.canShootBolts = true;
 </string>
           </argument>
         </arguments>
@@ -81,9 +86,16 @@ yaxis     = 0;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>//script_execute(scr_KB_Movement, 0.5, 1, 4); //friction, speedGain, speedTop
-script_execute(scr_PAD_Movement, xaxis, yaxis, 0.5, 1 )
+            <string>script_execute(scr_KB_Movement, 0.5, 1, 4); //friction, speedGain, speedTop
+//script_execute(scr_PAD_Movement, xaxis, yaxis, 0.5, 1 )
 
+
+if( mouse_check_button(mb_left) &amp;&amp; global.canShootBolts == true)
+{
+ instance_create(x,y, obj_bolt);
+ global.canShootBolts = false;
+ alarm[0] = global.shootBoltsCD;
+}
 </string>
           </argument>
         </arguments>
@@ -183,6 +195,30 @@ script_execute(scr_PAD_Movement, xaxis, yaxis, 0.5, 1 )
           <argument>
             <kind>0</kind>
             <string>0</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="8" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>draw_self();
+draw_sprite(spr_sword,image_index, x, y);
+</string>
           </argument>
         </arguments>
       </action>
