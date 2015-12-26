@@ -22,10 +22,34 @@ else //Set default movement variables
 
 
 //Move when detecting values
-if (keyboard_check(moveUp))      vspeed -= moveSpeedCurrent;
-if (keyboard_check(moveDown))    vspeed += moveSpeedCurrent;
-if (keyboard_check(moveRight))   hspeed += moveSpeedCurrent;
-if (keyboard_check(moveLeft))    hspeed -= moveSpeedCurrent;
+if (keyboard_check(moveUp))      
+{
+   vspeed -= moveSpeedCurrent;
+   global.isMoving = true;
+}
+if (keyboard_check(moveDown))    
+{
+   vspeed += moveSpeedCurrent;
+   global.isMoving = true;
+}
+if (keyboard_check(moveRight))  
+{
+   hspeed += moveSpeedCurrent;
+   global.isMoving = true;
+}
+if (keyboard_check(moveLeft))  
+{
+   hspeed -= moveSpeedCurrent;
+   global.isMoving = true;
+}
+
+if ( !keyboard_check(moveUp)   && 
+     !keyboard_check(moveDown) &&
+     !keyboard_check(moveRight)&&
+     !keyboard_check(moveLeft)
+     )
+{ global.isMoving = false;}
+
 
 //Limit Speed
 if(speed > moveSpeedMax)

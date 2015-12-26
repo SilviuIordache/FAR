@@ -25,7 +25,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>canMove = true
+            <string>
 //MOV VARIABLES
 //friction = 0.2
 
@@ -37,10 +37,9 @@
 xaxis     = 0;
 yaxis     = 0;
 
-global.canShootBolts = true;
-global.shootBoltsCD  = 20;
-global.boltSpeed     = 3;
-
+global.swordPhase1 = true;
+global.swordPhase2 = false
+global.swordPhase3 = false;
 </string>
           </argument>
         </arguments>
@@ -86,15 +85,51 @@ global.boltSpeed     = 3;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>script_execute(scr_KB_Movement, 0.5, 1, 4); //friction, speedGain, speedTop
+            <string>//MOVEMENT SCRIPTS
+script_execute(scr_KB_Movement, 0.5, 1, 4); //friction, speedGain, speedTop
 //script_execute(scr_PAD_Movement, xaxis, yaxis, 0.5, 1 )
 
 
+//WEAPON SHOOTING LOGIC
 if( mouse_check_button(mb_left) &amp;&amp; global.canShootBolts == true)
 {
- instance_create(x,y, obj_bolt);
+ instance_create(x - 4, y + 4, obj_bolt);
  global.canShootBolts = false;
  alarm[0] = global.shootBoltsCD;
+}
+
+
+//CALCULATE ANGLE BETWEEN PLAYER AND CURSOR POSITION
+global.playerMouseAngle = point_direction(x, y, mouse_x, mouse_y)
+
+
+//PLAYER IMAGE SPEED
+if (global.isMoving == false)
+{
+ image_speed = 0;
+}
+if (global.isMoving == true)
+ image_speed = 0.2;
+
+//SWORD ATTACK LOGIC
+if( mouse_check_button(mb_right))
+{
+ if (global.swordPhase1 == true)
+ {
+    instance_create(x, y, obj_sword)
+    global.swordPhase1 = false;
+    global.swordPhase2 = true;
+    alarm[0] = 60;
+    
+ }
+ if (global.swordPhase2 == true)
+ {
+    instance_create(x, y, obj_sword)
+ }
+ if (global.swordPhase3 == true)
+ {
+    instance_create(x, y, obj_sword)
+ }
 }
 </string>
           </argument>
@@ -216,8 +251,43 @@ if( mouse_check_button(mb_left) &amp;&amp; global.canShootBolts == true)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>draw_self();
-draw_sprite(spr_sword,image_index, x, y);
+            <string>//Draw player sprite
+draw_sprite_ext(
+                spr_player, 
+                image_index, 
+                x, 
+                y, 
+                image_xscale, 
+                image_yscale, 
+                image_angle,
+                image_blend, 
+                image_alpha);
+
+//Draw player weapon
+draw_sprite_ext(
+                spr_weapon, 
+                image_index, 
+                x - 4, 
+                y + 4, 
+                image_xscale, 
+                image_yscale, 
+                image_angle + global.playerMouseAngle,
+                image_blend, 
+                image_alpha);
+
+//Draw shadow under him
+draw_sprite_ext(
+                spr_shadow, 
+                image_index, 
+                x - 8, 
+                y + 8, 
+                image_xscale, 
+                image_yscale, 
+                image_angle,
+                image_blend, 
+                image_alpha * 0.4);
+
+
 </string>
           </argument>
         </arguments>

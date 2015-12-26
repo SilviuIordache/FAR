@@ -10,6 +10,8 @@
     <sprite>sprites\spr_block</sprite>
     <sprite>sprites\spr_bolt</sprite>
     <sprite>sprites\spr_customCursor</sprite>
+    <sprite>sprites\spr_shadow</sprite>
+    <sprite>sprites\spr_weapon</sprite>
     <sprite>sprites\spr_sword</sprite>
   </sprites>
   <backgrounds name="background">
