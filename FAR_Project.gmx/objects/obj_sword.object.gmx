@@ -96,7 +96,7 @@ y = obj_player.y;
           <argument>
             <kind>1</kind>
             <string>depth = -1000
-
+/*
 if(global.swordPhase1 == true)
 {
     draw_sprite_ext(spr_sword, 
@@ -109,8 +109,8 @@ if(global.swordPhase1 == true)
                     image_blend, 
                     image_alpha);
 }
-                
-//draw_self();
+*/           
+draw_self();
 </string>
           </argument>
         </arguments>
