@@ -58,11 +58,11 @@ global.playerMouseAngle = 45;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>draw_text(x, y, "SPD : " + string(obj_player.speed))
+            <string>draw_text(0, 0, "SPD : " + string(obj_player.speed))
 
-draw_text(x, y + 12, "P1: " + string(global.swordPhase1))
-draw_text(x, y + 24, "P2: " + string(global.swordPhase2))
-draw_text(x, y + 36, "P3: " + string(global.swordPhase3))
+draw_text(0, 12, "P1: " + string(global.swordPhase1))
+draw_text(0, 24, "P2: " + string(global.swordPhase2))
+draw_text(0, 36, "P3: " + string(global.swordPhase3))
 
 </string>
           </argument>

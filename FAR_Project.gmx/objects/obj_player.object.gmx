@@ -40,6 +40,10 @@ yaxis     = 0;
 global.swordPhase1 = true;
 global.swordPhase2 = false
 global.swordPhase3 = false;
+
+global.playerImageSpeed = 0.15;
+
+
 </string>
           </argument>
         </arguments>
@@ -135,7 +139,7 @@ global.swordPhase1 = true;
           <argument>
             <kind>1</kind>
             <string>//MOVEMENT SCRIPTS
-script_execute(scr_KB_Movement, 0.5, 1, 4); //friction, speedGain, speedTop
+script_execute(scr_KB_Movement, 0.1, 0.2, 1); //friction, speedGain, speedTop
 //script_execute(scr_PAD_Movement, xaxis, yaxis, 0.5, 1 )
 
 
@@ -158,7 +162,7 @@ if (global.isMoving == false)
  image_speed = 0;
 }
 if (global.isMoving == true)
- image_speed = 0.2;
+ image_speed = global.playerImageSpeed;
 
 //SWORD ATTACK LOGIC
 
@@ -303,6 +307,7 @@ if (global.isMoving == true)
           <argument>
             <kind>1</kind>
             <string>//Draw player sprite
+
 draw_sprite_ext(
                 spr_player, 
                 image_index, 
@@ -313,7 +318,7 @@ draw_sprite_ext(
                 image_angle,
                 image_blend, 
                 image_alpha);
-
+/*
 //Draw player weapon
 draw_sprite_ext(
                 spr_weapon, 
@@ -325,13 +330,13 @@ draw_sprite_ext(
                 image_angle + global.playerMouseAngle,
                 image_blend, 
                 image_alpha);
-
+*/
 //Draw shadow under him
 draw_sprite_ext(
                 spr_shadow, 
                 image_index, 
-                x - 8, 
-                y + 8, 
+                x + 4, 
+                y + 12, 
                 image_xscale, 
                 image_yscale, 
                 image_angle,
