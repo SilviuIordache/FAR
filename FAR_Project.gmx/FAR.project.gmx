@@ -14,6 +14,18 @@
     <sprite>sprites\spr_shadow</sprite>
     <sprite>sprites\spr_weapon</sprite>
     <sprite>sprites\spr_sword</sprite>
+    <sprites name="player_components">
+      <sprite>sprites\spr_player_body</sprite>
+      <sprite>sprites\spr_armor_helmet</sprite>
+      <sprite>sprites\spr_armor_belt</sprite>
+      <sprite>sprites\spr_armor_glove</sprite>
+      <sprite>sprites\spr_armor_boot</sprite>
+      <sprite>sprites\spr_armor_chest</sprite>
+      <sprite>sprites\spr_armor_shoulders</sprite>
+    </sprites>
+    <sprite>sprites\spr_armor_aura</sprite>
+    <sprite>sprites\spr_cameraDrone</sprite>
+    <sprite>sprites\spr_monster</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\background0</background>
@@ -28,11 +40,22 @@
   </scripts>
   <objects name="objects">
     <object>objects\obj_player</object>
+    <objects name="armor objects">
+      <object>objects\obj_item_armor</object>
+      <object>objects\obj_item_helmet</object>
+      <object>objects\obj_item_chest</object>
+      <object>objects\obj_item_belt</object>
+      <object>objects\obj_item_glove</object>
+      <object>objects\obj_item_boot</object>
+      <object>objects\obj_item_shoulders</object>
+    </objects>
     <object>objects\obj_block</object>
     <object>objects\obj_system</object>
     <object>objects\obj_bolt</object>
     <object>objects\obj_sword</object>
     <object>objects\obj_knight</object>
+    <object>objects\obj_cameraDrone</object>
+    <object>objects\obj_monster</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\room0</room>
