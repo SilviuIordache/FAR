@@ -37,22 +37,27 @@
 xaxis     = 0;
 yaxis     = 0;
 
-//GLOBAL VARIABLES
+
+//-----Game Logic stats--------
+health = 5;
+global.isMoving         = false;
+global.playerMouseAngle = 45;
+global.playerImageSpeed = 0.15;
+//-----------------------------
+
+//-----WEAPONS-----------------
+
+//Crossbow
+global.canShootBolts    = true;
+global.shootBoltsCD     = 20;
+global.boltSpeed        = 3.5;
+global.rangedDamage     = 1;
 
 //Sword
 global.swordPhase1 = true;
 global.swordPhase2 = false
 global.swordPhase3 = false;
-
-global.playerImageSpeed = 0.15;
-
-
-global.canShootBolts    = true;
-global.shootBoltsCD     = 20;
-global.boltSpeed        = 6;
-global.isMoving         = false;
-global.playerMouseAngle = 45;
-
+//-----------------------------
 
 //INVENTORY ITEMS
 global.helmet_Equipped    = 0;
@@ -192,19 +197,11 @@ global.canShootBolts = true;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>//MOVEMENT SCRIPTS
+            <string>///MAIN STEP EVENT
+
+//MOVEMENT SCRIPTS
 script_execute(scr_KB_Movement, 0.05, 0.2, 1); //friction, speedGain, speedTop
 //script_execute(scr_PAD_Movement, xaxis, yaxis, 0.5, 1 )
-
-
-//WEAPON SHOOTING LOGIC
-if( mouse_check_button(mb_left) &amp;&amp; global.canShootBolts == true)
-{
- instance_create(x - 4, y + 4, obj_bolt);
- global.canShootBolts = false;
- alarm[0] = global.shootBoltsCD;
-}
-
 
 //CALCULATE ANGLE BETWEEN PLAYER AND CURSOR POSITION
 global.playerMouseAngle = point_direction(x, y, mouse_x, mouse_y)
@@ -213,17 +210,17 @@ global.playerMouseAngle = point_direction(x, y, mouse_x, mouse_y)
 //PLAYER IMAGE SPEED
 if (global.isMoving == false)
 {
- image_speed = 0;
+    image_speed = 0;
 }
 if (global.isMoving == true)
- image_speed = global.playerImageSpeed;
+{
+   image_speed = global.playerImageSpeed;
+}
  
 //hopVar logic
 if (global.isMoving == true)
 {
     hopVar = sin (get_timer() / 50000)
-    
-
 }
 else
 {
@@ -232,8 +229,28 @@ else
 
 
 
-//SWORD ATTACK LOGIC
-/*
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///SWORD ATTACK LOGIC
+
  if (mouse_check_button(mb_right) &amp;&amp; global.swordPhase1 == true)
  {
     instance_create(x, y, obj_sword)
@@ -254,6 +271,36 @@ else
     instance_create(x, y, obj_sword)
  }
 
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///RANGED COMBAT LOGIC
+
+
+//WEAPON SHOOTING LOGIC
+if( mouse_check_button(mb_left) &amp;&amp; global.canShootBolts == true)
+{
+ instance_create(x + 8, y + 8, obj_bolt);
+ global.canShootBolts = false;
+ alarm[0] = global.shootBoltsCD;
+}
 
 </string>
           </argument>
@@ -286,6 +333,49 @@ else if ((other.y - y) &lt; 0)
 {
  other.depth = -9;
  depth = -10;
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="4" ename="obj_item_armor">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///* ARMOR ITEM INTERACTION LOGIC
+with (other)
+{
+    //Filtrate through list of item and equip the specific item
+    if (object_get_name(object_index) == "obj_item_helmet")
+       global.helmet_Equipped = 1;
+    if (object_get_name(object_index) == "obj_item_belt")
+       global.belt_Equipped = 1;   
+    if (object_get_name(object_index) == "obj_item_glove")
+       global.glove_Equipped = 1;   
+    if (object_get_name(object_index) == "obj_item_boot")
+       global.boot_Equipped = 1;   
+    if (object_get_name(object_index) == "obj_item_chest")
+       global.chest_Equipped = 1;   
+    if (object_get_name(object_index) == "obj_item_shoulders")
+       global.shoulders_Equipped = 1;  
+          
+    //FINALLY DESTROY THE ITEM when it reached the player    
+    instance_destroy();
+
 }
 </string>
           </argument>
@@ -386,46 +476,6 @@ else if ((other.y - y) &lt; 0)
           <argument>
             <kind>0</kind>
             <string>0</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="4" ename="obj_item_armor">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>with(other)
-{
-    if (object_get_name(object_index) == "obj_item_helmet")
-       global.helmet_Equipped = 1;
-    if (object_get_name(object_index) == "obj_item_belt")
-       global.belt_Equipped = 1;   
-    if (object_get_name(object_index) == "obj_item_glove")
-       global.glove_Equipped = 1;   
-    if (object_get_name(object_index) == "obj_item_boot")
-       global.boot_Equipped = 1;   
-    if (object_get_name(object_index) == "obj_item_chest")
-       global.chest_Equipped = 1;   
-    if (object_get_name(object_index) == "obj_item_shoulders")
-       global.shoulders_Equipped = 1;   
-       
-    //FINALLY DESTROY THE ITEM
-    instance_destroy();
-}
-</string>
           </argument>
         </arguments>
       </action>

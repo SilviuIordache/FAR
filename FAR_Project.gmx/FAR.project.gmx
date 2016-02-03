@@ -6,14 +6,6 @@
   <NewExtensions/>
   <sounds name="sound"/>
   <sprites name="sprites">
-    <sprite>sprites\spr_player</sprite>
-    <sprite>sprites\spr_knight</sprite>
-    <sprite>sprites\spr_block</sprite>
-    <sprite>sprites\spr_bolt</sprite>
-    <sprite>sprites\spr_customCursor</sprite>
-    <sprite>sprites\spr_shadow</sprite>
-    <sprite>sprites\spr_weapon</sprite>
-    <sprite>sprites\spr_sword</sprite>
     <sprites name="player_components">
       <sprite>sprites\spr_player_body</sprite>
       <sprite>sprites\spr_armor_helmet</sprite>
@@ -23,9 +15,22 @@
       <sprite>sprites\spr_armor_chest</sprite>
       <sprite>sprites\spr_armor_shoulders</sprite>
     </sprites>
+    <sprites name="test">
+      <sprite>sprites\spr_star</sprite>
+      <sprite>sprites\spr_ball</sprite>
+    </sprites>
+    <sprite>sprites\spr_player</sprite>
+    <sprite>sprites\spr_knight</sprite>
+    <sprite>sprites\spr_block</sprite>
+    <sprite>sprites\spr_bolt</sprite>
+    <sprite>sprites\spr_customCursor</sprite>
+    <sprite>sprites\spr_shadow</sprite>
+    <sprite>sprites\spr_weapon</sprite>
+    <sprite>sprites\spr_sword</sprite>
     <sprite>sprites\spr_armor_aura</sprite>
     <sprite>sprites\spr_cameraDrone</sprite>
     <sprite>sprites\spr_monster</sprite>
+    <sprite>sprites\spr_bow</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\background0</background>
@@ -37,9 +42,27 @@
     <script>scripts\scr_get_gamepad_input.gml</script>
     <script>scripts\scr_move_axis.gml</script>
     <script>scripts\scr_Movement.gml</script>
+    <script>scripts\scr_createDamageNumber.gml</script>
   </scripts>
+  <fonts name="fonts">
+    <font>fonts\fnt_damage</font>
+    <font>fonts\fnt_default</font>
+  </fonts>
   <objects name="objects">
-    <object>objects\obj_player</object>
+    <objects name="player">
+      <object>objects\obj_player</object>
+    </objects>
+    <objects name="system">
+      <object>objects\obj_system</object>
+      <object>objects\obj_damageNumber</object>
+    </objects>
+    <objects name="weapons">
+      <object>objects\obj_bolt</object>
+      <object>objects\obj_sword</object>
+    </objects>
+    <objects name="environment">
+      <object>objects\obj_block</object>
+    </objects>
     <objects name="armor objects">
       <object>objects\obj_item_armor</object>
       <object>objects\obj_item_helmet</object>
@@ -49,16 +72,19 @@
       <object>objects\obj_item_boot</object>
       <object>objects\obj_item_shoulders</object>
     </objects>
-    <object>objects\obj_block</object>
-    <object>objects\obj_system</object>
-    <object>objects\obj_bolt</object>
-    <object>objects\obj_sword</object>
-    <object>objects\obj_knight</object>
-    <object>objects\obj_cameraDrone</object>
-    <object>objects\obj_monster</object>
+    <objects name="monsters">
+      <object>objects\obj_knight</object>
+      <object>objects\obj_monster</object>
+    </objects>
+    <objects name="test">
+      <object>objects\obj_star</object>
+      <object>objects\obj_cameraDrone</object>
+      <object>objects\obj_ball</object>
+    </objects>
   </objects>
   <rooms name="rooms">
-    <room>rooms\room0</room>
+    <room>rooms\room_main</room>
+    <room>rooms\room_test</room>
   </rooms>
   <help>
     <rtf>help.rtf</rtf>
