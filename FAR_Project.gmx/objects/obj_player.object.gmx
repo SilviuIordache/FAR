@@ -39,14 +39,21 @@ yaxis     = 0;
 
 
 //-----Game Logic stats--------
-health = 5;
+
 global.isMoving         = false;
 global.playerMouseAngle = 45;
+global.playerMouseAngleLAST = 45;
 global.playerImageSpeed = 0.15;
 //-----------------------------
 
-//-----WEAPONS-----------------
+//-----PLAYER------------------
+global.playerHP = 5;
+global.playerStaminaMax = 10
+global.playerStaminaCur = 10;
+global.playerStaminaRegenRate = 0.04;
+//-----------------------------
 
+//-----WEAPONS-----------------
 //Crossbow
 global.canShootBolts    = true;
 global.shootBoltsCD     = 20;
@@ -54,6 +61,11 @@ global.boltSpeed        = 3.5;
 global.rangedDamage     = 1;
 
 //Sword
+global.canSwingSword = true;
+global.swordSwingCD = 20;
+global.swordStaminaCost = 3;
+global.swordSwingSpeed = 10;
+global.swordSwingDuration = 15;
 global.swordPhase1 = true;
 global.swordPhase2 = false
 global.swordPhase3 = false;
@@ -251,25 +263,36 @@ else
             <kind>1</kind>
             <string>///SWORD ATTACK LOGIC
 
- if (mouse_check_button(mb_right) &amp;&amp; global.swordPhase1 == true)
- {
-    instance_create(x, y, obj_sword)
-    global.swordPhase1 = false;
-    global.swordPhase2 = true;
-    alarm[1] = 60;
-    
- }
- else if (mouse_check_button(mb_right) &amp;&amp; global.swordPhase2 == true)
- {
-    instance_create(x, y, obj_sword)
-    global.swordPhase2 = false;
-    global.swordPhase3 = true;
-    alarm[2] = 60;
- }
- else if (mouse_check_button(mb_right) &amp;&amp; global.swordPhase3 == true)
- {
-    instance_create(x, y, obj_sword)
- }
+if (mouse_check_button_pressed(mb_right) &amp;&amp; global.playerStaminaCur &gt; 1 &amp;&amp; global.canSwingSword == true)
+{
+    instance_create(x, y, obj_sword);
+    global.playerMouseAngleLAST = global.playerMouseAngle;
+    global.playerStaminaCur -= global.swordStaminaCost
+    if (global.playerStaminaCur &lt; 0)
+    {
+        global.playerStaminaCur = 0;
+    }
+}
+/*
+if (mouse_check_button(mb_right) &amp;&amp; global.swordPhase1 == true)
+{
+   instance_create(x, y, obj_sword)
+   global.swordPhase1 = false;
+   global.swordPhase2 = true;
+   alarm[1] = 60;
+   
+}
+else if (mouse_check_button(mb_right) &amp;&amp; global.swordPhase2 == true)
+{
+   instance_create(x, y, obj_sword)
+   global.swordPhase2 = false;
+   global.swordPhase3 = true;
+   alarm[2] = 60;
+}
+else if (mouse_check_button(mb_right) &amp;&amp; global.swordPhase3 == true)
+{
+   instance_create(x, y, obj_sword)
+}
 
 </string>
           </argument>
@@ -301,6 +324,37 @@ if( mouse_check_button(mb_left) &amp;&amp; global.canShootBolts == true)
  global.canShootBolts = false;
  alarm[0] = global.shootBoltsCD;
 }
+
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///REGENS
+if( global.playerStaminaCur &lt; global.playerStaminaMax)
+{
+    global.playerStaminaCur += global.playerStaminaRegenRate
+    if( global.playerStaminaCur &gt; global.playerStaminaMax)
+    {
+        global.playerStaminaCur = global.playerStaminaMax;
+    }
+}
+
 
 </string>
           </argument>

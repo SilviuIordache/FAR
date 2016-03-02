@@ -25,7 +25,8 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>alarm[0] = 30;
+            <string>alarm[0] = global.swordSwingDuration;
+swordSwing = 0;
 </string>
           </argument>
         </arguments>
@@ -73,6 +74,8 @@
             <kind>1</kind>
             <string>x = obj_player.x;
 y = obj_player.y;
+
+swordSwing += global.swordSwingSpeed;
 </string>
           </argument>
         </arguments>
@@ -96,20 +99,17 @@ y = obj_player.y;
           <argument>
             <kind>1</kind>
             <string>depth = -1000
-/*
-if(global.swordPhase1 == true)
-{
-    draw_sprite_ext(spr_sword, 
-                    image_index, 
-                    x - 4, 
-                    y + 4, 
-                    image_xscale, 
-                    image_yscale, 
-                    image_angle + global.playerMouseAngle,
-                    image_blend, 
-                    image_alpha);
-}
-*/           
+draw_sprite_ext(spr_sword, 
+                image_index, 
+                x + 4, 
+                y + 9, 
+                image_xscale, 
+                image_yscale * 1.6, 
+                image_angle + global.playerMouseAngleLAST + 180 + swordSwing - 15,
+                image_blend, 
+                image_alpha);
+
+/*          
 draw_self();
 </string>
           </argument>
