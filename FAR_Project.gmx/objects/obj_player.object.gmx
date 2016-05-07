@@ -57,7 +57,7 @@ global.playerStaminaRegenRate = 0.04;
 //Crossbow
 global.canShootBolts    = true;
 global.shootBoltsCD     = 20;
-global.boltSpeed        = 3.5;
+global.boltSpeed        = 1.5;
 global.rangedDamage     = 1;
 
 //Sword
@@ -80,8 +80,11 @@ global.chest_Equipped     = 0;
 global.shoulders_Equipped = 0;
 
 //DRAW variables
+classSpriteVariable = spr_player_body;
 hopVar = 0;
-
+if( selectedClass = 0)   classSpriteVariable = spr_player_mage;
+if( selectedClass = 1)   classSpriteVariable = spr_player_warrior;
+if( selectedClass = 2)   classSpriteVariable = spr_player_rogue;
 
 </string>
           </argument>
@@ -263,6 +266,7 @@ else
             <kind>1</kind>
             <string>///SWORD ATTACK LOGIC
 
+//attack with mouse &amp; cursor
 if (mouse_check_button_pressed(mb_right) &amp;&amp; global.playerStaminaCur &gt; 1 &amp;&amp; global.canSwingSword == true)
 {
     instance_create(x, y, obj_sword);
@@ -271,6 +275,21 @@ if (mouse_check_button_pressed(mb_right) &amp;&amp; global.playerStaminaCur &gt;
     if (global.playerStaminaCur &lt; 0)
     {
         global.playerStaminaCur = 0;
+    }
+}
+
+//attack with directional keys
+if (global.playerStaminaCur &gt; 1 &amp;&amp; global.canSwingSword == true)
+{
+    if (keyboard_check_pressed(vk_up))
+    {
+        instance_create(x, y, obj_sword);
+        global.playerMouseAngleLAST = global.playerMouseAngle;
+        global.playerStaminaCur -= global.swordStaminaCost
+        if (global.playerStaminaCur &lt; 0)
+        {
+            global.playerStaminaCur = 0;
+        }
     }
 }
 /*
@@ -552,13 +571,13 @@ with (other)
           <argument>
             <kind>1</kind>
             <string>//DRAW PLAYER SHADOW
-draw_sprite_ext(spr_shadow, image_index, x + 8, y + 15, image_xscale, image_yscale, image_angle,image_blend, image_alpha * 0.32);
+draw_sprite_ext(spr_shadow, image_index, x + 9, y + 16, image_xscale, image_yscale, image_angle,image_blend, image_alpha * 0.32);
 
 //DRAW PLAYER
-draw_sprite_ext( spr_player_body, image_index, x, y + hopVar, image_xscale, image_yscale, image_angle,image_blend, image_alpha);
+draw_sprite_ext( classSpriteVariable, image_index, x, y + hopVar, image_xscale, image_yscale, image_angle,image_blend, image_alpha);
 
 
-
+/*
 //DRAW PLAYER EQUIPMENT
 //--DRAW HELMET---------------------------------------------------------------------------------------------------------------------
 

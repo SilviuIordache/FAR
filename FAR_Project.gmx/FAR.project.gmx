@@ -6,6 +6,12 @@
   <NewExtensions/>
   <sounds name="sound"/>
   <sprites name="sprites">
+    <sprites name="player_classes">
+      <sprite>sprites\spr_select_square</sprite>
+      <sprite>sprites\spr_player_mage</sprite>
+      <sprite>sprites\spr_player_rogue</sprite>
+      <sprite>sprites\spr_player_warrior</sprite>
+    </sprites>
     <sprites name="HUD">
       <sprite>sprites\spr_playerHP_curr</sprite>
       <sprite>sprites\spr_playerHP_total</sprite>
@@ -13,6 +19,7 @@
       <sprite>sprites\spr_playerSTA_total</sprite>
       <sprite>sprites\spr_xpBarOutline</sprite>
       <sprite>sprites\spr_customCursor</sprite>
+      <sprite>sprites\spr_class_selection_arrow</sprite>
     </sprites>
     <sprites name="player_components">
       <sprite>sprites\spr_player_body</sprite>
@@ -52,6 +59,7 @@
   </sprites>
   <backgrounds name="background">
     <background>background\background0</background>
+    <background>background\bck_menu</background>
   </backgrounds>
   <paths name="paths"/>
   <scripts name="scripts">
@@ -64,6 +72,7 @@
   </scripts>
   <fonts name="fonts">
     <font>fonts\fnt_damage</font>
+    <font>fonts\fnt_FAR</font>
     <font>fonts\fnt_default</font>
   </fonts>
   <objects name="objects">
@@ -73,6 +82,8 @@
     <objects name="system">
       <object>objects\obj_system</object>
       <object>objects\obj_damageNumber</object>
+      <object>objects\obj_menu_logic</object>
+      <object>objects\obj_class_select_arrow</object>
     </objects>
     <objects name="weapons">
       <object>objects\obj_bolt</object>
@@ -101,6 +112,7 @@
     </objects>
   </objects>
   <rooms name="rooms">
+    <room>rooms\room_menu</room>
     <room>rooms\room_main</room>
     <room>rooms\room_test</room>
   </rooms>

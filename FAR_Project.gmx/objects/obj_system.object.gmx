@@ -34,7 +34,6 @@ GUI_scaleFactor = 4
 GUI_defaultScaleFactor = 1;
 
 
-
 </string>
           </argument>
         </arguments>
@@ -57,7 +56,9 @@ GUI_defaultScaleFactor = 1;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>//CAMERA stuff-------------------------
+            <string>if (room != room_menu)
+{
+//CAMERA stuff-------------------------
 targetX= obj_player.x;
 targetY= obj_player.y;
 
@@ -70,7 +71,12 @@ view_yview[0]=(view_yview[0]*7+targetY)/8 - horCameraAdjustment;
 
 //view_angle[0] = 2 //sets camera angle to something different than 0, in this example 2 degrees tilted
 //view_angle[0] += 0.5 //rotates camera constantly, creates fun dizzines
+}
 
+if (keyboard_check_pressed(vk_escape))
+{
+ room_goto(room_menu)
+}
 </string>
           </argument>
         </arguments>
@@ -95,6 +101,8 @@ view_yview[0]=(view_yview[0]*7+targetY)/8 - horCameraAdjustment;
             <kind>1</kind>
             <string>//HEALTH AND STAMINA
 //Health
+if (room != room_menu)
+{
 draw_sprite_ext(spr_playerHP_total, image_index, x + 6, y + 5, image_xscale * 6, image_yscale * 2, image_angle, c_white, image_alpha)
 draw_sprite_ext(spr_playerHP_curr, image_index, x + 6, y + 5, image_xscale * 6, image_yscale * 2, image_angle, c_white, image_alpha)
 
@@ -102,7 +110,7 @@ draw_sprite_ext(spr_playerHP_curr, image_index, x + 6, y + 5, image_xscale * 6, 
 //Stamina
 draw_sprite_ext(spr_playerSTA_total, image_index, x + 6, y + 24, image_xscale * 6, image_yscale * 2, image_angle, c_white, image_alpha)
 draw_sprite_ext(spr_playerSTA_curr, image_index, x + 6, y + 24, image_xscale * 6 * global.playerStaminaCur/global.playerStaminaMax, image_yscale * 2, image_angle, c_white, image_alpha)
-
+}
 /*
 //DEBUG------------------------------
 draw_text(0, 0, "SPD : " + string(obj_player.speed))
