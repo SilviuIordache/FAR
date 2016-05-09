@@ -33,6 +33,9 @@ draw_set_font(fnt_default);
 GUI_scaleFactor = 4
 GUI_defaultScaleFactor = 1;
 
+globalvar selectedClass;
+//selectedClass = 0; // if no class is selected, select Warrior by default
+
 
 </string>
           </argument>
@@ -58,12 +61,14 @@ GUI_defaultScaleFactor = 1;
             <kind>1</kind>
             <string>if (room != room_menu)
 {
-//CAMERA stuff-------------------------
+
+//---------------CAMERA stuff--------------------------------------------------------------------------------------------------
+
 targetX= obj_player.x;
 targetY= obj_player.y;
 
 verCameraAdjustment   = 10;
-horCameraAdjustment = 6;
+horCameraAdjustment   = 6;
 
 view_xview[0]=(view_xview[0]*7+targetX)/8 - verCameraAdjustment;//the xview is weighed *7 here. xview*7+targetX*1 --&gt; 8
 view_yview[0]=(view_yview[0]*7+targetY)/8 - horCameraAdjustment;
@@ -71,6 +76,8 @@ view_yview[0]=(view_yview[0]*7+targetY)/8 - horCameraAdjustment;
 
 //view_angle[0] = 2 //sets camera angle to something different than 0, in this example 2 degrees tilted
 //view_angle[0] += 0.5 //rotates camera constantly, creates fun dizzines
+
+//-----------------------------------------------------------------------------------------------------------------------------
 }
 
 if (keyboard_check_pressed(vk_escape))
@@ -141,28 +148,6 @@ draw_text(0, 24, "P2: " + string(global.swordPhase2))
 draw_text(0, 36, "P3: " + string(global.swordPhase3))
 
 </string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="8" enumb="0">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string></string>
           </argument>
         </arguments>
       </action>

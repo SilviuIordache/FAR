@@ -26,11 +26,71 @@
           <argument>
             <kind>1</kind>
             <string>speed = global.boltSpeed;
-direction = point_direction(obj_player.x + 8, obj_player.y + 8, mouse_x, mouse_y);
+//direction = point_direction(obj_player.x + 8, obj_player.y + 8, mouse_x, mouse_y);
 damage = global.rangedDamage;
 dealtDamage = false;
 
+initX = x;
+initY = y;
 
+canStartFalling = false;
+virtualFallVariable = 0;
+virtualFallAmount = 0.2
+
+alarm[0] = 12;
+
+
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>canStartFalling = true;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="3" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>if ( canStartFalling == true)
+{
+    if (virtualFallVariable == 10)
+       instance_destroy();
+    virtualFallVariable += virtualFallAmount;
+}
 </string>
           </argument>
         </arguments>
@@ -90,6 +150,31 @@ dealtDamage = false;
           <argument>
             <kind>1</kind>
             <string>instance_destroy();
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="8" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>draw_sprite(spr_bolt, 1, x, y + virtualFallVariable);
+
+draw_sprite(spr_boltShadow, 1, x, y + 10);
 </string>
           </argument>
         </arguments>

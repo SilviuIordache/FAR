@@ -85,6 +85,7 @@ hopVar = 0;
 if( selectedClass = 0)   classSpriteVariable = spr_player_mage;
 if( selectedClass = 1)   classSpriteVariable = spr_player_warrior;
 if( selectedClass = 2)   classSpriteVariable = spr_player_rogue;
+if( selectedClass = -1)   classSpriteVariable = spr_player_body;
 
 </string>
           </argument>
@@ -279,6 +280,7 @@ if (mouse_check_button_pressed(mb_right) &amp;&amp; global.playerStaminaCur &gt;
 }
 
 //attack with directional keys
+/*
 if (global.playerStaminaCur &gt; 1 &amp;&amp; global.canSwingSword == true)
 {
     if (keyboard_check_pressed(vk_up))
@@ -292,6 +294,7 @@ if (global.playerStaminaCur &gt; 1 &amp;&amp; global.canSwingSword == true)
         }
     }
 }
+*/
 /*
 if (mouse_check_button(mb_right) &amp;&amp; global.swordPhase1 == true)
 {
@@ -335,15 +338,26 @@ else if (mouse_check_button(mb_right) &amp;&amp; global.swordPhase3 == true)
             <kind>1</kind>
             <string>///RANGED COMBAT LOGIC
 
+//Directional keys shooting
+if(keyboard_check(vk_left) &amp;&amp; global.canShootBolts == true)
+    script_execute(scr_performAttack, obj_bolt, "left")   
+if(keyboard_check(vk_right) &amp;&amp; global.canShootBolts == true)
+    script_execute(scr_performAttack, obj_bolt, "right")   
+if(keyboard_check(vk_up) &amp;&amp; global.canShootBolts == true)
+    script_execute(scr_performAttack, obj_bolt, "up")   
+if(keyboard_check(vk_down) &amp;&amp; global.canShootBolts == true)
+    script_execute(scr_performAttack, obj_bolt, "down")   
 
+  
 //WEAPON SHOOTING LOGIC
+/*
 if( mouse_check_button(mb_left) &amp;&amp; global.canShootBolts == true)
 {
  instance_create(x + 8, y + 8, obj_bolt);
  global.canShootBolts = false;
  alarm[0] = global.shootBoltsCD;
 }
-
+*/
 </string>
           </argument>
         </arguments>
@@ -575,40 +589,6 @@ draw_sprite_ext(spr_shadow, image_index, x + 9, y + 16, image_xscale, image_ysca
 
 //DRAW PLAYER
 draw_sprite_ext( classSpriteVariable, image_index, x, y + hopVar, image_xscale, image_yscale, image_angle,image_blend, image_alpha);
-
-
-/*
-//DRAW PLAYER EQUIPMENT
-//--DRAW HELMET---------------------------------------------------------------------------------------------------------------------
-
-if (global.helmet_Equipped == 1)
-   draw_sprite_ext( spr_armor_helmet, image_index, x + 3, y - 2 + hopVar, image_xscale, image_yscale, image_angle,image_blend, image_alpha);
-   
-if (global.chest_Equipped == 1)
-{
-   draw_sprite_ext( spr_armor_chest, image_index, x + 4, y + 3 + hopVar, image_xscale, image_yscale, image_angle,image_blend, image_alpha);
-}
-if (global.shoulders_Equipped == 1)
-   draw_sprite_ext( spr_armor_shoulders, image_index, x + 2, y + hopVar, image_xscale, image_yscale, image_angle,image_blend, image_alpha);  
-if (global.glove_Equipped == 1)
-{
-   draw_sprite_ext( spr_armor_glove, image_index, x + 3,  y + 7 + hopVar, image_xscale, image_yscale, image_angle,image_blend, image_alpha);
-   draw_sprite_ext( spr_armor_glove, image_index, x + 11, y + 7 + hopVar, image_xscale, image_yscale, image_angle,image_blend, image_alpha);
-}
-if (global.boot_Equipped == 1)
-{
-   draw_sprite_ext( spr_armor_boot, image_index, x + 4,  y + 10 + hopVar, image_xscale, image_yscale, image_angle,image_blend, image_alpha);  
-   draw_sprite_ext( spr_armor_boot, image_index, x + 11, y + 10 + hopVar, image_xscale * -1, image_yscale, image_angle,image_blend, image_alpha);  
-}
-if (global.belt_Equipped == 1)
-{
-   draw_sprite_ext( spr_armor_belt, image_index, x + 4, y + 9 + hopVar, image_xscale, image_yscale, image_angle,image_blend, image_alpha);
-}
-
-
-//DRAW WEAPON
-//draw_sprite_ext(spr_weapon, image_index, x - 6, y + 2, image_xscale, image_yscale, image_angle + global.playerMouseAngle,image_blend, image_alpha);
-
 
 </string>
           </argument>

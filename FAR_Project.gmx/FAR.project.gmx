@@ -40,6 +40,7 @@
       <sprite>sprites\spr_weapon</sprite>
       <sprite>sprites\spr_bolt</sprite>
       <sprite>sprites\spr_sword</sprite>
+      <sprite>sprites\spr_boltShadow</sprite>
     </sprites>
     <sprites name="test">
       <sprite>sprites\spr_star</sprite>
@@ -60,6 +61,7 @@
   <backgrounds name="background">
     <background>background\background0</background>
     <background>background\bck_menu</background>
+    <background>background\bck_grass</background>
   </backgrounds>
   <paths name="paths"/>
   <scripts name="scripts">
@@ -69,6 +71,7 @@
     <script>scripts\scr_move_axis.gml</script>
     <script>scripts\scr_Movement.gml</script>
     <script>scripts\scr_createDamageNumber.gml</script>
+    <script>scripts\scr_performAttack.gml</script>
   </scripts>
   <fonts name="fonts">
     <font>fonts\fnt_damage</font>
