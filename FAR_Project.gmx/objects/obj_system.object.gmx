@@ -36,6 +36,9 @@ GUI_defaultScaleFactor = 1;
 globalvar selectedClass;
 //selectedClass = 0; // if no class is selected, select Warrior by default
 
+globalvar AI_grid;
+          AI_grid = mp_grid_create(0, 0, 25, 25, 16, 16);
+
 
 </string>
           </argument>

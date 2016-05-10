@@ -26,6 +26,37 @@
           <argument>
             <kind>1</kind>
             <string>health = 5;
+spd    = 0.4;
+dmg    = 1;
+
+path_smartAI  = path_add();
+mp_grid_add_instances(AI_grid, obj_block, false); 
+
+pathFindingStarted = false;
+shouldSpread       = true;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>pathFindingStarted = false;
 </string>
           </argument>
         </arguments>
@@ -48,7 +79,27 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>move_towards_point(obj_player.x, obj_player.y, 0.1)
+            <string>//CHECK TO SEE IF THE PLAYER IS ALIVE AND A PATHFIND HASN'T ALREADY STARTED
+if (instance_exists(obj_player)&amp;&amp; pathFindingStarted == false)
+{
+    mp_grid_clear_all(AI_grid);
+    mp_grid_add_instances(AI_grid, obj_block, false); 
+    mp_grid_path(AI_grid, path_smartAI, x, y, obj_player.x + 12, obj_player.y + 12, true);   
+    if (path_exists(path_smartAI))
+    {
+        pathFindingStarted = true;
+        alarm[0] = 30;
+        path_start(path_smartAI, spd, 0, 1) 
+    }
+    else
+        path_end();
+}
+//IF THE PLAYER DIED, STOP PATHFINDING
+else if (!instance_exists(obj_player))
+{
+    path_end();
+}
+
 </string>
           </argument>
         </arguments>

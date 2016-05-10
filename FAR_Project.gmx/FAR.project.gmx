@@ -79,14 +79,14 @@
     <font>fonts\fnt_default</font>
   </fonts>
   <objects name="objects">
-    <objects name="player">
-      <object>objects\obj_player</object>
-    </objects>
     <objects name="system">
       <object>objects\obj_system</object>
       <object>objects\obj_damageNumber</object>
       <object>objects\obj_menu_logic</object>
       <object>objects\obj_class_select_arrow</object>
+    </objects>
+    <objects name="player">
+      <object>objects\obj_player</object>
     </objects>
     <objects name="weapons">
       <object>objects\obj_bolt</object>
