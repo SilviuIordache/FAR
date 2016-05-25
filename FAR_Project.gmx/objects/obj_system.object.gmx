@@ -33,7 +33,7 @@ draw_set_font(fnt_default);
 GUI_scaleFactor = 4
 GUI_defaultScaleFactor = 1;
 
-globalvar selectedClass;
+//global.selectedClass = -1;
 //selectedClass = 0; // if no class is selected, select Warrior by default
 
 globalvar AI_grid;
@@ -113,13 +113,16 @@ if (keyboard_check_pressed(vk_escape))
 //Health
 if (room != room_menu)
 {
+//HEALTH
 draw_sprite_ext(spr_playerHP_total, image_index, x + 6, y + 5, image_xscale * 6, image_yscale * 2, image_angle, c_white, image_alpha)
 draw_sprite_ext(spr_playerHP_curr, image_index, x + 6, y + 5, image_xscale * 6, image_yscale * 2, image_angle, c_white, image_alpha)
+draw_text( x + 30, y + 5, "test/13")
 
 
 //Stamina
 draw_sprite_ext(spr_playerSTA_total, image_index, x + 6, y + 24, image_xscale * 6, image_yscale * 2, image_angle, c_white, image_alpha)
-draw_sprite_ext(spr_playerSTA_curr, image_index, x + 6, y + 24, image_xscale * 6 * global.playerStaminaCur/global.playerStaminaMax, image_yscale * 2, image_angle, c_white, image_alpha)
+draw_sprite_ext(spr_playerSTA_curr, image_index, x + 6, y + 24, image_xscale * 6 * obj_player.sta_Cur/obj_player.sta_Max, image_yscale * 2, image_angle, c_white, image_alpha)
+draw_text( x + 30, y + 24, string(obj_player.sta_Cur) + "/" + string(obj_player.sta_Max))
 }
 /*
 //DEBUG------------------------------
@@ -129,26 +132,6 @@ draw_text(0, 12, "playerIsMoving " + string(global.isMoving));
 draw_text(0, 24, "window_get_height()" + string(window_get_height()))
 
 
-
-//DRAW XP BAR
-display_set_gui_maximise(GUI_scaleFactor, GUI_scaleFactor, 0, 0);
-draw_sprite_ext(
-                spr_xpBarOutline, 
-                image_index, 
-                x, 
-                y + window_get_height() / GUI_scaleFactor - sprite_get_height(spr_xpBarOutline), 
-                image_xscale * 100, //* window_get_width() / GUI_scaleFactor , 
-                image_yscale, 
-                image_angle, 
-                c_white, 
-                image_alpha)
-display_set_gui_maximise(GUI_defaultScaleFactor, GUI_defaultScaleFactor, 0, 0);
-
-//Sword attack debug 
-/*
-draw_text(0, 12, "P1: " + string(global.swordPhase1))
-draw_text(0, 24, "P2: " + string(global.swordPhase2))
-draw_text(0, 36, "P3: " + string(global.swordPhase3))
 
 </string>
           </argument>

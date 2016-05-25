@@ -172,9 +172,10 @@ alarm[0] = 12;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>draw_sprite(spr_bolt, 1, x, y + virtualFallVariable);
+            <string>draw_sprite(spr_boltShadow, 1, x, y + 10);
+draw_sprite(spr_bolt, 1, x, y + virtualFallVariable);
 
-draw_sprite(spr_boltShadow, 1, x, y + 10);
+
 </string>
           </argument>
         </arguments>

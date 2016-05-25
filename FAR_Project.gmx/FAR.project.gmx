@@ -6,11 +6,14 @@
   <NewExtensions/>
   <sounds name="sound"/>
   <sprites name="sprites">
+    <sprites name="player">
+      <sprite>sprites\spr_player_body</sprite>
+    </sprites>
     <sprites name="player_classes">
+      <sprite>sprites\spr_armor_mage</sprite>
+      <sprite>sprites\spr_armor_rogue</sprite>
+      <sprite>sprites\spr_armor_warrior</sprite>
       <sprite>sprites\spr_select_square</sprite>
-      <sprite>sprites\spr_player_mage</sprite>
-      <sprite>sprites\spr_player_rogue</sprite>
-      <sprite>sprites\spr_player_warrior</sprite>
     </sprites>
     <sprites name="HUD">
       <sprite>sprites\spr_playerHP_curr</sprite>
@@ -22,13 +25,6 @@
       <sprite>sprites\spr_class_selection_arrow</sprite>
     </sprites>
     <sprites name="player_components">
-      <sprite>sprites\spr_player_body</sprite>
-      <sprite>sprites\spr_armor_helmet</sprite>
-      <sprite>sprites\spr_armor_belt</sprite>
-      <sprite>sprites\spr_armor_glove</sprite>
-      <sprite>sprites\spr_armor_boot</sprite>
-      <sprite>sprites\spr_armor_chest</sprite>
-      <sprite>sprites\spr_armor_shoulders</sprite>
       <sprite>sprites\spr_shadow</sprite>
     </sprites>
     <sprites name="monsters">

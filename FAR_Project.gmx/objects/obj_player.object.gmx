@@ -25,7 +25,32 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>
+            <string>///CONSTRUCTOR
+if( global.selectedClass = 0)   classSpriteVariable = spr_armor_mage;
+if( global.selectedClass = 1)   classSpriteVariable = spr_armor_warrior;
+if( global.selectedClass = 2)   classSpriteVariable = spr_armor_rogue;
+if( global.selectedClass = -1)  classSpriteVariable = spr_player_body;
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///GLOBAL PLAYER VARIABLES
 //MOV VARIABLES
 //friction = 0.2
 
@@ -38,8 +63,7 @@ xaxis     = 0;
 yaxis     = 0;
 
 
-//-----Game Logic stats--------
-
+//-----Player Logic Variables--------
 global.isMoving         = false;
 global.playerMouseAngle = 45;
 global.playerMouseAngleLAST = 45;
@@ -47,15 +71,51 @@ global.playerImageSpeed = 0.15;
 //-----------------------------
 
 //-----PLAYER------------------
-global.playerHP = 5;
-global.playerStaminaMax = 10
-global.playerStaminaCur = 10;
-global.playerStaminaRegenRate = 0.04;
+chosenClass = -1;
+hp_Current  = 5;
+hp_Max      = 10;
+dmg_melee  = 1;
+dmg_ranged = 1;
+
+sta_Max = 10
+sta_Cur = 10;
+sta_Regen_Rate = 0.06;
+
+canAttackRanged   = true;
+range_Attack_CD   = 15;
+range_Attack_Sta_Cost = 2
+
+//Mage stats
+hp_Mage = 2;
+dmg_melee_Mage = 0;
+dmg_ranged_Mage = 1;
+spd_Mage = 1;
+sta_Mage = 10;
+sta_Reg_Mage = 0.04;
+
+//Warrior stats
+hp_Warrior = 10;
+dmg_melee_Warrior = 1;
+dmg_ranged_Warrior = 0;
+spd_Warrior = 1;
+sta_Warrior = 10;
+sta_Reg_Warrior = 0.04;
+
+
+//Rogue stats
+hp_Rogue = 5;
+dmg_melee_Rogue = 1;
+dmg_ranged_Rogue = 1;
+spd_Rogue = 1;
+sta_Rogue = 10;
+sta_Reg_Rogue = 0.04;
+
 //-----------------------------
 
 //-----WEAPONS-----------------
 //Crossbow
-global.canShootBolts    = true;
+
+global.canAttackMelee    = true;
 global.shootBoltsCD     = 20;
 global.boltSpeed        = 1.5;
 global.rangedDamage     = 1;
@@ -80,12 +140,9 @@ global.chest_Equipped     = 0;
 global.shoulders_Equipped = 0;
 
 //DRAW variables
-classSpriteVariable = spr_player_body;
+//classSpriteVariable = spr_player_body;
 hopVar = 0;
-if( selectedClass = 0)   classSpriteVariable = spr_player_mage;
-if( selectedClass = 1)   classSpriteVariable = spr_player_warrior;
-if( selectedClass = 2)   classSpriteVariable = spr_player_rogue;
-if( selectedClass = -1)   classSpriteVariable = spr_player_body;
+
 
 </string>
           </argument>
@@ -109,7 +166,8 @@ if( selectedClass = -1)   classSpriteVariable = spr_player_body;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>    if (hopVar == 0)
+            <string>///hopVar
+    if (hopVar == 0)
        hopVar = -1;
     if (hopVar == -1)
        hopVar = 0;
@@ -189,8 +247,8 @@ global.swordPhase1 = true;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/// canShootBolts = true
-global.canShootBolts = true;
+            <string>/// canAttackRanged = true
+canAttackRanged = true;
 </string>
           </argument>
         </arguments>
@@ -266,7 +324,7 @@ else
           <argument>
             <kind>1</kind>
             <string>///SWORD ATTACK LOGIC
-
+/*
 //attack with mouse &amp; cursor
 if (mouse_check_button_pressed(mb_right) &amp;&amp; global.playerStaminaCur &gt; 1 &amp;&amp; global.canSwingSword == true)
 {
@@ -339,17 +397,19 @@ else if (mouse_check_button(mb_right) &amp;&amp; global.swordPhase3 == true)
             <string>///RANGED COMBAT LOGIC
 
 //Directional keys shooting
-if(keyboard_check(vk_left) &amp;&amp; global.canShootBolts == true)
-    script_execute(scr_performAttack, obj_bolt, "left")   
-if(keyboard_check(vk_right) &amp;&amp; global.canShootBolts == true)
-    script_execute(scr_performAttack, obj_bolt, "right")   
-if(keyboard_check(vk_up) &amp;&amp; global.canShootBolts == true)
-    script_execute(scr_performAttack, obj_bolt, "up")   
-if(keyboard_check(vk_down) &amp;&amp; global.canShootBolts == true)
-    script_execute(scr_performAttack, obj_bolt, "down")   
-
+if( obj_player.sta_Cur &gt;= range_Attack_Sta_Cost )
+{
+    if(keyboard_check(vk_left) &amp;&amp; canAttackRanged == true)
+        script_execute(scr_performAttack, obj_bolt, "left")   
+    if(keyboard_check(vk_right) &amp;&amp; canAttackRanged == true)
+        script_execute(scr_performAttack, obj_bolt, "right")   
+    if(keyboard_check(vk_up) &amp;&amp; canAttackRanged == true)
+        script_execute(scr_performAttack, obj_bolt, "up")   
+    if(keyboard_check(vk_down) &amp;&amp; canAttackRanged == true)
+        script_execute(scr_performAttack, obj_bolt, "down")   
+}
   
-//WEAPON SHOOTING LOGIC
+//Mouse shooting
 /*
 if( mouse_check_button(mb_left) &amp;&amp; global.canShootBolts == true)
 {
@@ -379,91 +439,16 @@ if( mouse_check_button(mb_left) &amp;&amp; global.canShootBolts == true)
           <argument>
             <kind>1</kind>
             <string>///REGENS
-if( global.playerStaminaCur &lt; global.playerStaminaMax)
+if( sta_Cur &lt; sta_Max)
 {
-    global.playerStaminaCur += global.playerStaminaRegenRate
-    if( global.playerStaminaCur &gt; global.playerStaminaMax)
+    sta_Cur += sta_Regen_Rate
+    if( sta_Cur &gt; sta_Max)
     {
-        global.playerStaminaCur = global.playerStaminaMax;
+        sta_Cur = sta_Max;
     }
 }
 
 
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="4" ename="obj_knight">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>if ((other.y - y) &gt; 0 )
-{
- other.depth = -10;
- depth = -9;
-}
-else if ((other.y - y) &lt; 0)
-{
- other.depth = -9;
- depth = -10;
-}
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="4" ename="obj_item_armor">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>///* ARMOR ITEM INTERACTION LOGIC
-with (other)
-{
-    //Filtrate through list of item and equip the specific item
-    if (object_get_name(object_index) == "obj_item_helmet")
-       global.helmet_Equipped = 1;
-    if (object_get_name(object_index) == "obj_item_belt")
-       global.belt_Equipped = 1;   
-    if (object_get_name(object_index) == "obj_item_glove")
-       global.glove_Equipped = 1;   
-    if (object_get_name(object_index) == "obj_item_boot")
-       global.boot_Equipped = 1;   
-    if (object_get_name(object_index) == "obj_item_chest")
-       global.chest_Equipped = 1;   
-    if (object_get_name(object_index) == "obj_item_shoulders")
-       global.shoulders_Equipped = 1;  
-          
-    //FINALLY DESTROY THE ITEM when it reached the player    
-    instance_destroy();
-
-}
 </string>
           </argument>
         </arguments>
@@ -588,8 +573,10 @@ with (other)
 draw_sprite_ext(spr_shadow, image_index, x + 9, y + 16, image_xscale, image_yscale, image_angle,image_blend, image_alpha * 0.32);
 
 //DRAW PLAYER
-draw_sprite_ext( classSpriteVariable, image_index, x, y + hopVar, image_xscale, image_yscale, image_angle,image_blend, image_alpha);
+draw_sprite_ext(spr_player_body, image_index, x, y + hopVar, image_xscale, image_yscale, image_angle,image_blend, image_alpha);
 
+//DRAW CLASS ARMOR
+draw_sprite_ext( classSpriteVariable, image_index, x, y + hopVar, image_xscale, image_yscale, image_angle,image_blend, image_alpha);
 </string>
           </argument>
         </arguments>

@@ -10,7 +10,8 @@ if dir == "up"
 if dir == "down"
     with ( instance_create(x + 8, y + 8, projectile)) direction = 270; 
 
-global.canShootBolts = false;
-alarm[0] = global.shootBoltsCD;
+canAttackRanged = false;
+alarm[0] = range_Attack_CD;
 
+sta_Cur -= range_Attack_Sta_Cost;
 
