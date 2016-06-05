@@ -25,123 +25,47 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///CONSTRUCTOR
-if( global.selectedClass = 0)   classSpriteVariable = spr_armor_mage;
-if( global.selectedClass = 1)   classSpriteVariable = spr_armor_warrior;
-if( global.selectedClass = 2)   classSpriteVariable = spr_armor_rogue;
-if( global.selectedClass = -1)  classSpriteVariable = spr_player_body;
-</string>
-          </argument>
-        </arguments>
-      </action>
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>///GLOBAL PLAYER VARIABLES
-//MOV VARIABLES
-//friction = 0.2
-
-//CONTROL VARIABLES
-//controlDevice = KEYBOARD
-//controlDevice = GAMEPAD
-
-//GAMEPAD VARIABLES
-xaxis     = 0;
-yaxis     = 0;
-
-
-//-----Player Logic Variables--------
+            <string>//-----Player Logic Variables-------
 global.isMoving         = false;
 global.playerMouseAngle = 45;
 global.playerMouseAngleLAST = 45;
 global.playerImageSpeed = 0.15;
-//-----------------------------
+//----------------------------------
 
-//-----PLAYER------------------
+//-------DRAW variables-------------
+hopVar = 0;
+classSpriteVariable = spr_player_body;
+//----------------------------------
+
+//---------GENERAL STATS------------
 chosenClass = -1;
 hp_Current  = 5;
 hp_Max      = 10;
+spd        = 1;
 dmg_melee  = 1;
 dmg_ranged = 1;
-
 sta_Max = 10
 sta_Cur = 10;
 sta_Regen_Rate = 0.06;
-
 canAttackRanged   = true;
 range_Attack_CD   = 15;
 range_Attack_Sta_Cost = 2
-
-//Mage stats
-hp_Mage = 2;
-dmg_melee_Mage = 0;
-dmg_ranged_Mage = 1;
-spd_Mage = 1;
-sta_Mage = 10;
-sta_Reg_Mage = 0.04;
-
-//Warrior stats
-hp_Warrior = 10;
-dmg_melee_Warrior = 1;
-dmg_ranged_Warrior = 0;
-spd_Warrior = 1;
-sta_Warrior = 10;
-sta_Reg_Warrior = 0.04;
+//----------------------------------
 
 
-//Rogue stats
-hp_Rogue = 5;
-dmg_melee_Rogue = 1;
-dmg_ranged_Rogue = 1;
-spd_Rogue = 1;
-sta_Rogue = 10;
-sta_Reg_Rogue = 0.04;
+//-----WEAPONS----------------------
 
-//-----------------------------
-
-//-----WEAPONS-----------------
-//Crossbow
-
+//-----RANGED-----------------------
 global.canAttackMelee    = true;
 global.shootBoltsCD     = 20;
 global.boltSpeed        = 1.5;
 global.rangedDamage     = 1;
+//----------------------------------
 
-//Sword
-global.canSwingSword = true;
-global.swordSwingCD = 20;
-global.swordStaminaCost = 3;
-global.swordSwingSpeed = 10;
-global.swordSwingDuration = 15;
-global.swordPhase1 = true;
-global.swordPhase2 = false
-global.swordPhase3 = false;
-//-----------------------------
 
-//INVENTORY ITEMS
-global.helmet_Equipped    = 0;
-global.belt_Equipped      = 0;
-global.glove_Equipped     = 0;
-global.boot_Equipped      = 0;
-global.chest_Equipped     = 0;
-global.shoulders_Equipped = 0;
+//-----MELEE------------------------
+//----------------------------------
 
-//DRAW variables
-//classSpriteVariable = spr_player_body;
-hopVar = 0;
 
 
 </string>
@@ -274,7 +198,7 @@ canAttackRanged = true;
             <string>///MAIN STEP EVENT
 
 //MOVEMENT SCRIPTS
-script_execute(scr_KB_Movement, 0.05, 0.2, 1); //friction, speedGain, speedTop
+script_execute(scr_KB_Movement, 0.05, 0.2, spd); //friction, speedGain, speedTop
 //script_execute(scr_PAD_Movement, xaxis, yaxis, 0.5, 1 )
 
 //CALCULATE ANGLE BETWEEN PLAYER AND CURSOR POSITION
@@ -569,14 +493,7 @@ if( sta_Cur &lt; sta_Max)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>//DRAW PLAYER SHADOW
-draw_sprite_ext(spr_shadow, image_index, x + 9, y + 16, image_xscale, image_yscale, image_angle,image_blend, image_alpha * 0.32);
-
-//DRAW PLAYER
-draw_sprite_ext(spr_player_body, image_index, x, y + hopVar, image_xscale, image_yscale, image_angle,image_blend, image_alpha);
-
-//DRAW CLASS ARMOR
-draw_sprite_ext( classSpriteVariable, image_index, x, y + hopVar, image_xscale, image_yscale, image_angle,image_blend, image_alpha);
+            <string>script_execute(scr_draw_Mover, spr_player_body, spr_shadow, hopVar);
 </string>
           </argument>
         </arguments>

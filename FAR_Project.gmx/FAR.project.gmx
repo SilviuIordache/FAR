@@ -8,6 +8,10 @@
   <sprites name="sprites">
     <sprites name="player">
       <sprite>sprites\spr_player_body</sprite>
+      <sprite>sprites\spr_player_Spawner</sprite>
+      <sprite>sprites\spr_player_rogue</sprite>
+      <sprite>sprites\spr_player_mage</sprite>
+      <sprite>sprites\spr_player_warrior</sprite>
     </sprites>
     <sprites name="player_classes">
       <sprite>sprites\spr_armor_mage</sprite>
@@ -68,6 +72,7 @@
     <script>scripts\scr_Movement.gml</script>
     <script>scripts\scr_createDamageNumber.gml</script>
     <script>scripts\scr_performAttack.gml</script>
+    <script>scripts\scr_draw_Mover.gml</script>
   </scripts>
   <fonts name="fonts">
     <font>fonts\fnt_damage</font>
@@ -83,6 +88,10 @@
     </objects>
     <objects name="player">
       <object>objects\obj_player</object>
+      <object>objects\obj_mage</object>
+      <object>objects\obj_rogue</object>
+      <object>objects\obj_warrior</object>
+      <object>objects\obj_player_Spawner</object>
     </objects>
     <objects name="weapons">
       <object>objects\obj_bolt</object>
