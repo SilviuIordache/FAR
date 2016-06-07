@@ -39,6 +39,29 @@ shouldSpread       = true;
         </arguments>
       </action>
     </event>
+    <event eventtype="2" enumb="1">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>spd = 0.4;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
     <event eventtype="2" enumb="0">
       <action>
         <libid>1</libid>
@@ -79,17 +102,19 @@ shouldSpread       = true;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>//CHECK TO SEE IF THE PLAYER IS ALIVE AND A PATHFIND HASN'T ALREADY STARTED
+            <string>///PATHFINDING
+
+//CHECK TO SEE IF THE PLAYER IS ALIVE AND A PATHFIND HASN'T ALREADY STARTED
 if (instance_exists(obj_player)&amp;&amp; pathFindingStarted == false)
 {
-    mp_grid_clear_all(AI_grid);
-    mp_grid_add_instances(AI_grid, obj_block, false); 
-    mp_grid_path(AI_grid, path_smartAI, x, y, obj_player.x + 12, obj_player.y + 12, true);   
+    mp_grid_clear_all(AI_grid);       //creates a GRID
+    mp_grid_add_instances(AI_grid, obj_block, false); //adds obj_block objects as obstacles;
+    mp_grid_path(AI_grid, path_smartAI, x, y, obj_player.x + 12, obj_player.y + 12, true);  //compute a path on the created GRID towards the player position 
     if (path_exists(path_smartAI))
     {
         pathFindingStarted = true;
         alarm[0] = 30;
-        path_start(path_smartAI, spd, 0, 1) 
+        path_start(path_smartAI, spd, 0, 1) //start moving on the previously created path
     }
     else
         path_end();
@@ -100,6 +125,44 @@ else if (!instance_exists(obj_player))
     path_end();
 }
 
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="4" ename="obj_monster">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>if ( distance_to_object(other) &lt; 1)
+{
+
+    var i;
+    i = point_direction(other.x, other.y, x, y);
+    
+    if (!place_meeting(x + lengthdir_x(1, i), y + lengthdir_y(1, i), obj_block))
+    {
+      x += lengthdir_x(1, i);
+      y += lengthdir_y(1, i);
+    }
+    
+    
+    //spd = 0;
+    alarm[1] = 60;
+}
 </string>
           </argument>
         </arguments>

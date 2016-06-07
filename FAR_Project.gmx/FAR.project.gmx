@@ -27,6 +27,8 @@
       <sprite>sprites\spr_xpBarOutline</sprite>
       <sprite>sprites\spr_customCursor</sprite>
       <sprite>sprites\spr_class_selection_arrow</sprite>
+      <sprite>sprites\spr_heart</sprite>
+      <sprite>sprites\spr_heart_outline</sprite>
     </sprites>
     <sprites name="player_components">
       <sprite>sprites\spr_shadow</sprite>
@@ -35,10 +37,13 @@
       <sprite>sprites\spr_monster</sprite>
     </sprites>
     <sprites name="weapons">
+      <sprite>sprites\spr_bolt</sprite>
+      <sprite>sprites\spr_magic_bolt</sprite>
+      <sprite>sprites\spr_knife</sprite>
+      <sprite>sprites\spr_axe</sprite>
       <sprite>sprites\spr_sword2</sprite>
       <sprite>sprites\spr_bow</sprite>
       <sprite>sprites\spr_weapon</sprite>
-      <sprite>sprites\spr_bolt</sprite>
       <sprite>sprites\spr_sword</sprite>
       <sprite>sprites\spr_boltShadow</sprite>
     </sprites>
@@ -73,6 +78,7 @@
     <script>scripts\scr_createDamageNumber.gml</script>
     <script>scripts\scr_performAttack.gml</script>
     <script>scripts\scr_draw_Mover.gml</script>
+    <script>scripts\scr_knockBack.gml</script>
   </scripts>
   <fonts name="fonts">
     <font>fonts\fnt_damage</font>
@@ -110,7 +116,6 @@
       <object>objects\obj_item_shoulders</object>
     </objects>
     <objects name="monsters">
-      <object>objects\obj_knight</object>
       <object>objects\obj_monster</object>
     </objects>
     <objects name="test">

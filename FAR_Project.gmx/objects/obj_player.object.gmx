@@ -39,7 +39,7 @@ classSpriteVariable = spr_player_body;
 
 //---------GENERAL STATS------------
 chosenClass = -1;
-hp_Current  = 5;
+hp_Current  = 10;
 hp_Max      = 10;
 spd        = 1;
 dmg_melee  = 1;
@@ -50,6 +50,11 @@ sta_Regen_Rate = 0.06;
 canAttackRanged   = true;
 range_Attack_CD   = 15;
 range_Attack_Sta_Cost = 2
+
+canTakeDamage       = true
+invincibleFrames    = 60;
+
+range_Attack_Texture  = spr_bolt;
 //----------------------------------
 
 
@@ -68,6 +73,29 @@ global.rangedDamage     = 1;
 
 
 
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="4">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>canTakeDamage = true;
 </string>
           </argument>
         </arguments>
@@ -373,6 +401,34 @@ if( sta_Cur &lt; sta_Max)
 }
 
 
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="4" ename="obj_monster">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>if(canTakeDamage == true)
+{
+hp_Current -= other.dmg
+canTakeDamage = false;
+alarm[4] = invincibleFrames;
+}
 </string>
           </argument>
         </arguments>

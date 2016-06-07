@@ -109,27 +109,25 @@ if (keyboard_check_pressed(vk_escape))
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>//HEALTH AND STAMINA
-//Health
-if (room != room_menu)
+            <string>if (room != room_menu)
 {
-//HEALTH
-draw_sprite_ext(spr_playerHP_total, image_index, x + 6, y + 5, image_xscale * 6, image_yscale * 2, image_angle, c_white, image_alpha)
-draw_sprite_ext(spr_playerHP_curr, image_index, x + 6, y + 5, image_xscale * 6, image_yscale * 2, image_angle, c_white, image_alpha)
-draw_text( x + 30, y + 5, "test/13")
-
-
-//Stamina
-draw_sprite_ext(spr_playerSTA_total, image_index, x + 6, y + 24, image_xscale * 6, image_yscale * 2, image_angle, c_white, image_alpha)
-draw_sprite_ext(spr_playerSTA_curr, image_index, x + 6, y + 24, image_xscale * 6 * obj_player.sta_Cur/obj_player.sta_Max, image_yscale * 2, image_angle, c_white, image_alpha)
-draw_text( x + 30, y + 24, string(obj_player.sta_Cur) + "/" + string(obj_player.sta_Max))
+    //Health
+    for ( i = 1; i &lt; obj_player.hp_Current; i++ )
+    {
+        draw_sprite_ext(spr_heart, image_index, x - 20 + i * 30, y, image_xscale * 3, image_yscale * 3, image_angle, c_white, image_alpha );
+    }
+    for ( i = 1; i &lt; obj_player.hp_Max; i++ )
+    {
+        draw_sprite_ext(spr_heart_outline, image_index, x - 20 + i * 30, y, image_xscale * 3, image_yscale * 3, image_angle, c_white, image_alpha );
+    }
+    
+    //Stamina
+    draw_sprite_ext(spr_playerSTA_total, image_index, x + 2, y + 24, image_xscale * 10, image_yscale * 2, image_angle, c_white, image_alpha)
+    draw_sprite_ext(spr_playerSTA_curr, image_index, x + 2, y + 24, image_xscale * 10 * obj_player.sta_Cur/obj_player.sta_Max, image_yscale * 2, image_angle, c_white, image_alpha)
+    draw_text( x + 30, y + 24, string(obj_player.sta_Cur) + "/" + string(obj_player.sta_Max))
 }
-/*
-//DEBUG------------------------------
-draw_text(0, 0, "SPD : " + string(obj_player.speed))
 
-draw_text(0, 12, "playerIsMoving " + string(global.isMoving));
-draw_text(0, 24, "window_get_height()" + string(window_get_height()))
+//DEBUG------------------------------
 
 
 

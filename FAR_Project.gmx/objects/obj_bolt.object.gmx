@@ -33,9 +33,10 @@ dealtDamage = false;
 initX = x;
 initY = y;
 
-canStartFalling = false;
+canStartFalling     = false;
 virtualFallVariable = 0;
-virtualFallAmount = 0.2
+virtualFallAmount   = 0.2
+rotationAngle       = 90;
 
 alarm[0] = 12;
 
@@ -91,6 +92,8 @@ alarm[0] = 12;
        instance_destroy();
     virtualFallVariable += virtualFallAmount;
 }
+
+rotationAngle -= 6;
 </string>
           </argument>
         </arguments>
@@ -116,6 +119,7 @@ alarm[0] = 12;
             <string>if (dealtDamage == false)
 {
     script_execute(scr_createDamageNumber, damage);
+    script_execute(scr_knockBack, 100);
     dealtDamage = true;
     other.health -= obj_bolt.damage
     if(other.health &lt;= 0)
@@ -173,7 +177,8 @@ alarm[0] = 12;
           <argument>
             <kind>1</kind>
             <string>draw_sprite(spr_boltShadow, 1, x, y + 10);
-draw_sprite(spr_bolt, 1, x, y + virtualFallVariable);
+
+draw_sprite_ext(obj_player.range_Attack_Texture, 1, x, y + virtualFallVariable, 1, 1, rotationAngle, c_white, 1);
 
 
 </string>
