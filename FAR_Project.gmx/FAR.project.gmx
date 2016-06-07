@@ -29,6 +29,7 @@
       <sprite>sprites\spr_class_selection_arrow</sprite>
       <sprite>sprites\spr_heart</sprite>
       <sprite>sprites\spr_heart_outline</sprite>
+      <sprite>sprites\spr_playerSTA_segment</sprite>
     </sprites>
     <sprites name="player_components">
       <sprite>sprites\spr_shadow</sprite>

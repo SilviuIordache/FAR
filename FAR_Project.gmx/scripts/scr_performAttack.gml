@@ -14,4 +14,6 @@ canAttackRanged = false;
 alarm[0] = range_Attack_CD;
 
 sta_Cur -= range_Attack_Sta_Cost;
+sta_Regen_Start = false;
+alarm[5] = sta_Regen_Start_time;
 

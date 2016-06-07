@@ -122,9 +122,13 @@ if (keyboard_check_pressed(vk_escape))
     }
     
     //Stamina
-    draw_sprite_ext(spr_playerSTA_total, image_index, x + 2, y + 24, image_xscale * 10, image_yscale * 2, image_angle, c_white, image_alpha)
-    draw_sprite_ext(spr_playerSTA_curr, image_index, x + 2, y + 24, image_xscale * 10 * obj_player.sta_Cur/obj_player.sta_Max, image_yscale * 2, image_angle, c_white, image_alpha)
-    draw_text( x + 30, y + 24, string(obj_player.sta_Cur) + "/" + string(obj_player.sta_Max))
+    draw_sprite_ext(spr_playerSTA_total, image_index, x + 2, y + 24, image_xscale * 12, image_yscale * 2, image_angle, c_white, image_alpha)
+    draw_sprite_ext(spr_playerSTA_curr, image_index, x + 2, y + 24, image_xscale * 12 * obj_player.sta_Cur/obj_player.sta_Max, image_yscale * 2, image_angle, c_white, image_alpha)
+    for ( i = 0; i &lt; obj_player.sta_Max / 5; i++)
+    {
+        draw_sprite_ext(spr_playerSTA_segment, image_index, x - 1 + i / obj_player.sta_Max * 1100, y + 24, image_xscale, image_yscale * 1.5, image_angle, c_white, image_alpha)
+    }
+    //draw_text( x + 30, y + 24, string(obj_player.sta_Cur) + "/" + string(obj_player.sta_Max))
 }
 
 //DEBUG------------------------------

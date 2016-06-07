@@ -26,18 +26,18 @@
           <argument>
             <kind>1</kind>
             <string>event_inherited();
-hp_Max                = 4;
-hp_Current            = hp_Max;
-spd                   = 1.2;
-dmg_melee             = 1;
-dmg_ranged            = 1;
-sta_Max               = 30
-sta_Cur               = 10;
-sta_Regen_Rate        = 0.06;
-canAttackRanged       = true;
-range_Attack_CD       = 15;
-range_Attack_Sta_Cost = 2;
-range_Attack_Texture  = spr_knife;
+spd                   = 1.2
+hp_Max                = 4
+hp_Current            = hp_Max
+sta_Max               = 25
+sta_Cur               = sta_Max
+sta_Regen_Rate        = 0.12
+dmg_melee             = 1
+dmg_ranged            = 1
+canAttackRanged       = true
+range_Attack_CD       = 15
+range_Attack_Sta_Cost = 2
+range_Attack_Texture  = spr_knife
 </string>
           </argument>
         </arguments>
