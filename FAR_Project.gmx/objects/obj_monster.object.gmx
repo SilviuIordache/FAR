@@ -25,7 +25,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>health = 5;
+            <string>hp = 50;
 spd    = 0.4;
 dmg    = 1;
 
@@ -34,6 +34,7 @@ mp_grid_add_instances(AI_grid, obj_block, false);
 
 pathFindingStarted = false;
 shouldSpread       = true;
+aggroRadius        = 50;
 </string>
           </argument>
         </arguments>
@@ -105,7 +106,7 @@ shouldSpread       = true;
             <string>///PATHFINDING
 
 //CHECK TO SEE IF THE PLAYER IS ALIVE AND A PATHFIND HASN'T ALREADY STARTED
-if (instance_exists(obj_player)&amp;&amp; pathFindingStarted == false)
+if (instance_exists(obj_player)&amp;&amp; pathFindingStarted == false &amp;&amp; distance_to_object(obj_player) &lt; aggroRadius )
 {
     mp_grid_clear_all(AI_grid);       //creates a GRID
     mp_grid_add_instances(AI_grid, obj_block, false); //adds obj_block objects as obstacles;
@@ -163,6 +164,50 @@ else if (!instance_exists(obj_player))
     //spd = 0;
     alarm[1] = 60;
 }
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="4" ename="obj_bolt">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>with(other)
+{
+    if (dealtDamage == false) //has this projectile dealt damage already?; prevent enemy melt with 1 projectile
+    {
+        dealtDamage = true  // mark this projectile as already done damage;
+        finalDamage = script_execute(scr_Calculate_Damage, obj_player.dmg_ranged, obj_player.crit_Chance_Percent, obj_player.crit_Damage_Percent)
+        script_execute(scr_createDamageNumber, finalDamage, obj_player.dmg_ranged)
+    }
+}   
+
+hp -= other.finalDamage
+if(hp &lt;= 0)
+{
+    instance_destroy() //destroy monster if his health is 0
+}
+
+with(other)
+{           
+  instance_destroy(); //destroy bullet
+}
+
+
 </string>
           </argument>
         </arguments>

@@ -80,6 +80,7 @@
     <script>scripts\scr_performAttack.gml</script>
     <script>scripts\scr_draw_Mover.gml</script>
     <script>scripts\scr_knockBack.gml</script>
+    <script>scripts\scr_Calculate_Damage.gml</script>
   </scripts>
   <fonts name="fonts">
     <font>fonts\fnt_damage</font>

@@ -50,8 +50,10 @@ sta_Regen_Rate        = 0.12;
 sta_Regen_Start       = true;
 sta_Regen_Start_time  = 30;
 
-dmg_melee             = 1;
+crit_Chance_Percent   = 25;
+crit_Damage_Percent   = 25;
 
+dmg_melee             = 1;
 dmg_ranged            = 1;
 canAttackRanged       = true;
 range_Attack_CD       = 15;
@@ -431,6 +433,32 @@ if( sta_Cur &lt; sta_Max &amp;&amp; sta_Regen_Start == true)
 }
 
 
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///HEALTH &amp; GAME OVER
+
+if ( hp_Current &lt; 1 )
+{
+    instance_destroy()
+}
 </string>
           </argument>
         </arguments>

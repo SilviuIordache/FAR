@@ -31,12 +31,12 @@ hp_Max                = 7
 hp_Current            = hp_Max
 sta_Max               = 40
 sta_Cur               = sta_Max
-sta_Regen_Rate        = 0.12
+sta_Regen_Rate        = 0.25
 dmg_melee             = 1
-dmg_ranged            = 1
+dmg_ranged            = 10
 canAttackRanged       = true
 range_Attack_CD       = 15
-range_Attack_Sta_Cost = 4
+range_Attack_Sta_Cost = 5
 range_Attack_Texture  = spr_axe
 </string>
           </argument>

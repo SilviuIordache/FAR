@@ -26,10 +26,8 @@
           <argument>
             <kind>1</kind>
             <string>speed = global.boltSpeed;
-//direction = point_direction(obj_player.x + 8, obj_player.y + 8, mouse_x, mouse_y);
-damage = global.rangedDamage;
 dealtDamage = false;
-
+finalDamage = 0;
 initX = x;
 initY = y;
 
@@ -37,6 +35,8 @@ canStartFalling     = false;
 virtualFallVariable = 0;
 virtualFallAmount   = 0.2
 rotationAngle       = 90;
+
+inst = 0;
 
 alarm[0] = 12;
 
@@ -86,7 +86,8 @@ alarm[0] = 12;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if ( canStartFalling == true)
+            <string>///DRAW VARIABLES UPDATE
+if ( canStartFalling == true)
 {
     if (virtualFallVariable == 10)
        instance_destroy();
@@ -116,22 +117,7 @@ rotationAngle -= 6;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if (dealtDamage == false)
-{
-    script_execute(scr_createDamageNumber, damage);
-    script_execute(scr_knockBack, 100);
-    dealtDamage = true;
-    other.health -= obj_bolt.damage
-    if(other.health &lt;= 0)
-    {
-        with(other)
-        {
-            instance_destroy(); //destroy monster if his health is 0
-        }
-    }
-    instance_destroy(); //destroy bullet
-}
-</string>
+            <string></string>
           </argument>
         </arguments>
       </action>

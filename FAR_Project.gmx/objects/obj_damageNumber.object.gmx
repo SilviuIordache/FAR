@@ -25,8 +25,11 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>damageValue = -3;
-depth = -5;
+            <string>depth = -5;
+damageValue = -3;
+stayOnScreenTime = 0.025; //smaller = stays longer
+col = c_white
+verticalSpeed = 0.3
 </string>
           </argument>
         </arguments>
@@ -50,10 +53,10 @@ depth = -5;
           <argument>
             <kind>1</kind>
             <string>if (image_alpha &gt;= 0)
-    image_alpha -= 0.03;
+    image_alpha -= stayOnScreenTime
 else
     instance_destroy();
-y -= 0.4;
+y -= verticalSpeed;
 </string>
           </argument>
         </arguments>
@@ -77,7 +80,7 @@ y -= 0.4;
           <argument>
             <kind>1</kind>
             <string>draw_set_font(fnt_damage);
-draw_text_color(x, y, string(ceil(damageValue)), c_white, c_white, c_white, c_white, image_alpha);
+draw_text_color(x, y, string(ceil(damageValue)), col, col, col, col, image_alpha);
 draw_set_font(fnt_default);
 
 </string>
