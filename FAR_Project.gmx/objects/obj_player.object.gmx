@@ -5,7 +5,7 @@
   <visible>-1</visible>
   <depth>0</depth>
   <persistent>0</persistent>
-  <parentName>&lt;undefined&gt;</parentName>
+  <parentName>obj_hopper</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
     <event eventtype="0" enumb="0">
@@ -25,15 +25,17 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>//-----Player Logic Variables-------
-global.isMoving         = false;
+            <string>event_inherited();
+//-----Player Logic Variables-------
+isMoving         = false;
 global.playerMouseAngle = 45;
 global.playerMouseAngleLAST = 45;
 global.playerImageSpeed = 0.15;
 //----------------------------------
 
 //-------DRAW variables-------------
-hopVar = 0;
+main_Sprite   = spr_player_body
+shadow_sprite = spr_shadow
 classSpriteVariable = spr_player_body;
 //----------------------------------
 
@@ -56,29 +58,16 @@ crit_Damage_Percent   = 25;
 dmg_melee             = 1;
 dmg_ranged            = 1;
 canAttackRanged       = true;
+
 range_Attack_CD       = 15;
 range_Attack_Sta_Cost = 2
+range_Attack_Speed    = 1;
 range_Attack_Texture  = spr_bolt;
 
 canTakeDamage         = true
 invincibleFrames      = 60;
-
-
 //----------------------------------
 
-
-//-----WEAPONS----------------------
-
-//-----RANGED-----------------------
-global.canAttackMelee    = true;
-global.shootBoltsCD     = 20;
-global.boltSpeed        = 1.5;
-global.rangedDamage     = 1;
-//----------------------------------
-
-
-//-----MELEE------------------------
-//----------------------------------
 
 
 
@@ -128,36 +117,6 @@ global.rangedDamage     = 1;
           <argument>
             <kind>1</kind>
             <string>canTakeDamage = true;
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="2" enumb="3">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>///hopVar
-    if (hopVar == 0)
-       hopVar = -1;
-    if (hopVar == -1)
-       hopVar = 0;
-
-
-
 </string>
           </argument>
         </arguments>
@@ -256,34 +215,13 @@ canAttackRanged = true;
           <argument>
             <kind>1</kind>
             <string>///MAIN STEP EVENT
+event_inherited();
 
 //MOVEMENT SCRIPTS
 script_execute(scr_KB_Movement, 0.05, 0.2, spd); //friction, speedGain, speedTop
-//script_execute(scr_PAD_Movement, xaxis, yaxis, 0.5, 1 )
 
 //CALCULATE ANGLE BETWEEN PLAYER AND CURSOR POSITION
 global.playerMouseAngle = point_direction(x, y, mouse_x, mouse_y)
-
-
-//PLAYER IMAGE SPEED
-if (global.isMoving == false)
-{
-    image_speed = 0;
-}
-if (global.isMoving == true)
-{
-   image_speed = global.playerImageSpeed;
-}
- 
-//hopVar logic
-if (global.isMoving == true)
-{
-    hopVar = sin (get_timer() / 50000)
-}
-else
-{
-    hopVar = 0;
-}
 
 
 
@@ -607,7 +545,29 @@ alarm[4] = invincibleFrames;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>script_execute(scr_draw_Mover, spr_player_body, spr_shadow, hopVar);
+            <string>event_inherited()
+
+draw_sprite_ext(
+                shadow_sprite, 
+                image_index, 
+                x, 
+                y, 
+                image_xscale, 
+                image_yscale, 
+                image_angle,
+                image_blend, 
+                image_alpha * 0.32);
+draw_sprite_ext(
+                main_Sprite, 
+                image_index, 
+                x, 
+                y + hopVar, 
+                image_xscale, 
+                image_yscale, 
+                image_angle,
+                image_blend, 
+                image_alpha);
+                
 </string>
           </argument>
         </arguments>

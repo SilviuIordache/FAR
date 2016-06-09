@@ -25,22 +25,22 @@ else //Set default movement variables
 if (keyboard_check(moveUp))      
 {
    vspeed -= moveSpeedCurrent;
-   global.isMoving = true;
+   isMoving = true;
 }
 if (keyboard_check(moveDown))    
 {
    vspeed += moveSpeedCurrent;
-   global.isMoving = true;
+   isMoving = true;
 }
 if (keyboard_check(moveRight))  
 {
    hspeed += moveSpeedCurrent;
-   global.isMoving = true;
+   isMoving = true;
 }
 if (keyboard_check(moveLeft))  
 {
    hspeed -= moveSpeedCurrent;
-   global.isMoving = true;
+   isMoving = true;
 }
 
 if ( !keyboard_check(moveUp)   && 

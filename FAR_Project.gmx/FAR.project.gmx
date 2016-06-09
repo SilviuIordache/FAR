@@ -89,6 +89,7 @@
   </fonts>
   <objects name="objects">
     <objects name="system">
+      <object>objects\obj_hopper</object>
       <object>objects\obj_system</object>
       <object>objects\obj_damageNumber</object>
       <object>objects\obj_menu_logic</object>

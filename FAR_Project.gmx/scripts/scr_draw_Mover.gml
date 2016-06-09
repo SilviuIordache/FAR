@@ -1,3 +1,4 @@
+/*
 spr_body   = argument0;
 spr_shdw   = argument1;
 hopVar     = argument2;
@@ -5,8 +6,8 @@ hopVar     = argument2;
 draw_sprite_ext(
                 spr_shdw, 
                 image_index, 
-                x + 9, 
-                y + 16, 
+                x, 
+                y, 
                 image_xscale, 
                 image_yscale, 
                 image_angle,
