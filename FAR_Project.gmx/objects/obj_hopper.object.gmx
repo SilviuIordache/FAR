@@ -26,9 +26,14 @@
           <argument>
             <kind>1</kind>
             <string>///initialize hopVar with 0
-hopVar        = 0
+
+
 main_Sprite   = spr_player_body
 shadow_sprite = spr_shadow
+
+spr_shdw_X_offset = 3
+spr_shdw_Y_offset = 6
+
 isMoving      = false
 </string>
           </argument>
@@ -112,31 +117,7 @@ else
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>//script_execute(scr_draw_Mover, main_Sprite, shadow_sprite, hopVar);
-
-draw_sprite_ext(
-                shadow_sprite, 
-                image_index, 
-                x, 
-                y, 
-                image_xscale, 
-                image_yscale, 
-                image_angle,
-                image_blend, 
-                image_alpha * 0.32);
-                
-draw_sprite_ext(
-                main_Sprite, 
-                image_index, 
-                x, 
-                y + hopVar, 
-                image_xscale, 
-                image_yscale, 
-                image_angle,
-                image_blend, 
-                image_alpha);
-                
-
+            <string>script_execute(scr_draw_Mover, main_Sprite, shadow_sprite, hopVar, spr_shdw_X_offset, spr_shdw_Y_offset);
 </string>
           </argument>
         </arguments>

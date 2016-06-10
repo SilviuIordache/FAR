@@ -5,7 +5,7 @@
   <visible>-1</visible>
   <depth>0</depth>
   <persistent>0</persistent>
-  <parentName>obj_hopper</parentName>
+  <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
     <event eventtype="0" enumb="0">
@@ -25,18 +25,19 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>event_inherited();
-//-----Player Logic Variables-------
-isMoving         = false;
-global.playerMouseAngle = 45;
+            <string>//-----Player Logic Variables-------
+isMoving                    = false;
+global.playerMouseAngle     = 45;
 global.playerMouseAngleLAST = 45;
-global.playerImageSpeed = 0.15;
+global.playerImageSpeed     = 0.15;
 //----------------------------------
 
 //-------DRAW variables-------------
-main_Sprite   = spr_player_body
-shadow_sprite = spr_shadow
+main_Sprite         = spr_player_body
+shadow_sprite       = spr_shadow
 classSpriteVariable = spr_player_body;
+spr_shdw_X_offset   = 6
+spr_shdw_Y_offset   = 12
 //----------------------------------
 
 //---------GENERAL STATS------------
@@ -68,8 +69,9 @@ canTakeDamage         = true
 invincibleFrames      = 60;
 //----------------------------------
 
-
-
+//----DRAW VARIABLES------
+hopVar        = 0
+//------------------------
 
 </string>
           </argument>
@@ -117,6 +119,33 @@ invincibleFrames      = 60;
           <argument>
             <kind>1</kind>
             <string>canTakeDamage = true;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="3">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///hopVar 0 &amp; -1 alternation
+    if (hopVar == 0)
+       hopVar = -1;
+    if (hopVar == -1)
+       hopVar = 0;
 </string>
           </argument>
         </arguments>
@@ -214,7 +243,7 @@ canAttackRanged = true;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///MAIN STEP EVENT
+            <string>///MAIN STEP EVENT; MOVEMENT SCRIPT
 event_inherited();
 
 //MOVEMENT SCRIPTS
@@ -245,79 +274,7 @@ global.playerMouseAngle = point_direction(x, y, mouse_x, mouse_y)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///SWORD ATTACK LOGIC
-/*
-//attack with mouse &amp; cursor
-if (mouse_check_button_pressed(mb_right) &amp;&amp; global.playerStaminaCur &gt; 1 &amp;&amp; global.canSwingSword == true)
-{
-    instance_create(x, y, obj_sword);
-    global.playerMouseAngleLAST = global.playerMouseAngle;
-    global.playerStaminaCur -= global.swordStaminaCost
-    if (global.playerStaminaCur &lt; 0)
-    {
-        global.playerStaminaCur = 0;
-    }
-}
-
-//attack with directional keys
-/*
-if (global.playerStaminaCur &gt; 1 &amp;&amp; global.canSwingSword == true)
-{
-    if (keyboard_check_pressed(vk_up))
-    {
-        instance_create(x, y, obj_sword);
-        global.playerMouseAngleLAST = global.playerMouseAngle;
-        global.playerStaminaCur -= global.swordStaminaCost
-        if (global.playerStaminaCur &lt; 0)
-        {
-            global.playerStaminaCur = 0;
-        }
-    }
-}
-*/
-/*
-if (mouse_check_button(mb_right) &amp;&amp; global.swordPhase1 == true)
-{
-   instance_create(x, y, obj_sword)
-   global.swordPhase1 = false;
-   global.swordPhase2 = true;
-   alarm[1] = 60;
-   
-}
-else if (mouse_check_button(mb_right) &amp;&amp; global.swordPhase2 == true)
-{
-   instance_create(x, y, obj_sword)
-   global.swordPhase2 = false;
-   global.swordPhase3 = true;
-   alarm[2] = 60;
-}
-else if (mouse_check_button(mb_right) &amp;&amp; global.swordPhase3 == true)
-{
-   instance_create(x, y, obj_sword)
-}
-
-</string>
-          </argument>
-        </arguments>
-      </action>
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
             <string>///RANGED COMBAT LOGIC
-
 //Directional keys shooting
 if( obj_player.sta_Cur &gt;= range_Attack_Sta_Cost )
 {
@@ -397,6 +354,37 @@ if ( hp_Current &lt; 1 )
 {
     instance_destroy()
 }
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///HOP VAR
+/// Make the object hop only when moving
+if (isMoving == true)
+{
+    hopVar = sin (get_timer() / 50000)
+}
+else
+{
+    hopVar = 0;
+}
+
 </string>
           </argument>
         </arguments>
@@ -545,20 +533,19 @@ alarm[4] = invincibleFrames;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>event_inherited()
-
-draw_sprite_ext(
-                shadow_sprite, 
+            <string>draw_sprite_ext(
+                spr_shadow, 
                 image_index, 
-                x, 
-                y, 
+                x + 4, 
+                y + 11, 
                 image_xscale, 
                 image_yscale, 
                 image_angle,
                 image_blend, 
                 image_alpha * 0.32);
+                
 draw_sprite_ext(
-                main_Sprite, 
+                classSpriteVariable, 
                 image_index, 
                 x, 
                 y + hopVar, 
@@ -567,7 +554,7 @@ draw_sprite_ext(
                 image_angle,
                 image_blend, 
                 image_alpha);
-                
+
 </string>
           </argument>
         </arguments>

@@ -12,6 +12,7 @@
       <sprite>sprites\spr_player_rogue</sprite>
       <sprite>sprites\spr_player_mage</sprite>
       <sprite>sprites\spr_player_warrior</sprite>
+      <sprite>sprites\spr_shadow</sprite>
     </sprites>
     <sprites name="player_classes">
       <sprite>sprites\spr_armor_mage</sprite>
@@ -30,9 +31,6 @@
       <sprite>sprites\spr_heart</sprite>
       <sprite>sprites\spr_heart_outline</sprite>
       <sprite>sprites\spr_playerSTA_segment</sprite>
-    </sprites>
-    <sprites name="player_components">
-      <sprite>sprites\spr_shadow</sprite>
     </sprites>
     <sprites name="monsters">
       <sprite>sprites\spr_monster</sprite>
@@ -78,7 +76,6 @@
     <script>scripts\scr_Movement.gml</script>
     <script>scripts\scr_createDamageNumber.gml</script>
     <script>scripts\scr_performAttack.gml</script>
-    <script>scripts\scr_draw_Mover.gml</script>
     <script>scripts\scr_knockBack.gml</script>
     <script>scripts\scr_Calculate_Damage.gml</script>
   </scripts>
@@ -89,7 +86,6 @@
   </fonts>
   <objects name="objects">
     <objects name="system">
-      <object>objects\obj_hopper</object>
       <object>objects\obj_system</object>
       <object>objects\obj_damageNumber</object>
       <object>objects\obj_menu_logic</object>

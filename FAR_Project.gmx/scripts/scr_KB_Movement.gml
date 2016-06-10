@@ -48,7 +48,7 @@ if ( !keyboard_check(moveUp)   &&
      !keyboard_check(moveRight)&&
      !keyboard_check(moveLeft)
      )
-{ global.isMoving = false;}
+{ isMoving = false;}
 
 
 //Limit Speed
