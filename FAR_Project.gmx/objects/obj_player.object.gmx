@@ -247,7 +247,7 @@ canAttackRanged = true;
 event_inherited();
 
 //MOVEMENT SCRIPTS
-script_execute(scr_KB_Movement, 0.05, 0.2, spd); //friction, speedGain, speedTop
+script_execute(scr_KB_Movement, 5/100 * spd, 0.2, spd); //friction, speedGain, speedTop
 
 //CALCULATE ANGLE BETWEEN PLAYER AND CURSOR POSITION
 global.playerMouseAngle = point_direction(x, y, mouse_x, mouse_y)

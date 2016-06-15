@@ -26,22 +26,31 @@
           <argument>
             <kind>1</kind>
             <string>//--Base Stats------------------------------------
-hp     = 50;
-spd    = 0.4;
-dmg    = 1;
+hp     = 50
+spd    = 0.4
+dmg    = 1
+isCharger = true
 //------------------------------------------------
 
 //--AI Variables----------------------------------
-path_smartAI  = path_add();
-mp_grid_add_instances(AI_grid, obj_block, false); 
-pathFindingStarted = false;
-shouldSpread       = true;
-aggroRadius        = 50;
-//-------------------------------------------------
+directionFacing             = 1 // 0 = right; 1 = left
+isMoving                    = 0
+path_smartAI                = path_add()
+pathFindingStarted          = false
+shouldSpread                = true
+aggroRadius                 = 70
+chargeRadius               = 25
+AI_path_scan_refresh_rate   = 15
+mp_grid_add_instances(AI_grid, obj_block, false);
+//------------------------------------------------
 
-//----DRAW VARIABLES------
-hopVar        = 0
-//------------------------
+//----DRAW VARIABLES------------------------------
+main_sprite                 = spr_monster
+shadow_sprite               = spr_shadow
+shadow_offset_X             = -6
+shadow_offset_Y             = 0
+hopVar                      = 0
+//------------------------------------------------
 
 
 
@@ -115,7 +124,6 @@ hopVar        = 0
           <argument>
             <kind>1</kind>
             <string>///PATHFINDING
-
 //CHECK TO SEE IF THE PLAYER IS ALIVE AND A PATHFIND HASN'T ALREADY STARTED
 if (instance_exists(obj_player)&amp;&amp; pathFindingStarted == false &amp;&amp; distance_to_object(obj_player) &lt; aggroRadius )
 {
@@ -124,19 +132,108 @@ if (instance_exists(obj_player)&amp;&amp; pathFindingStarted == false &amp;&amp;
     mp_grid_path(AI_grid, path_smartAI, x, y, obj_player.x + 12, obj_player.y + 12, true);  //compute a path on the created GRID towards the player position 
     if (path_exists(path_smartAI))
     {
+        if (isCharger == true &amp;&amp; distance_to_object(obj_player) &lt; chargeRadius)
+           path_speed = spd * 2
+        else
+           path_speed = spd;
         pathFindingStarted = true;
-        alarm[0] = 30;
+        alarm[0] = AI_path_scan_refresh_rate;
         path_start(path_smartAI, spd, 0, 1) //start moving on the previously created path
     }
-    else
-        path_end();
+}
+else if ( distance_to_object(obj_player) &gt; aggroRadius)
+{   
+    path_speed = 0
+    path_end();
 }
 //IF THE PLAYER DIED, STOP PATHFINDING
-else if (!instance_exists(obj_player))
+if (!instance_exists(obj_player))
 {
     path_end();
 }
 
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///MOVE STATE6
+if (path_speed &gt; 0)
+    isMoving = 1
+else
+    isMoving = 0
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///HOPVAR
+///HOP VAR
+/// Make the object hop only when moving
+if (isMoving == true)
+{
+    hopVar = sin (get_timer() / 50000)
+}
+else
+{
+    hopVar = 0;
+}
+
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///DIRECTION FACING
+if(direction &gt; 90 &amp;&amp; direction &lt; 270)
+    directionFacing = -1
+else
+    directionFacing = 1
 </string>
           </argument>
         </arguments>
@@ -219,6 +316,54 @@ with(other)
 }
 
 
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="8" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>draw_sprite_ext(
+                shadow_sprite, 
+                image_index, 
+                x + shadow_offset_X, 
+                y + shadow_offset_Y, 
+                image_xscale, 
+                image_yscale, 
+                image_angle,
+                image_blend, 
+                image_alpha * 0.32);
+                
+draw_sprite_ext(
+                main_sprite, 
+                image_index, 
+                x, 
+                y + hopVar, 
+                image_xscale * directionFacing, 
+                image_yscale, 
+                image_angle,
+                image_blend, 
+                image_alpha);           
+
+//DEBUG
+/*
+draw_set_font(fnt_damage)
+draw_text(x, y, string(direction))
 </string>
           </argument>
         </arguments>

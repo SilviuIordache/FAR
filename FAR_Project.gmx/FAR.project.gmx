@@ -7,20 +7,14 @@
   <sounds name="sound"/>
   <sprites name="sprites">
     <sprites name="player">
-      <sprite>sprites\spr_player_body</sprite>
       <sprite>sprites\spr_player_Spawner</sprite>
       <sprite>sprites\spr_player_rogue</sprite>
       <sprite>sprites\spr_player_mage</sprite>
       <sprite>sprites\spr_player_warrior</sprite>
+      <sprite>sprites\spr_player_body</sprite>
       <sprite>sprites\spr_shadow</sprite>
     </sprites>
-    <sprites name="player_classes">
-      <sprite>sprites\spr_armor_mage</sprite>
-      <sprite>sprites\spr_armor_rogue</sprite>
-      <sprite>sprites\spr_armor_warrior</sprite>
-      <sprite>sprites\spr_select_square</sprite>
-    </sprites>
-    <sprites name="HUD">
+    <sprites name="HUD and Menu">
       <sprite>sprites\spr_playerHP_curr</sprite>
       <sprite>sprites\spr_playerHP_total</sprite>
       <sprite>sprites\spr_playerSTA_curr</sprite>
@@ -31,29 +25,21 @@
       <sprite>sprites\spr_heart</sprite>
       <sprite>sprites\spr_heart_outline</sprite>
       <sprite>sprites\spr_playerSTA_segment</sprite>
+      <sprite>sprites\spr_select_square</sprite>
     </sprites>
     <sprites name="monsters">
       <sprite>sprites\spr_monster</sprite>
+      <sprite>sprites\spr_wolf</sprite>
+      <sprite>sprites\spr_skeleton</sprite>
+      <sprite>sprites\spr_crab</sprite>
     </sprites>
     <sprites name="weapons">
       <sprite>sprites\spr_bolt</sprite>
       <sprite>sprites\spr_magic_bolt</sprite>
       <sprite>sprites\spr_knife</sprite>
       <sprite>sprites\spr_axe</sprite>
-      <sprite>sprites\spr_sword2</sprite>
       <sprite>sprites\spr_bow</sprite>
-      <sprite>sprites\spr_weapon</sprite>
-      <sprite>sprites\spr_sword</sprite>
       <sprite>sprites\spr_boltShadow</sprite>
-    </sprites>
-    <sprites name="test">
-      <sprite>sprites\spr_star</sprite>
-      <sprite>sprites\spr_ball</sprite>
-    </sprites>
-    <sprites name="other">
-      <sprite>sprites\spr_knight</sprite>
-      <sprite>sprites\spr_cameraDrone</sprite>
-      <sprite>sprites\spr_player</sprite>
     </sprites>
     <sprites name="environments">
       <sprite>sprites\spr_block</sprite>
@@ -102,6 +88,12 @@
       <object>objects\obj_bolt</object>
       <object>objects\obj_sword</object>
     </objects>
+    <objects name="monsters">
+      <object>objects\obj_monster</object>
+      <object>objects\obj_crab</object>
+      <object>objects\obj_skeleton</object>
+      <object>objects\obj_wolf</object>
+    </objects>
     <objects name="environment">
       <object>objects\obj_block</object>
     </objects>
@@ -113,9 +105,6 @@
       <object>objects\obj_item_glove</object>
       <object>objects\obj_item_boot</object>
       <object>objects\obj_item_shoulders</object>
-    </objects>
-    <objects name="monsters">
-      <object>objects\obj_monster</object>
     </objects>
     <objects name="test">
       <object>objects\obj_star</object>
