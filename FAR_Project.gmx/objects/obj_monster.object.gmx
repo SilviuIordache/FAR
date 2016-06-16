@@ -27,9 +27,12 @@
             <kind>1</kind>
             <string>//--Base Stats------------------------------------
 hp     = 50
-spd    = 0.4
+spd          = 0.4
+spd_normal   = spd
+spd_charge   = spd * 3
+spd_stun     = spd / 1.5
 dmg    = 1
-isCharger = true
+
 //------------------------------------------------
 
 //--AI Variables----------------------------------
@@ -39,7 +42,10 @@ path_smartAI                = path_add()
 pathFindingStarted          = false
 shouldSpread                = true
 aggroRadius                 = 70
-chargeRadius               = 25
+chargeRadius                = 25
+isCharger                   = false
+canCharge                   = true
+stunTimeAfterCharge         = 180
 AI_path_scan_refresh_rate   = 15
 mp_grid_add_instances(AI_grid, obj_block, false);
 //------------------------------------------------
@@ -54,6 +60,31 @@ hopVar                      = 0
 
 
 
+
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="2">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///stunTimeAfterCharge &amp;&amp; canCharge
+canCharge = true;
 
 </string>
           </argument>
@@ -133,9 +164,20 @@ if (instance_exists(obj_player)&amp;&amp; pathFindingStarted == false &amp;&amp;
     if (path_exists(path_smartAI))
     {
         if (isCharger == true &amp;&amp; distance_to_object(obj_player) &lt; chargeRadius)
-           path_speed = spd * 2
+        {
+           if (canCharge == true)
+           {
+               spd = spd_charge
+               canCharge = false
+               alarm[2]  = stunTimeAfterCharge
+           }
+           else
+           {
+               spd = spd_stun
+           }
+        }
         else
-           path_speed = spd;
+           spd = spd_normal
         pathFindingStarted = true;
         alarm[0] = AI_path_scan_refresh_rate;
         path_start(path_smartAI, spd, 0, 1) //start moving on the previously created path

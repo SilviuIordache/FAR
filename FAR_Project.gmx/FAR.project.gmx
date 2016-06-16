@@ -73,8 +73,8 @@
   <objects name="objects">
     <objects name="system">
       <object>objects\obj_system</object>
-      <object>objects\obj_damageNumber</object>
       <object>objects\obj_menu_logic</object>
+      <object>objects\obj_damageNumber</object>
       <object>objects\obj_class_select_arrow</object>
     </objects>
     <objects name="player">
@@ -114,6 +114,7 @@
   </objects>
   <rooms name="rooms">
     <room>rooms\room_menu</room>
+    <room>rooms\room_main_2</room>
     <room>rooms\room_main</room>
     <room>rooms\room_test</room>
   </rooms>
