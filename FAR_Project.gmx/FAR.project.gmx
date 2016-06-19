@@ -64,6 +64,9 @@
     <script>scripts\scr_performAttack.gml</script>
     <script>scripts\scr_knockBack.gml</script>
     <script>scripts\scr_Calculate_Damage.gml</script>
+    <script>scripts\scr_Zoom.gml</script>
+    <script>scripts\scr_Create_World.gml</script>
+    <script>scripts\scr_Valid_Chamber_Position.gml</script>
   </scripts>
   <fonts name="fonts">
     <font>fonts\fnt_damage</font>
@@ -114,6 +117,7 @@
   </objects>
   <rooms name="rooms">
     <room>rooms\room_menu</room>
+    <room>rooms\room_empty</room>
     <room>rooms\room_main_2</room>
     <room>rooms\room_main</room>
     <room>rooms\room_test</room>
