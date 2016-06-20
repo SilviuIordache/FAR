@@ -1,24 +1,29 @@
+randomize(); //set seed to a random value
 var i
 var j
 
 iterations_Chamber_max    = 50;
 iterations_Chamber_cur    = 0;
 
-chambers_To_Place = 5;
+chambers_To_Place = 25;
 chambers_Placed   = 0;
 
 
-chamber_Start_X = irandom(room_height / 16) 
-chamber_Start_Y = irandom(room_width  / 16) 
+chamber_Start_X = irandom(room_height / 16 - 2) 
+chamber_Start_Y = irandom(room_width  / 16 - 2) 
 
-chamber_Size_W   = chamber_Start_X + irandom_range(4, 10);
-chamber_Size_H   = chamber_Start_Y + irandom_range(4, 10);
+min_size = 7  // minimum size in 16X16 squares that a room can have
+max_size = 16 // maximum size in 16X16 squares that a room can have
+
+chamber_Size_W   = chamber_Start_X + irandom_range(min_size, max_size);
+chamber_Size_H   = chamber_Start_Y + irandom_range(min_size, max_size);
 
 
 while ( chambers_Placed < chambers_To_Place && iterations_Chamber_cur < iterations_Chamber_max)
 {
-    if ( script_execute( scr_Valid_Chamber_Position, chamber_Start_X, chamber_Start_Y, chamber_Size_W, chamber_Size_H) == true)
+    if ( script_execute( scr_Valid_Chamber_Position, chamber_Start_X, chamber_Start_Y, chamber_Size_W, chamber_Size_H))
     {
+        //fill the margins with walls
         for (i = chamber_Start_Y; i <= chamber_Size_H; i ++)
         {
             for (j = chamber_Start_X; j <= chamber_Size_W; j++)
@@ -33,14 +38,24 @@ while ( chambers_Placed < chambers_To_Place && iterations_Chamber_cur < iteratio
                     instance_create(x + i * 16, y + j * 16 , obj_block)
             }
         }
+        //fill the inside with markers
+        for (i = chamber_Start_Y + 1; i <= chamber_Size_H - 1; i ++)
+        {
+            for (j = chamber_Start_X + 1; j <= chamber_Size_W - 1; j++)
+            {
+                instance_create(x + i * 16, y + j * 16 , obj_chamber_marker)
+            }
+        }
         chambers_Placed += 1;
     }
     iterations_Chamber_cur += 1;
-    chamber_Start_X = irandom(room_height / 16) 
-    chamber_Start_Y = irandom(room_width  / 16) 
-    chamber_Size_W   = chamber_Start_X + irandom_range(4, 10);
-    chamber_Size_H   = chamber_Start_Y + irandom_range(4, 10);
+    chamber_Start_X = irandom(room_height / 16 - 2)  
+    chamber_Start_Y = irandom(room_width  / 16 - 2)
+    chamber_Size_W   = chamber_Start_X + irandom_range(min_size, max_size);
+    chamber_Size_H   = chamber_Start_Y + irandom_range(min_size, max_size);
 }
+//DELETE ALL MARKERS AFTER GENERATING CHAMBERS
+with (obj_chamber_marker) instance_destroy()
 
 return chambers_Placed
 /*

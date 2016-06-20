@@ -43,6 +43,7 @@
     </sprites>
     <sprites name="environments">
       <sprite>sprites\spr_block</sprite>
+      <sprite>sprites\spr_chamber_Marker</sprite>
     </sprites>
     <sprites name="items">
       <sprite>sprites\spr_armor_aura</sprite>
@@ -99,6 +100,7 @@
     </objects>
     <objects name="environment">
       <object>objects\obj_block</object>
+      <object>objects\obj_chamber_marker</object>
     </objects>
     <objects name="armor objects">
       <object>objects\obj_item_armor</object>

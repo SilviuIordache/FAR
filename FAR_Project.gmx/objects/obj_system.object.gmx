@@ -43,6 +43,10 @@ if (room_get_name(room) != "room_menu")
     chambers_Validated = script_execute(scr_Create_World)
 }
 
+//debug 
+ view_hview[0] *= 8
+ view_wview[0] *= 8
+
 </string>
           </argument>
         </arguments>
