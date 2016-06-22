@@ -26,12 +26,13 @@
           <argument>
             <kind>1</kind>
             <string>//--Base Stats------------------------------------
-hp     = 50
+hp           = 50
 spd          = 0.4
 spd_normal   = spd
 spd_charge   = spd * 3
 spd_stun     = spd / 1.5
-dmg    = 1
+dmg          = 1
+xp_reward    = 5
 
 //------------------------------------------------
 
@@ -156,11 +157,11 @@ canCharge = true;
             <kind>1</kind>
             <string>///PATHFINDING
 //CHECK TO SEE IF THE PLAYER IS ALIVE AND A PATHFIND HASN'T ALREADY STARTED
-if (instance_exists(obj_player)&amp;&amp; pathFindingStarted == false &amp;&amp; distance_to_object(obj_player) &lt; aggroRadius )
+if (instance_exists(obj_player) &amp;&amp; pathFindingStarted == false &amp;&amp; distance_to_object(obj_player) &lt; aggroRadius )
 {
     mp_grid_clear_all(AI_grid);       //creates a GRID
     mp_grid_add_instances(AI_grid, obj_block, false); //adds obj_block objects as obstacles;
-    mp_grid_path(AI_grid, path_smartAI, x, y, obj_player.x + 12, obj_player.y + 12, true);  //compute a path on the created GRID towards the player position 
+    mp_grid_path(AI_grid, path_smartAI, x, y, obj_player.x + 8, obj_player.y + 8, true);  //compute a path on the created GRID towards the player position 
     if (path_exists(path_smartAI))
     {
         if (isCharger == true &amp;&amp; distance_to_object(obj_player) &lt; chargeRadius)
@@ -351,6 +352,7 @@ else
     hp -= other.finalDamage
     if(hp &lt;= 0)
     {
+        obj_player.xp_current += xp_reward
         instance_destroy() //destroy monster if his health is 0
     }
     
@@ -405,9 +407,23 @@ draw_sprite_ext(
                 image_alpha);           
 
 //DEBUG
+
+//SEE FOV scan in real time
 /*
-draw_set_font(fnt_damage)
-draw_text(x, y, string(direction))
+if (distance_to_object(obj_player) &lt; aggroRadius)
+{
+    if collision_line( x, y, obj_player.x, obj_player.y, obj_block, false, true )
+    {
+        draw_set_color(c_red)
+        draw_line(x, y, obj_player.x + 8 , obj_player.y + 8)
+    }
+    else
+    {
+        draw_set_color(c_green)
+        draw_line(x, y, obj_player.x + 8 , obj_player.y + 8)
+    }
+}
+  
 </string>
           </argument>
         </arguments>

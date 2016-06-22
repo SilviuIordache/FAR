@@ -34,6 +34,7 @@ spd_normal   = spd
 spd_charge   = spd * 2
 spd_stun     = spd / 1.2
 dmg          = 1
+xp_reward    = 15
 
 //------------------------------------------------
 

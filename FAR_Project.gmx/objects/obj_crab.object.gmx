@@ -28,14 +28,15 @@
             <string>event_inherited()
 
 //--Base Stats------------------------------------
-hp     = 15
-spd    = 0.1
-dmg    = 1
+hp           = 6
+spd          = 0.1
+dmg          = 1
+xp_reward    = 2
 AI_path_scan_refresh_rate   = 15
 //------------------------------------------------
 
 //--AI Variables----------------------------------
-aggroRadius                 = 40
+aggroRadius                 = 55
 //------------------------------------------------
 
 //----DRAW VARIABLES------------------------------

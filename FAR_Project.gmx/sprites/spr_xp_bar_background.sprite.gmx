@@ -20,6 +20,6 @@
   <width>4</width>
   <height>4</height>
   <frames>
-    <frame index="0">images\spr_xpBarOutline_0.png</frame>
+    <frame index="0">images\spr_xp_bar_background_0.png</frame>
   </frames>
 </sprite>

@@ -27,23 +27,36 @@
             <kind>1</kind>
             <string>///SYSTEM VARIABLES
 
+//GRAPHIC SETTINGS-----------------
 window_set_cursor(cr_none);
 draw_set_font(fnt_default);
 
 GUI_scaleFactor = 4
 GUI_defaultScaleFactor = 1;
 
+
+//---------------------------------
+
+
+//GRID FOR AI------------------------------------------------
 globalvar AI_grid;
-          AI_grid = mp_grid_create(0, 0, 25, 25, 16, 16);
+          AI_grid = mp_grid_create(0, 0, room_width / 16, room_height / 16, 16, 16);
+//-----------------------------------------------------------
 
-chambers_Validated = 0;
 
+
+
+//WORLD GENERATIONS CHAMBERS
+/*
 if (room_get_name(room) != "room_menu")
 {
-    chambers_Validated = script_execute(scr_Create_World)
+    script_execute(scr_Create_World)
 }
+*/
 
-//debug 
+
+//DEBUG SCROLLING
+/*
  view_hview[0] *= 8
  view_wview[0] *= 8
 
@@ -75,11 +88,11 @@ if (room != room_menu &amp;&amp; instance_exists(obj_player))
 
 //---------------CAMERA stuff--------------------------------------------------------------------------------------------------
 
-targetX= obj_player.x
-targetY= obj_player.y
+targetX = obj_player.x
+targetY = obj_player.y
 
-verCameraAdjustment   = 10
-horCameraAdjustment   = 6
+verCameraAdjustment   = 11
+horCameraAdjustment   = 8
 
 view_xview[0]=(view_xview[0]*7+targetX)/8 - verCameraAdjustment //the xview is weighed *7 here. xview*7+targetX*1 --&gt; 8
 view_yview[0]=(view_yview[0]*7+targetY)/8 - horCameraAdjustment
@@ -140,7 +153,7 @@ script_execute(scr_Zoom)
             <kind>1</kind>
             <string>if (room != room_menu &amp;&amp; instance_exists(obj_player) ) 
 {
-    //Health
+    //HEALTH POINTS
     for ( i = 1; i &lt;= obj_player.hp_Current; i++ )
     {
         draw_sprite_ext(spr_heart, image_index, x - 20 + i * 30, y, image_xscale * 3, image_yscale * 3, image_angle, c_white, image_alpha );
@@ -150,21 +163,76 @@ script_execute(scr_Zoom)
         draw_sprite_ext(spr_heart_outline, image_index, x - 20 + i * 30, y, image_xscale * 3, image_yscale * 3, image_angle, c_white, image_alpha );
     }
     
-    //Stamina
+    //STAMINA
     draw_sprite_ext(spr_playerSTA_total, image_index, x + 2, y + 24, image_xscale * 12, image_yscale * 2, image_angle, c_white, image_alpha)
     draw_sprite_ext(spr_playerSTA_curr, image_index, x + 2, y + 24, image_xscale * 12 * obj_player.sta_Cur/obj_player.sta_Max, image_yscale * 2, image_angle, c_white, image_alpha)
     for ( i = 0; i &lt; obj_player.sta_Max / 5; i++)
     {
         draw_sprite_ext(spr_playerSTA_segment, image_index, x - 1 + i / obj_player.sta_Max * 1100, y + 24, image_xscale, image_yscale * 1.5, image_angle, c_white, image_alpha)
     }
-    //draw_text( x + 30, y + 24, string(obj_player.sta_Cur) + "/" + string(obj_player.sta_Max))
+    
+    //EXPERIENCE BAR
+    
+    //bar background
+    draw_sprite_ext(spr_xp_bar_background, image_index, x + 50, y + 805, image_xscale * 250, image_yscale * 4, image_angle, c_white, 0.4)
+    
+    //xp amount
+    draw_sprite_ext(
+    spr_xp_bar_amount, 
+    image_index, 
+    x + 52, 
+    y + 809, 
+    image_xscale * 249 * obj_player.xp_current / obj_player.xp_level[obj_player.xp_level_current], 
+    image_yscale * 2, 
+    image_angle, 
+    c_white, 
+    0.8)
+    
+    //xp current / xp total for level
+    draw_set_color(c_black)
+    draw_text(x + 50, y + 805, string(obj_player.xp_current) + "/" + string(obj_player.xp_level[obj_player.xp_level_current]))
+    
+    //Current Level
+    draw_set_color(c_white)
+    draw_text(x + 50, y + 790, "LEVEL: " + string(obj_player.xp_level_current))
+    
+    
+    //KEYS held
+    draw_sprite_ext(spr_key, 0, x - 10, y + 35, image_xscale * 3, image_yscale * 3, image_angle, c_white, image_alpha)
+    draw_set_color(c_yellow)
+    draw_set_font(fnt_damage)
+    draw_text_ext_transformed(x + 30, y + 45, string(obj_player.keys_found) + "/" + string(obj_player.keys_needed), 10, 300, 3, 3, 0 )
+    draw_set_font(fnt_default)
 }
 
 //DEBUG------------------------------
 
-
+//Draw center of screen for camera - player optimal positioning
+//draw_sprite(spr_magic_bolt, 0, view_wport[0] /2, view_hport[0] / 2  )
 
 </string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="8" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string></string>
           </argument>
         </arguments>
       </action>

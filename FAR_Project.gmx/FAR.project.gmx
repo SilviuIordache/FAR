@@ -19,7 +19,8 @@
       <sprite>sprites\spr_playerHP_total</sprite>
       <sprite>sprites\spr_playerSTA_curr</sprite>
       <sprite>sprites\spr_playerSTA_total</sprite>
-      <sprite>sprites\spr_xpBarOutline</sprite>
+      <sprite>sprites\spr_xp_bar_background</sprite>
+      <sprite>sprites\spr_xp_bar_amount</sprite>
       <sprite>sprites\spr_customCursor</sprite>
       <sprite>sprites\spr_class_selection_arrow</sprite>
       <sprite>sprites\spr_heart</sprite>
@@ -44,15 +45,21 @@
     <sprites name="environments">
       <sprite>sprites\spr_block</sprite>
       <sprite>sprites\spr_chamber_Marker</sprite>
+      <sprite>sprites\spr_undiscovered</sprite>
     </sprites>
     <sprites name="items">
       <sprite>sprites\spr_armor_aura</sprite>
+    </sprites>
+    <sprites name="special_items">
+      <sprite>sprites\spr_key</sprite>
+      <sprite>sprites\spr_magic_door</sprite>
     </sprites>
   </sprites>
   <backgrounds name="background">
     <background>background\background0</background>
     <background>background\bck_menu</background>
     <background>background\bck_grass</background>
+    <background>background\bck_black</background>
   </backgrounds>
   <paths name="paths"/>
   <scripts name="scripts">
@@ -88,6 +95,10 @@
       <object>objects\obj_warrior</object>
       <object>objects\obj_player_Spawner</object>
     </objects>
+    <objects name="special_items">
+      <object>objects\obj_key</object>
+      <object>objects\obj_exit_door</object>
+    </objects>
     <objects name="weapons">
       <object>objects\obj_bolt</object>
       <object>objects\obj_sword</object>
@@ -101,6 +112,7 @@
     <objects name="environment">
       <object>objects\obj_block</object>
       <object>objects\obj_chamber_marker</object>
+      <object>objects\obj_undiscovered</object>
     </objects>
     <objects name="armor objects">
       <object>objects\obj_item_armor</object>
@@ -119,6 +131,7 @@
   </objects>
   <rooms name="rooms">
     <room>rooms\room_menu</room>
+    <room>rooms\room_rogueLikeTest</room>
     <room>rooms\room_empty</room>
     <room>rooms\room_main_2</room>
     <room>rooms\room_main</room>
