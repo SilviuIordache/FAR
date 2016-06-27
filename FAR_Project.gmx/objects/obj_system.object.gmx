@@ -28,7 +28,7 @@
             <string>///SYSTEM VARIABLES
 
 //GRAPHIC SETTINGS-----------------
-window_set_cursor(cr_none);
+//window_set_cursor(cr_none);
 draw_set_font(fnt_default);
 
 GUI_scaleFactor = 4
@@ -47,19 +47,21 @@ globalvar AI_grid;
 
 
 //WORLD GENERATIONS CHAMBERS
-/*
+
 if (room_get_name(room) != "room_menu")
 {
     script_execute(scr_Create_World)
 }
-*/
+
 
 
 //DEBUG SCROLLING
-/*
+
  view_hview[0] *= 8
  view_wview[0] *= 8
 
+// DEBUG BLOCK IDS
+global.block_id = 0;
 </string>
           </argument>
         </arguments>
@@ -211,28 +213,6 @@ script_execute(scr_Zoom)
 //draw_sprite(spr_magic_bolt, 0, view_wport[0] /2, view_hport[0] / 2  )
 
 </string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="8" enumb="0">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string></string>
           </argument>
         </arguments>
       </action>

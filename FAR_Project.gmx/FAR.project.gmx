@@ -46,6 +46,8 @@
       <sprite>sprites\spr_block</sprite>
       <sprite>sprites\spr_chamber_Marker</sprite>
       <sprite>sprites\spr_undiscovered</sprite>
+      <sprite>sprites\spr_chamber_entrance_marker</sprite>
+      <sprite>sprites\spr_chamber_info</sprite>
     </sprites>
     <sprites name="items">
       <sprite>sprites\spr_armor_aura</sprite>
@@ -113,6 +115,8 @@
       <object>objects\obj_block</object>
       <object>objects\obj_chamber_marker</object>
       <object>objects\obj_undiscovered</object>
+      <object>objects\obj_chamber_entrance_marker</object>
+      <object>objects\obj_chamber_info</object>
     </objects>
     <objects name="armor objects">
       <object>objects\obj_item_armor</object>
@@ -131,8 +135,8 @@
   </objects>
   <rooms name="rooms">
     <room>rooms\room_menu</room>
-    <room>rooms\room_rogueLikeTest</room>
     <room>rooms\room_empty</room>
+    <room>rooms\room_rogueLikeTest</room>
     <room>rooms\room_main_2</room>
     <room>rooms\room_main</room>
     <room>rooms\room_test</room>
