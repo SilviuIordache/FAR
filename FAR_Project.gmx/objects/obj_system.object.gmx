@@ -43,25 +43,21 @@ globalvar AI_grid;
           AI_grid = mp_grid_create(0, 0, room_width / 16, room_height / 16, 16, 16);
 //-----------------------------------------------------------
 
-
-
+// DEBUG BLOCK IDS
+global.chamber_Nr = 0;
 
 //WORLD GENERATIONS CHAMBERS
-
+global.chamber_id_valuator = 1;
 if (room_get_name(room) != "room_menu")
 {
-    script_execute(scr_Create_World)
+    global.chamber_Nr = script_execute(scr_Create_World)
 }
 
-
-
 //DEBUG SCROLLING
+view_hview[0] *= 8
+view_wview[0] *= 8
 
- view_hview[0] *= 8
- view_wview[0] *= 8
 
-// DEBUG BLOCK IDS
-global.block_id = 0;
 </string>
           </argument>
         </arguments>
@@ -93,11 +89,16 @@ if (room != room_menu &amp;&amp; instance_exists(obj_player))
 targetX = obj_player.x
 targetY = obj_player.y
 
-verCameraAdjustment   = 11
-horCameraAdjustment   = 8
+//normal zoom center values
+verCameraAdjustment   = 8 
+horCameraAdjustment   = 11
 
-view_xview[0]=(view_xview[0]*7+targetX)/8 - verCameraAdjustment //the xview is weighed *7 here. xview*7+targetX*1 --&gt; 8
-view_yview[0]=(view_yview[0]*7+targetY)/8 - horCameraAdjustment
+// 4 X zoom out center values
+//verCameraAdjustment   = 70
+//horCameraAdjustment   = 95
+
+view_xview[0]=(view_xview[0]*7+targetX)/8 - horCameraAdjustment //the xview is weighed *7 here. xview*7+targetX*1 --&gt; 8
+view_yview[0]=(view_yview[0]*7+targetY)/8 - verCameraAdjustment
 
 //view_angle[0] = 2 //sets camera angle to something different than 0, in this example 2 degrees tilted
 //view_angle[0] += 0.5 //rotates camera constantly, creates fun dizzines
@@ -210,7 +211,13 @@ script_execute(scr_Zoom)
 //DEBUG------------------------------
 
 //Draw center of screen for camera - player optimal positioning
-//draw_sprite(spr_magic_bolt, 0, view_wport[0] /2, view_hport[0] / 2  )
+draw_sprite(spr_magic_bolt, 0, view_wport[0] /2, view_hport[0] / 2  )
+
+
+draw_set_color(c_white)
+draw_set_font(fnt_damage)
+draw_text(x,y + 150, "chambers nr: " + string(global.chamber_Nr))
+draw_set_font(fnt_default)
 
 </string>
           </argument>

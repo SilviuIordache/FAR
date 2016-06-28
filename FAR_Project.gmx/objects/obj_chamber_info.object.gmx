@@ -27,6 +27,7 @@
             <kind>1</kind>
             <string>chamber_width  = 0
 chamber_height = 0
+idd            = 0;
 </string>
           </argument>
         </arguments>
@@ -53,7 +54,7 @@ chamber_height = 0
 
 draw_set_font(fnt_damage)
 draw_set_color(c_white)
-draw_text(x + 20, y + 20, "W: " +  string(chamber_width) + "#" + "H: " + string(chamber_height))
+draw_text(x + 20, y + 20, "W: " +  string(chamber_width) + "#" + "H: " + string(chamber_height) + "#" + "id: " + string(idd))
 draw_set_font(fnt_default)
 </string>
           </argument>

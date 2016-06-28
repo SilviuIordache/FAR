@@ -5,7 +5,7 @@ var j
 iterations_Chamber_max    = 50;
 iterations_Chamber_cur    = 0;
 
-chambers_To_Place = 25;
+chambers_To_Place = 15;
 chambers_Placed   = 0;
 
 
@@ -24,47 +24,44 @@ while ( chambers_Placed < chambers_To_Place && iterations_Chamber_cur < iteratio
     if ( script_execute( scr_Valid_Chamber_Position, chamber_Start_X, chamber_Start_Y, chamber_Size_W, chamber_Size_H))
     {
         //Create chamber_info object
-        //idd = instance_create(chamber_Start_X * 16, chamber_Start_Y * 16, obj_chamber_info)
-        //idd.chamber_width  =  chamber_Size_W + 1
-        //idd.chamber_height =  chamber_Size_H + 1
-        
+        o                = instance_create(chamber_Start_X * 16, chamber_Start_Y * 16, obj_chamber_info)
+        o.chamber_width  = chamber_Size_W + 1
+        o.chamber_height = chamber_Size_H + 1
+        o.idd            = global.chamber_id_valuator; //assign a unique id for each room info object
         
         //fill the margins with walls
-        /*
         for (i = chamber_Start_X; i <= chamber_Start_X + chamber_Size_W; i++)
         {
             for (j = chamber_Start_Y; j <= chamber_Start_Y + chamber_Size_H ; j++)
             {
                 //LEFT SIDE
-                if (i == chamber_Start_X ) 
-                { 
+                if (i == chamber_Start_X && j != (chamber_Start_Y + ceil(chamber_Size_H/2)))
                     instance_create(i * 16, j * 16 , obj_block)
-                    //if (j == (chamber_Start_Y + chamber_Size_H)/2)
-                    //  instance_create(i * 16, j * 16 , obj_chamber_entrance_marker)
-                }
                 //RIGHT SIDE
-                if (i == chamber_Start_X + chamber_Size_W )
-                {
+                if (i == chamber_Start_X + chamber_Size_W && j != (chamber_Start_Y + ceil(chamber_Size_H/2)))
                     instance_create(i * 16, j * 16 , obj_block)
-                    if ( j == (chamber_Start_Y + chamber_Size_H)/2)
-                       instance_create(i * 16, j * 16 , obj_chamber_entrance_marker)
-                }
                 //TOP SIDE
-                if (j == chamber_Start_Y)
-                {
+                if (j == chamber_Start_Y && i != (chamber_Start_X + ceil(chamber_Size_W/2)))
                     instance_create(i * 16, j * 16 , obj_block)
-                }
                 //BOTTOM SIDE
-                if (j == chamber_Start_Y + chamber_Size_H)
-                {
+                if (j == chamber_Start_Y + chamber_Size_H && i != (chamber_Start_X + ceil(chamber_Size_W/2)))
                     instance_create(i * 16, j * 16 , obj_block)
-                }
-                   
             }
         }
-        */
-
-        instance_create(chamber_Start_X * 16, (chamber_Start_Y + chamber_Size_W)/2 * 16,  obj_chamber_entrance_marker)
+        
+        //place ENTRANCE objects
+        //left
+        o     = instance_create(chamber_Start_X * 16, (chamber_Start_Y + ceil(chamber_Size_H/2)) * 16,  obj_chamber_entrance_marker) 
+        o.idd = global.chamber_id_valuator
+        //right
+        o     = instance_create((chamber_Start_X+ chamber_Size_W) * 16, (chamber_Start_Y + ceil(chamber_Size_H/2)) * 16,  obj_chamber_entrance_marker) 
+        o.idd = global.chamber_id_valuator
+        //top
+        o     = instance_create((chamber_Start_X + ceil(chamber_Size_W/2)) * 16, chamber_Start_Y * 16,  obj_chamber_entrance_marker) 
+        o.idd = global.chamber_id_valuator
+        //left
+        o     = instance_create((chamber_Start_X + ceil(chamber_Size_W/2)) * 16, (chamber_Start_Y + chamber_Size_H) * 16, obj_chamber_entrance_marker) 
+        o.idd = global.chamber_id_valuator
         
         //fill the inside with markers
         for (i = chamber_Start_X; i <= chamber_Start_X + chamber_Size_W - 2; i ++)
@@ -74,9 +71,15 @@ while ( chambers_Placed < chambers_To_Place && iterations_Chamber_cur < iteratio
                 instance_create(x + i * 16, y + j * 16 , obj_chamber_marker)
             }
         }
-        chambers_Placed += 1;
+        
+        //fill 1 outside layer with markers to avoid tangent chambers
+        
+        chambers_Placed += 1; //increased chambers placed
+        global.chamber_id_valuator++; //increment unique id 
     }
-    iterations_Chamber_cur += 1;
+    iterations_Chamber_cur += 1; //increase number of tries
+    
+    //re-initialize random variables
     chamber_Start_X = irandom(room_height / 16 - 2)  
     chamber_Start_Y = irandom(room_width  / 16 - 2)
     chamber_Size_W   = irandom_range(min_size, max_size);
@@ -85,7 +88,9 @@ while ( chambers_Placed < chambers_To_Place && iterations_Chamber_cur < iteratio
 //DELETE ALL inside-room MARKERS AFTER GENERATING CHAMBERS
 //with (obj_chamber_marker) instance_destroy()
 
+//also return chambers_Placed for debug purposes
 return chambers_Placed
+
 /*
 1.until you populate the room with X mini-rooms  do this:
 2.iterate through whole room
