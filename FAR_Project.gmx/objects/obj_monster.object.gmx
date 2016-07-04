@@ -48,7 +48,6 @@ isCharger                   = false
 canCharge                   = true
 stunTimeAfterCharge         = 180
 AI_path_scan_refresh_rate   = 15
-mp_grid_add_instances(AI_grid, obj_block, false);
 //------------------------------------------------
 
 //----DRAW VARIABLES------------------------------

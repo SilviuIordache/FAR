@@ -50,12 +50,13 @@ global.chamber_Nr = 0;
 global.chamber_id_valuator = 1;
 if (room_get_name(room) != "room_menu")
 {
-    global.chamber_Nr = script_execute(scr_Create_World)
+    //global.chamber_Nr = script_execute(scr_Create_World)
+    script_execute(scr_map_navigation_squares)
 }
 
 //DEBUG SCROLLING
-view_hview[0] *= 8
-view_wview[0] *= 8
+//view_hview[0] *= 8
+//view_wview[0] *= 8
 
 
 </string>
@@ -137,6 +138,35 @@ script_execute(scr_Zoom)
         </arguments>
       </action>
     </event>
+    <event eventtype="5" enumb="48">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>idd = instance_create(obj_player.x = 20,obj_player.y = 20, obj_path_constructor)
+
+idd.x_start = obj_player.x + 20
+idd.y_start = obj_player.y + 20
+
+x_target = obj_player.x
+y_target = obj_player.y
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
     <event eventtype="8" enumb="64">
       <action>
         <libid>1</libid>
@@ -211,12 +241,12 @@ script_execute(scr_Zoom)
 //DEBUG------------------------------
 
 //Draw center of screen for camera - player optimal positioning
-draw_sprite(spr_magic_bolt, 0, view_wport[0] /2, view_hport[0] / 2  )
+//draw_sprite(spr_magic_bolt, 0, view_wport[0] /2, view_hport[0] / 2  )
 
 
 draw_set_color(c_white)
 draw_set_font(fnt_damage)
-draw_text(x,y + 150, "chambers nr: " + string(global.chamber_Nr))
+draw_text(x,y + 150, "path sq nr: " + string(instance_number(obj_path_marker)))
 draw_set_font(fnt_default)
 
 </string>

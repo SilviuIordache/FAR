@@ -33,6 +33,7 @@
       <sprite>sprites\spr_wolf</sprite>
       <sprite>sprites\spr_skeleton</sprite>
       <sprite>sprites\spr_crab</sprite>
+      <sprite>sprites\spr_constructor</sprite>
     </sprites>
     <sprites name="weapons">
       <sprite>sprites\spr_bolt</sprite>
@@ -44,10 +45,11 @@
     </sprites>
     <sprites name="environments">
       <sprite>sprites\spr_block</sprite>
-      <sprite>sprites\spr_chamber_Marker</sprite>
+      <sprite>sprites\spr_path_marker</sprite>
       <sprite>sprites\spr_undiscovered</sprite>
       <sprite>sprites\spr_chamber_entrance_marker</sprite>
       <sprite>sprites\spr_chamber_info</sprite>
+      <sprite>sprites\spr_nav_square</sprite>
     </sprites>
     <sprites name="items">
       <sprite>sprites\spr_armor_aura</sprite>
@@ -77,6 +79,7 @@
     <script>scripts\scr_Zoom.gml</script>
     <script>scripts\scr_Create_World.gml</script>
     <script>scripts\scr_Valid_Chamber_Position.gml</script>
+    <script>scripts\scr_map_navigation_squares.gml</script>
   </scripts>
   <fonts name="fonts">
     <font>fonts\fnt_damage</font>
@@ -110,13 +113,15 @@
       <object>objects\obj_crab</object>
       <object>objects\obj_skeleton</object>
       <object>objects\obj_wolf</object>
+      <object>objects\obj_path_constructor</object>
     </objects>
     <objects name="environment">
       <object>objects\obj_block</object>
-      <object>objects\obj_chamber_marker</object>
       <object>objects\obj_undiscovered</object>
       <object>objects\obj_chamber_entrance_marker</object>
       <object>objects\obj_chamber_info</object>
+      <object>objects\obj_path_marker</object>
+      <object>objects\obj_nav_square</object>
     </objects>
     <objects name="armor objects">
       <object>objects\obj_item_armor</object>
@@ -135,9 +140,10 @@
   </objects>
   <rooms name="rooms">
     <room>rooms\room_menu</room>
-    <room>rooms\room_empty</room>
-    <room>rooms\room_rogueLikeTest</room>
+    <room>rooms\room_empty_2</room>
     <room>rooms\room_main_2</room>
+    <room>rooms\room_rogueLikeTest</room>
+    <room>rooms\room_empty</room>
     <room>rooms\room_main</room>
     <room>rooms\room_test</room>
   </rooms>
