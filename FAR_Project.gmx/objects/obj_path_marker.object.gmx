@@ -25,7 +25,31 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string></string>
+            <string>//top left
+if( !collision_point(x - 16, y - 16, obj_path_marker, false, true))
+    instance_create(x - 16, y - 16, obj_block)
+//top
+if( !collision_point(x, y - 16, obj_path_marker, false, true))
+    instance_create(x, y - 16, obj_block)
+//top right
+if( !collision_point(x + 16, y - 16, obj_path_marker, false, true))
+    instance_create(x + 16, y - 16, obj_block)
+//left
+if( !collision_point(x - 16, y, obj_path_marker, false, true))
+    instance_create(x - 16, y, obj_block)
+//right
+if( !collision_point(x + 16, y, obj_path_marker, false, true))
+    instance_create(x + 16, y, obj_block)
+//bottom left
+if( !collision_point(x - 16, y + 16, obj_path_marker, false, true))
+    instance_create(x - 16, y + 16, obj_block)
+//bottom right
+if( !collision_point(x + 16, y + 16, obj_path_marker, false, true))
+    instance_create(x + 16, y + 16, obj_block)
+//bottom
+if( !collision_point(x, y + 16, obj_path_marker, false, true))
+    instance_create(x, y + 16, obj_block)
+</string>
           </argument>
         </arguments>
       </action>

@@ -52,6 +52,7 @@ if (room_get_name(room) != "room_menu")
 {
     //global.chamber_Nr = script_execute(scr_Create_World)
     script_execute(scr_map_navigation_squares)
+    //with ( obj_nav_square) instance_destroy()
 }
 
 //DEBUG SCROLLING
