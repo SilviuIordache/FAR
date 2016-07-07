@@ -50,23 +50,37 @@ global.chamber_Nr = 0;
 global.chamber_id_valuator = 1;
 if (room_get_name(room) != "room_menu")
 {
-    //global.chamber_Nr = script_execute(scr_Create_World)
-    //fill level with navigation squares that will be used to create paths between doors
-    for (i = 0; i &lt;= room_height / 16; i++)
-    {
-        for (j = 0; j &lt;= room_width / 16 ; j++)
-        {
-            instance_create(x + i * 16, y + j * 16, obj_nav_square)
-        }
-    }
+    global.chamber_Nr = script_execute(scr_Create_World)
 }
 
 //DEBUG SCROLLING
-//view_hview[0] *= 8
-//view_wview[0] *= 8
+view_hview[0] *= 2
+view_wview[0] *= 2
 
 
 </string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string></string>
           </argument>
         </arguments>
       </action>
@@ -140,6 +154,31 @@ if (keyboard_check_pressed(vk_escape))
             <kind>1</kind>
             <string>///ZOOM SCRIPT
 script_execute(scr_Zoom)
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///DESTROY OBJECTS AFTER DELAY
+/*
+script_execute(scr_destroy_with_delay, obj_path_marker, 5)
+script_execute(scr_destroy_with_delay, obj_chamber_marker, 5)
+script_execute(scr_destroy_with_delay, obj_nav_square, 5)
 </string>
           </argument>
         </arguments>
@@ -253,7 +292,10 @@ y_target = obj_player.y
 
 draw_set_color(c_white)
 draw_set_font(fnt_damage)
-draw_text(x,y + 150, "path sq nr: " + string(instance_number(obj_path_marker)))
+draw_text(x,y + 150, "obj_path_marker nr: " + string(instance_number(obj_path_marker)))
+draw_text(x,y + 180, "obj_block nr: "       + string(instance_number(obj_block)))
+draw_text(x,y + 210, "obj_nav_square nr: "  + string(instance_number(obj_nav_square)))
+draw_text(x,y + 240, "level_time: "       + string(get_timer() / 1000000))
 draw_set_font(fnt_default)
 
 </string>

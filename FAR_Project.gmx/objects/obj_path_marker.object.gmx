@@ -25,65 +25,14 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>
-//script_execute(scr_place_path_block, -16, -16)
+            <string>script_execute(scr_place_path_block, -16, -16)
 script_execute(scr_place_path_block,   0, -16)
-/*
 script_execute(scr_place_path_block, +16, -16)
 script_execute(scr_place_path_block, -16,   0)
 script_execute(scr_place_path_block, +16,   0)
 script_execute(scr_place_path_block, -16, +16)
 script_execute(scr_place_path_block, +16, +16)
-*/
 script_execute(scr_place_path_block,   0, +16)
-
-
-/*
-//top left
-if( !collision_point(x - 16, y - 16, obj_path_marker, false, true))
-{
-    if (idd == collision_point(x - 16, y - 16, obj_block, false, true))
-        with (idd) instance_destroy()
-    instance_create(x - 16, y - 16, obj_block)
-}
-//top
-if( !collision_point(x, y - 16, obj_path_marker, false, true))
-{
-    if(
-    instance_create(x, y - 16, obj_block)
-}
-//top right
-if( !collision_point(x + 16, y - 16, obj_path_marker, false, true))
-{
-    instance_create(x + 16, y - 16, obj_block)
-}
-//left
-if( !collision_point(x - 16, y, obj_path_marker, false, true))
-{
-    instance_create(x - 16, y, obj_block)
-}
-//right
-if( !collision_point(x + 16, y, obj_path_marker, false, true))
-{
-    instance_create(x + 16, y, obj_block)
-}
-//bottom left
-if( !collision_point(x - 16, y + 16, obj_path_marker, false, true))
-{
-    instance_create(x - 16, y + 16, obj_block)
-}
-
-//bottom right
-if( !collision_point(x + 16, y + 16, obj_path_marker, false, true))
-{
-    instance_create(x + 16, y + 16, obj_block)
-}
-
-//bottom
-if( !collision_point(x, y + 16, obj_path_marker, false, true))
-{
-    instance_create(x, y + 16, obj_block)
-}
 </string>
           </argument>
         </arguments>

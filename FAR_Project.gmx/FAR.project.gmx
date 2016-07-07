@@ -81,6 +81,7 @@
     <script>scripts\scr_Create_World.gml</script>
     <script>scripts\scr_Valid_Chamber_Position.gml</script>
     <script>scripts\scr_place_path_block.gml</script>
+    <script>scripts\scr_destroy_with_delay.gml</script>
   </scripts>
   <fonts name="fonts">
     <font>fonts\fnt_damage</font>
@@ -92,6 +93,7 @@
       <object>objects\obj_system</object>
       <object>objects\obj_menu_logic</object>
       <object>objects\obj_damageNumber</object>
+      <object>objects\obj_path_constructor</object>
       <object>objects\obj_class_select_arrow</object>
     </objects>
     <objects name="player">
@@ -114,7 +116,6 @@
       <object>objects\obj_crab</object>
       <object>objects\obj_skeleton</object>
       <object>objects\obj_wolf</object>
-      <object>objects\obj_path_constructor</object>
     </objects>
     <objects name="environment">
       <object>objects\obj_block</object>

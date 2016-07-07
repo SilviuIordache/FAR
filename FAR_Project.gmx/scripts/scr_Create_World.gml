@@ -121,7 +121,7 @@ while ( chambers_Placed < chambers_To_Place && iterations_Chamber_cur < iteratio
 
 
 //DELETE un-used objects 
-//with (obj_chamber_marker) instance_destroy()
+with (obj_chamber_marker) instance_destroy()
 //with ( obj_nav_square) instance_destroy()
 
 

@@ -32,7 +32,7 @@ x_target = obj_player.x
 y_target = obj_player.y
 
 constructor_path = path_add()
-spd = 1;
+spd = 3;
 
 nav_sq_idd = 0;
 pathFindingStarted = false
@@ -102,8 +102,13 @@ pathFindingStarted = false
     //   instance_destroy();
     //}
 }
-if( collision_point( x, y, obj_nav_square, false, true ))
+if (collision_point( x, y, obj_nav_square, false, true ))
 {
+    if (collision_point( x, y, obj_block, false, true ))
+    {
+        idd_block = collision_point( x, y, obj_block, false, true)
+        with(idd_block) instance_destroy()
+    }
     nav_sq_idd = collision_point( x, y, obj_nav_square, false, true)
     instance_create(nav_sq_idd.x, nav_sq_idd.y, obj_path_marker)
     with (nav_sq_idd) instance_destroy()
