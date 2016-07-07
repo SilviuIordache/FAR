@@ -50,6 +50,7 @@
       <sprite>sprites\spr_chamber_entrance_marker</sprite>
       <sprite>sprites\spr_chamber_info</sprite>
       <sprite>sprites\spr_nav_square</sprite>
+      <sprite>sprites\spr_chamber_marker</sprite>
     </sprites>
     <sprites name="items">
       <sprite>sprites\spr_armor_aura</sprite>
@@ -79,7 +80,7 @@
     <script>scripts\scr_Zoom.gml</script>
     <script>scripts\scr_Create_World.gml</script>
     <script>scripts\scr_Valid_Chamber_Position.gml</script>
-    <script>scripts\scr_map_navigation_squares.gml</script>
+    <script>scripts\scr_place_path_block.gml</script>
   </scripts>
   <fonts name="fonts">
     <font>fonts\fnt_damage</font>
@@ -122,6 +123,7 @@
       <object>objects\obj_chamber_info</object>
       <object>objects\obj_path_marker</object>
       <object>objects\obj_nav_square</object>
+      <object>objects\obj_chamber_marker</object>
     </objects>
     <objects name="armor objects">
       <object>objects\obj_item_armor</object>
@@ -140,10 +142,10 @@
   </objects>
   <rooms name="rooms">
     <room>rooms\room_menu</room>
+    <room>rooms\room_empty</room>
     <room>rooms\room_empty_2</room>
     <room>rooms\room_main_2</room>
     <room>rooms\room_rogueLikeTest</room>
-    <room>rooms\room_empty</room>
     <room>rooms\room_main</room>
     <room>rooms\room_test</room>
   </rooms>
