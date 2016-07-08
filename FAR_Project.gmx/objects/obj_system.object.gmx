@@ -48,8 +48,9 @@ global.chamber_Nr = 0;
 global.chamber_id_valuator = 1;
 if (room_get_name(room) != "room_menu")
 {
-    //global.chamber_Nr = script_execute(scr_Create_World)
+    global.chamber_Nr = script_execute(scr_Create_World)
     //fill level with navigation squares that will be used to create paths between doors
+    /*
     for (i = 0; i &lt;= room_height / pxSize; i++)
     {
         for (j = 0; j &lt;= room_width / pxSize ; j++)
@@ -57,7 +58,7 @@ if (room_get_name(room) != "room_menu")
             instance_create(x + i * pxSize, y + j * pxSize, obj_nav_square)
         }
     }
-    
+    */
 }
 
 //DEBUG SCROLLING

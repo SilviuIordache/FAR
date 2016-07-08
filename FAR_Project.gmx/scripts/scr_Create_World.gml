@@ -27,7 +27,6 @@ for (i = 0; i <= room_height / pxSize; i++)
     }
 }
 
-
 //Start chamber placement algorithm
 while ( chambers_Placed < chambers_To_Place && iterations_Chamber_cur < iterations_Chamber_max)
 {
@@ -60,19 +59,19 @@ while ( chambers_Placed < chambers_To_Place && iterations_Chamber_cur < iteratio
             }
         }
         
-        //place ENTRANCE objects
+        //place ENTRANCE objects and save them in the array of entrances in the chamber
         //left
-        o     = instance_create(chamber_Start_X * pxSize, (chamber_Start_Y + ceil(chamber_Size_H/2)) * pxSize,  obj_chamber_entrance_marker) 
-        o.idd = global.chamber_id_valuator
+        door_id = instance_create(chamber_Start_X * pxSize, (chamber_Start_Y + ceil(chamber_Size_H/2)) * pxSize,  obj_chamber_entrance_marker) 
+        o.array_entrance[0] = door_id;
         //right
-        o     = instance_create((chamber_Start_X+ chamber_Size_W) * pxSize, (chamber_Start_Y + ceil(chamber_Size_H/2)) * pxSize,  obj_chamber_entrance_marker) 
-        o.idd = global.chamber_id_valuator
+        door_id = instance_create((chamber_Start_X+ chamber_Size_W) * pxSize, (chamber_Start_Y + ceil(chamber_Size_H/2)) * pxSize,  obj_chamber_entrance_marker) 
+        o.array_entrance[0] = door_id;
         //top
-        o     = instance_create((chamber_Start_X + ceil(chamber_Size_W/2)) * pxSize, chamber_Start_Y * pxSize,  obj_chamber_entrance_marker) 
-        o.idd = global.chamber_id_valuator
+        door_id = instance_create((chamber_Start_X + ceil(chamber_Size_W/2)) * pxSize, chamber_Start_Y * pxSize,  obj_chamber_entrance_marker) 
+        o.array_entrance[0] = door_id;
         //left
-        o     = instance_create((chamber_Start_X + ceil(chamber_Size_W/2)) * pxSize, (chamber_Start_Y + chamber_Size_H) * pxSize, obj_chamber_entrance_marker) 
-        o.idd = global.chamber_id_valuator
+        door_id = instance_create((chamber_Start_X + ceil(chamber_Size_W/2)) * pxSize, (chamber_Start_Y + chamber_Size_H) * pxSize, obj_chamber_entrance_marker) 
+        o.array_entrance[0] = door_id;
         
         
         //fill the inside with markers
@@ -118,6 +117,19 @@ while ( chambers_Placed < chambers_To_Place && iterations_Chamber_cur < iteratio
     
 }//chambers have been created
 
+
+//iterate through all room infos
+var i;
+var j;
+for (i = 0; i < instance_number(obj_chamber_info); i += 1)
+{
+   instance_find(obj_Enemy,i);
+   for (j = 0; j < 4; j++)
+   {
+        array_entrance_id[j] = 0;
+   }
+   
+}
 
 //DELETE un-used objects 
 with (obj_chamber_marker) instance_destroy()

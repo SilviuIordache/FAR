@@ -25,7 +25,8 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>script_execute(scr_place_path_block, -16, -16)
+            <string>/*
+script_execute(scr_place_path_block, -16, -16)
 script_execute(scr_place_path_block,   0, -16)
 script_execute(scr_place_path_block, +16, -16)
 script_execute(scr_place_path_block, -16,   0)
