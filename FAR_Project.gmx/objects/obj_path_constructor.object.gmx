@@ -87,21 +87,14 @@ pathFindingStarted = false
             <string>if (pathFindingStarted == false)
 {
     pathFindingStarted = true
-    //alarm[0] = 90 // pathFindingStarted = true
-    
     mp_grid_clear_all(AI_grid);       
     mp_grid_add_instances(AI_grid, obj_block, false); 
-    mp_grid_path(AI_grid, constructor_path, x, y, obj_player.x, obj_player.y, false)
+    mp_grid_path(AI_grid, constructor_path, x, y, x_target, y_target, false)
     
     if (path_exists(constructor_path))
-        path_start(constructor_path, spd, 0, 1)
-    
-    //if (x == x_target &amp;&amp; y == y_target)
-    //{
-    //   path_end()
-    //   instance_destroy();
-    //}
+        path_start(constructor_path, spd, path_action_stop, 1)
 }
+
 if (collision_point( x, y, obj_nav_square, false, true ))
 {
     if (collision_point( x, y, obj_block, false, true ))
@@ -110,11 +103,47 @@ if (collision_point( x, y, obj_nav_square, false, true ))
         with(idd_block) instance_destroy()
     }
     nav_sq_idd = collision_point( x, y, obj_nav_square, false, true)
-    instance_create(nav_sq_idd.x, nav_sq_idd.y, obj_path_marker)
-    with (nav_sq_idd) instance_destroy()
+    if ( !instance_position(nav_sq_idd.x, nav_sq_idd.y, obj_path_marker))
+    {
+        instance_create(nav_sq_idd.x, nav_sq_idd.y, obj_path_marker)
+    }
 }
     
+if (abs(x - x_target) &lt; 1 &amp;&amp; abs(y - y_target) &lt; 1)
+{
+    instance_destroy();
+}
     
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="8" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>draw_self()
+
+draw_set_color(c_white)
+draw_set_font(fnt_damage)
+draw_text(x,y , "player x: " + string(abs(x - x_target)))
+draw_text(x,y + 10,"player y: " + string(abs(y - y_target)))
+
+draw_set_font(fnt_default)
 </string>
           </argument>
         </arguments>

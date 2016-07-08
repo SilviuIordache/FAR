@@ -82,6 +82,7 @@
     <script>scripts\scr_Valid_Chamber_Position.gml</script>
     <script>scripts\scr_place_path_block.gml</script>
     <script>scripts\scr_destroy_with_delay.gml</script>
+    <script>scripts\scr_send_path_constructor.gml</script>
   </scripts>
   <fonts name="fonts">
     <font>fonts\fnt_damage</font>

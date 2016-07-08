@@ -28,13 +28,11 @@
             <string>///SYSTEM VARIABLES
 
 //GRAPHIC SETTINGS-----------------
-//window_set_cursor(cr_none);
 draw_set_font(fnt_default);
-
 GUI_scaleFactor = 4
 GUI_defaultScaleFactor = 1;
-
-
+globalvar pxSize;
+          pxSize = 16;
 //---------------------------------
 
 
@@ -50,7 +48,16 @@ global.chamber_Nr = 0;
 global.chamber_id_valuator = 1;
 if (room_get_name(room) != "room_menu")
 {
-    global.chamber_Nr = script_execute(scr_Create_World)
+    //global.chamber_Nr = script_execute(scr_Create_World)
+    //fill level with navigation squares that will be used to create paths between doors
+    for (i = 0; i &lt;= room_height / pxSize; i++)
+    {
+        for (j = 0; j &lt;= room_width / pxSize ; j++)
+        {
+            instance_create(x + i * pxSize, y + j * pxSize, obj_nav_square)
+        }
+    }
+    
 }
 
 //DEBUG SCROLLING
@@ -183,6 +190,29 @@ script_execute(scr_destroy_with_delay, obj_nav_square, 5)
           </argument>
         </arguments>
       </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>if device_mouse_check_button_pressed(0, mb_left)
+    script_execute(scr_send_path_constructor, mouse_x, mouse_y, obj_player.x, obj_player.y)
+    
+</string>
+          </argument>
+        </arguments>
+      </action>
     </event>
     <event eventtype="5" enumb="48">
       <action>
@@ -282,22 +312,31 @@ y_target = obj_player.y
     draw_set_font(fnt_damage)
     draw_text_ext_transformed(x + 30, y + 45, string(obj_player.keys_found) + "/" + string(obj_player.keys_needed), 10, 300, 3, 3, 0 )
     draw_set_font(fnt_default)
-}
+
 
 //DEBUG------------------------------
 
 //Draw center of screen for camera - player optimal positioning
 //draw_sprite(spr_magic_bolt, 0, view_wport[0] /2, view_hport[0] / 2  )
 
+draw_set_alpha(0.7)
+draw_rectangle_colour(5, 90, 200, 320, c_gray, c_gray, c_gray, c_gray, false); 
+draw_set_alpha(1)
 
 draw_set_color(c_white)
 draw_set_font(fnt_damage)
-draw_text(x,y + 150, "obj_path_marker nr: " + string(instance_number(obj_path_marker)))
-draw_text(x,y + 180, "obj_block nr: "       + string(instance_number(obj_block)))
-draw_text(x,y + 210, "obj_nav_square nr: "  + string(instance_number(obj_nav_square)))
-draw_text(x,y + 240, "level_time: "       + string(get_timer() / 1000000))
+draw_text(x,y + 80, "player x: " + string(obj_player.x))
+draw_text(x,y + 100,"player y: " + string(obj_player.y))
+draw_text(x,y + 120,"mouse x: " + string(mouse_x))
+draw_text(x,y + 140,"mouse y: " + string(mouse_y))
+draw_text(x,y + 160, "TOTAL instances cnt: " + string(instance_count))
+draw_text(x,y + 190, "obj_path_marker nr: " + string(instance_number(obj_path_marker)))
+draw_text(x,y + 220, "obj_block nr: "       + string(instance_number(obj_block)))
+draw_text(x,y + 250, "obj_nav_square nr: "  + string(instance_number(obj_nav_square)))
+draw_text(x,y + 280, "level_time: "       + string(get_timer() / 1000000))
 draw_set_font(fnt_default)
 
+}
 </string>
           </argument>
         </arguments>

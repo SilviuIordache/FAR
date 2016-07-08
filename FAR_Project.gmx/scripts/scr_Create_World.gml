@@ -1,7 +1,6 @@
 randomize(); //set seed to a random value
 var i
 var j
-pxSize                    = 16;
 iterations_Chamber_max    = 50;
 iterations_Chamber_cur    = 0;
 
