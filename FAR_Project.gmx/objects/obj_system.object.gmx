@@ -45,6 +45,7 @@ globalvar AI_grid;
 global.chamber_Nr = 0;
 
 //WORLD GENERATIONS CHAMBERS
+/*
 global.chamber_id_valuator = 1;
 if (room_get_name(room) != "room_menu")
 {
@@ -58,12 +59,12 @@ if (room_get_name(room) != "room_menu")
             instance_create(x + i * pxSize, y + j * pxSize, obj_nav_square)
         }
     }
-    */
+    
 }
-
+*/
 //DEBUG SCROLLING
-view_hview[0] *= 2
-view_wview[0] *= 2
+//view_hview[0] *= 2
+//view_wview[0] *= 2
 
 
 </string>
@@ -287,6 +288,7 @@ y_target = obj_player.y
     draw_sprite_ext(spr_xp_bar_background, image_index, x + 50, y + 805, image_xscale * 250, image_yscale * 4, image_angle, c_white, 0.4)
     
     //xp amount
+    /*
     draw_sprite_ext(
     spr_xp_bar_amount, 
     image_index, 
@@ -305,7 +307,7 @@ y_target = obj_player.y
     //Current Level
     draw_set_color(c_white)
     draw_text(x + 50, y + 790, "LEVEL: " + string(obj_player.xp_level_current))
-    
+    */
     
     //KEYS held
     draw_sprite_ext(spr_key, 0, x - 10, y + 35, image_xscale * 3, image_yscale * 3, image_angle, c_white, image_alpha)

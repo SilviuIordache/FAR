@@ -119,6 +119,7 @@ while ( chambers_Placed < chambers_To_Place && iterations_Chamber_cur < iteratio
 
 
 //iterate through all room infos
+/*
 var i;
 var j;
 for (i = 0; i < instance_number(obj_chamber_info); i += 1)
@@ -130,6 +131,7 @@ for (i = 0; i < instance_number(obj_chamber_info); i += 1)
    }
    
 }
+*/
 
 //DELETE un-used objects 
 with (obj_chamber_marker) instance_destroy()

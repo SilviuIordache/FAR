@@ -54,6 +54,7 @@
     </sprites>
     <sprites name="items">
       <sprite>sprites\spr_armor_aura</sprite>
+      <sprite>sprites\spr_gold_coin</sprite>
     </sprites>
     <sprites name="special_items">
       <sprite>sprites\spr_key</sprite>
@@ -144,11 +145,11 @@
   </objects>
   <rooms name="rooms">
     <room>rooms\room_menu</room>
+    <room>rooms\room_rogueLikeTest</room>
+    <room>rooms\room_main</room>
     <room>rooms\room_empty</room>
     <room>rooms\room_empty_2</room>
     <room>rooms\room_main_2</room>
-    <room>rooms\room_rogueLikeTest</room>
-    <room>rooms\room_main</room>
     <room>rooms\room_test</room>
   </rooms>
   <help>
