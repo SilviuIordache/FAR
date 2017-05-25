@@ -160,7 +160,7 @@ if (instance_exists(obj_player) &amp;&amp; pathFindingStarted == false &amp;&amp
 {
     mp_grid_clear_all(AI_grid);       //creates a GRID
     mp_grid_add_instances(AI_grid, obj_block, false); //adds obj_block objects as obstacles;
-    mp_grid_path(AI_grid, path_smartAI, x, y, obj_player.x + 8, obj_player.y + 8, true);  //compute a path on the created GRID towards the player position 
+    mp_grid_path(AI_grid, path_smartAI, x, y, obj_player.x, obj_player.y, true);  //compute a path on the created GRID towards the player position 
     if (path_exists(path_smartAI))
     {
         if (isCharger == true &amp;&amp; distance_to_object(obj_player) &lt; chargeRadius)
@@ -336,7 +336,8 @@ else
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if (instance_exists(obj_player))
+            <string>/*
+if (instance_exists(obj_player))
 {
     with(other)
     {

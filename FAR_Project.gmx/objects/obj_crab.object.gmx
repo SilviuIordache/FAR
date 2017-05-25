@@ -42,8 +42,8 @@ aggroRadius                 = 55
 //----DRAW VARIABLES------------------------------
 main_sprite                 = spr_crab
 shadow_sprite               = spr_shadow
-shadow_offset_X             = -5
-shadow_offset_Y             = 2
+shadow_offset_X             = 0
+shadow_offset_Y             = 7
 hopVar                      = 0
 //------------------------------------------------
 </string>

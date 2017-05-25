@@ -25,7 +25,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>global.selectedClass = 1;
+            <string>
 instance_create( 85, 10, obj_class_select_arrow);
 
 
@@ -64,7 +64,7 @@ obj_class_select_arrow.x = 35 + global.selectedClass * 50
 
 if (keyboard_check_pressed(vk_enter))
 {
-    room_goto(room_next(room));
+    room_goto(room_first);
 }
 </string>
           </argument>

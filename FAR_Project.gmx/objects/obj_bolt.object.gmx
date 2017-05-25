@@ -25,7 +25,9 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>speed = obj_player.range_Attack_Speed;
+            <string>currentPlayerSpeed = obj_player.speed
+speed = obj_player.range_Attack_Speed;
+
 dealtDamage = false;
 finalDamage = 0;
 initX = x;
@@ -140,7 +142,27 @@ rotationAngle -= 6;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string></string>
+            <string>if (instance_exists(obj_player))
+{
+    if (dealtDamage == false) //has this projectile dealt damage already?; prevent enemy melt with 1 projectile
+    {
+        dealtDamage = true  // mark this projectile as already done damage;
+        finalDamage = script_execute(scr_Calculate_Damage, obj_player.dmg_ranged, obj_player.crit_Chance_Percent, obj_player.crit_Damage_Percent)
+        script_execute(scr_createDamageNumber, finalDamage, obj_player.dmg_ranged)
+    } 
+    
+    with (other) 
+    { 
+        hp -= other.finalDamage 
+        if(hp &lt;= 0)
+        {
+            //obj_player.xp_current += xp_reward
+            instance_destroy() //destroy monster if his health is 0
+        }
+    }         
+    instance_destroy(); //destroy bullet
+}
+</string>
           </argument>
         </arguments>
       </action>
@@ -165,7 +187,8 @@ rotationAngle -= 6;
             <string>if (instance_exists(obj_player))
 {
     draw_sprite(spr_boltShadow, 1, x, y + 10)
-    draw_sprite_ext(obj_player.range_Attack_Texture, 1, x, y + virtualFallVariable, 1, 1, rotationAngle, c_white, 1)
+    //draw_sprite_ext(obj_player.range_Attack_Texture, 1, x, y + virtualFallVariable, 1, 1, rotationAngle, c_white, 1)
+    draw_sprite_ext(obj_player.range_Attack_Texture, 1, x, y, 1, 1, rotationAngle, c_white, 1)
 }
 
 

@@ -26,14 +26,23 @@
           <argument>
             <kind>1</kind>
             <string>///SYSTEM VARIABLES
+global.selectedClass = 2;
 
-//GRAPHIC SETTINGS-----------------
+//------GRAPHIC SETTINGS-----------------
 draw_set_font(fnt_default);
 GUI_scaleFactor = 4
 GUI_defaultScaleFactor = 1;
 globalvar pxSize;
           pxSize = 16;
-//---------------------------------
+//---------------------------------------
+
+//------CAMERA VARIABLES-----------------
+maxCameraPanDistance = 20
+
+//normal zoom center values
+verCameraAdjustment   = 8 
+horCameraAdjustment   = 11
+//---------------------------------------
 
 
 //GRID FOR AI------------------------------------------------
@@ -114,27 +123,22 @@ if (room_get_name(room) != "room_menu")
             <string>///CAMERA &amp; RETURN TO PREVIOUS MENU
 if (room != room_menu &amp;&amp; instance_exists(obj_player))
 {
+    
+    //---------------CAMERA stuff-----------------------------------------------------------------------------
+    targetX = obj_camera_focus_delay.x
+    targetY = obj_camera_focus_delay.y
+    //targetX = (obj_player.x + mouse_x) /2
+    //targetY = (obj_player.y + mouse_y) /2
 
-//---------------CAMERA stuff--------------------------------------------------------------------------------------------------
 
-targetX = obj_player.x
-targetY = obj_player.y
-
-//normal zoom center values
-verCameraAdjustment   = 8 
-horCameraAdjustment   = 11
-
-// 4 X zoom out center values
-//verCameraAdjustment   = 70
-//horCameraAdjustment   = 95
-
-view_xview[0]=(view_xview[0]*7+targetX)/8 - horCameraAdjustment //the xview is weighed *7 here. xview*7+targetX*1 --&gt; 8
-view_yview[0]=(view_yview[0]*7+targetY)/8 - verCameraAdjustment
-
-//view_angle[0] = 2 //sets camera angle to something different than 0, in this example 2 degrees tilted
-//view_angle[0] += 0.5 //rotates camera constantly, creates fun dizzines
-
-//-----------------------------------------------------------------------------------------------------------------------------
+    //the xview is weighed *7 here. xview*7+targetX*1 --&gt; 8
+    view_xview[0]=(view_xview[0]*7+targetX)/8 - horCameraAdjustment 
+    view_yview[0]=(view_yview[0]*7+targetY)/8 - verCameraAdjustment
+    
+    //view_angle[0] = 2 //sets camera angle to something different than 0, in this example 2 degrees tilted
+    //view_angle[0] += 0.5 //rotates camera constantly, creates fun dizzines
+    
+    //-------------------------------------------------------------------------------------------------------
 }
 
 if (keyboard_check_pressed(vk_escape))
@@ -208,7 +212,8 @@ script_execute(scr_destroy_with_delay, obj_nav_square, 5)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if device_mouse_check_button_pressed(0, mb_left)
+            <string>/*
+if device_mouse_check_button_pressed(0, mb_left)
     script_execute(scr_send_path_constructor, mouse_x, mouse_y, obj_player.x, obj_player.y)
     
 </string>
@@ -282,34 +287,7 @@ y_target = obj_player.y
         draw_sprite_ext(spr_playerSTA_segment, image_index, x - 1 + i / obj_player.sta_Max * 1100, y + 24, image_xscale, image_yscale * 1.5, image_angle, c_white, image_alpha)
     }
     
-    //EXPERIENCE BAR
-    
-    //bar background
-    draw_sprite_ext(spr_xp_bar_background, image_index, x + 50, y + 805, image_xscale * 250, image_yscale * 4, image_angle, c_white, 0.4)
-    
-    //xp amount
-    /*
-    draw_sprite_ext(
-    spr_xp_bar_amount, 
-    image_index, 
-    x + 52, 
-    y + 809, 
-    image_xscale * 249 * obj_player.xp_current / obj_player.xp_level[obj_player.xp_level_current], 
-    image_yscale * 2, 
-    image_angle, 
-    c_white, 
-    0.8)
-    
-    //xp current / xp total for level
-    draw_set_color(c_black)
-    draw_text(x + 50, y + 805, string(obj_player.xp_current) + "/" + string(obj_player.xp_level[obj_player.xp_level_current]))
-    
-    //Current Level
-    draw_set_color(c_white)
-    draw_text(x + 50, y + 790, "LEVEL: " + string(obj_player.xp_level_current))
-    */
-    
-    //KEYS held
+    //UNLOCK KEYS held
     draw_sprite_ext(spr_key, 0, x - 10, y + 35, image_xscale * 3, image_yscale * 3, image_angle, c_white, image_alpha)
     draw_set_color(c_yellow)
     draw_set_font(fnt_damage)
@@ -321,23 +299,23 @@ y_target = obj_player.y
 
 //Draw center of screen for camera - player optimal positioning
 //draw_sprite(spr_magic_bolt, 0, view_wport[0] /2, view_hport[0] / 2  )
-
-draw_set_alpha(0.7)
-draw_rectangle_colour(5, 90, 200, 320, c_gray, c_gray, c_gray, c_gray, false); 
-draw_set_alpha(1)
-
-draw_set_color(c_white)
-draw_set_font(fnt_damage)
-draw_text(x,y + 80, "player x: " + string(obj_player.x))
-draw_text(x,y + 100,"player y: " + string(obj_player.y))
-draw_text(x,y + 120,"mouse x: " + string(mouse_x))
-draw_text(x,y + 140,"mouse y: " + string(mouse_y))
-draw_text(x,y + 160, "TOTAL instances cnt: " + string(instance_count))
-draw_text(x,y + 190, "obj_path_marker nr: " + string(instance_number(obj_path_marker)))
-draw_text(x,y + 220, "obj_block nr: "       + string(instance_number(obj_block)))
-draw_text(x,y + 250, "obj_nav_square nr: "  + string(instance_number(obj_nav_square)))
-draw_text(x,y + 280, "level_time: "       + string(get_timer() / 1000000))
-draw_set_font(fnt_default)
+                          
+    draw_set_alpha(0.7)
+    draw_rectangle_colour(5, 90, 200, 320, c_gray, c_gray, c_gray, c_gray, false); 
+    draw_set_alpha(1)
+    
+    draw_set_color(c_white)
+    draw_set_font(fnt_damage)
+    draw_text(x,y + 80, "cos: " + string((point_direction(obj_player.x, obj_player.y, mouse_x, mouse_y))))
+    draw_text(x,y + 100,"sin: " + string((point_direction(obj_player.x, obj_player.y, mouse_x, mouse_y))))
+    draw_text(x,y + 120,"mouse x: " + string(mouse_x))
+    draw_text(x,y + 140,"mouse y: " + string(mouse_y))
+    draw_text(x,y + 160, "TOTAL instances cnt: " + string(instance_count))
+    draw_text(x,y + 190, "obj_path_marker nr: " + string(instance_number(obj_path_marker)))
+    draw_text(x,y + 220, "obj_block nr: "       + string(instance_number(obj_block)))
+    draw_text(x,y + 250, "player speed: "  + string(obj_player.speed))
+    draw_text(x,y + 280, "level_time: "       + string(get_timer() / 1000000))
+    draw_set_font(fnt_default)
 
 }
 </string>
