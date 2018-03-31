@@ -1,0 +1,1 @@
+#macro VIEW_SCALE_FACTOR 7

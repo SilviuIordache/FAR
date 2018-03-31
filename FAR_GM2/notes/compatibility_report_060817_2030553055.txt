@@ -1,0 +1,71 @@
+Converting GML script : ${project_dir}\scripts\scr_get_gamepad_input\scr_get_gamepad_input.gml
+Converted description : /// @description scr_get_gamepad_input(device)/// @function scr_get_gamepad_input
+/// @param device
+
+Converting GML script : ${project_dir}\scripts\scr_move_axis\scr_move_axis.gml
+Converted description : /// @description scr_move_axis(xaxis,yaxis, threshold,spd)/// @function scr_move_axis
+/// @param xaxis
+/// @param yaxis
+/// @param  threshold
+/// @param spd
+
+Font fnt_damage has been converted to font family Arial (Regular). Font has been regenerated, small inconsistencies may occur.
+Font fnt_FAR has been converted to font family Arial (Regular). Font has been regenerated, small inconsistencies may occur.
+Font fnt_default has been converted to font family Courier New (Bold). Font has been regenerated, small inconsistencies may occur.
+Converting GML script : ${project_dir}\objects\obj_player\Alarm_3.gml
+Converted description : /// @description hopVar 0 & -1 alternation
+
+Converting GML script : ${project_dir}\objects\obj_player\Alarm_2.gml
+Converted description : /// @description Sword timers 2
+
+Converting GML script : ${project_dir}\objects\obj_player\Alarm_1.gml
+Converted description : /// @description canAttackMelee = true
+
+Converting GML script : ${project_dir}\objects\obj_player\Alarm_0.gml
+Converted description : /// @description  canAttackRanged = true
+
+Converting GML script : ${project_dir}\objects\obj_player\Step_0.gml
+Converted description : /// @description MAIN STEP EVENT; MOVEMENT SCRIPT
+
+Converting GML script : ${project_dir}\objects\obj_monster\Alarm_2.gml
+Converted description : /// @description stunTimeAfterCharge && canCharge
+
+Converting GML script : ${project_dir}\objects\obj_monster\Step_0.gml
+Converted description : /// @description PATHFINDING
+
+Converting GML script : ${project_dir}\objects\obj_system\Create_0.gml
+Converted description : /// @description SYSTEM VARIABLES
+
+Converting GML script : ${project_dir}\objects\obj_system\Step_0.gml
+Converted builtin : line 13 : view_xview[0] -> __view_get( e__VW.XView, 0 )
+Converted builtin : line 14 : view_yview[0] -> __view_get( e__VW.YView, 0 )
+Converted description : /// @description CAMERA & RETURN TO PREVIOUS MENU
+Converted builtin : line 13 : view_xview[0]=(__view_get( e__VW.XView, 0 )*7+targetX)/8 - horCameraAdjustment -> __view_set( e__VW.XView, 0, (__view_get( e__VW.XView, 0 )*7+targetX)/8 - horCameraAdjustment )
+Converted builtin : line 14 : view_yview[0]=(__view_get( e__VW.YView, 0 )*7+targetY)/8 - verCameraAdjustment -> __view_set( e__VW.YView, 0, (__view_get( e__VW.YView, 0 )*7+targetY)/8 - verCameraAdjustment )
+
+macOS icon ${options_dir}\mac\icons\icon512.png written out as 32-bit.
+Windows NSIS Installer Script has been set to default due to changes in GameMaker Studio 2.
+Converting GML script : ${project_dir}\scripts\scr_Zoom\scr_Zoom.gml
+Converted builtin : line 4 : view_wview[0] *= 2 -> __view_set( e__VW.WView, 0, __view_get( e__VW.WView, 0 ) * (2) )
+Converted builtin : line 9 : view_wview[0] /= 2 -> __view_set( e__VW.WView, 0, __view_get( e__VW.WView, 0 ) / (2) )
+Converted builtin : line 3 : view_hview[0] *= 2 -> __view_set( e__VW.HView, 0, __view_get( e__VW.HView, 0 ) * (2) )
+Converted builtin : line 8 : view_hview[0] /= 2 -> __view_set( e__VW.HView, 0, __view_get( e__VW.HView, 0 ) / (2) )
+
+Converting GML script : ${project_dir}\objects\obj_bolt\Step_0.gml
+Converted description : /// @description DRAW VARIABLES UPDATE
+
+game speed set to 60
+added compatibility script action/action_if_collision.gml
+added compatibility script action/action_kill_object.gml
+added compatibility script action/action_set_hspeed.gml
+added compatibility script action/action_set_relative.gml
+added compatibility script action/action_set_vspeed.gml
+added compatibility script instance/instance_create.gml
+added compatibility script object/object_get_depth.gml
+added compatibility script view/__view_get.gml
+added compatibility script view/__view_set.gml
+added compatibility script view/__view_set_internal.gml
+added compatibility script action/__init_action.gml
+added compatibility script view/__init_view.gml
+added compatibility script __init_global.gml
+added compatibility script __global_object_depths.gml
