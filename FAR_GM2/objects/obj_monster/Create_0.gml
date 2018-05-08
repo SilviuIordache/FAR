@@ -17,15 +17,14 @@ isMoving                    = 0
 path_smartAI                = path_add()
 pathFindingStarted          = false
 shouldSpread                = true
-aggroRadius                 = 140
+aggroRadius                 = 250
 chargeRadius                = 25
 isCharger                   = false
 canCharge                   = true
-stunTimeAfterCharge         = 180
-AI_path_scan_refresh_rate   = 15
-
-			
-
+stunTimeAfterCharge         = 60
+AI_path_scan_refresh_rate   = 60 * 0.25
+last_known_player_x			= 0
+last_known_player_y			= 0
 //------------------------------------------------
 
 //----DRAW VARIABLES------------------------------
