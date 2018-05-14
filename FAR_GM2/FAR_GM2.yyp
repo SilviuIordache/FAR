@@ -775,6 +775,14 @@
             }
         },
         {
+            "Key": "8787e302-7088-45dc-8c86-18b961406b9f",
+            "Value": {
+                "id": "dfb92f1f-ac46-4220-86e6-18604ae06687",
+                "resourcePath": "sprites\\spr_player_rogue12\\spr_player_rogue12.yy",
+                "resourceType": "GMSprite"
+            }
+        },
+        {
             "Key": "88ce85ae-bfe8-4446-ba43-ff4906ea5a18",
             "Value": {
                 "id": "4d780f87-f156-4e41-862d-262515ac299c",
