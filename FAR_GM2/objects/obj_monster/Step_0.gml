@@ -1,12 +1,31 @@
-//Check if the player is in the line of sight-
+//Check if the player is in the line of sight
 if collision_line( x, y, obj_player.x, obj_player.y, obj_block, false, true )
 	player_is_in_LOS = false
 else
 	player_is_in_LOS = true
 
+//Player in range logic check
+if (distance_to_object(obj_player) <= aggroRadius)
+	player_is_in_range = true
+else
+	player_is_in_range = false
+
+
+//Suspicion logic check
+if (player_is_in_LOS && player_is_in_range)
+{
+	if (suspicion_level < suspicion_max)
+		suspicion_level += suspicion_gain_rate
+}
+else
+{
+	if (suspicion_level > 0)
+		suspicion_level -= suspicion_gain_rate
+}
+	
 
 //record the player x & y as long as he in in LOS and within range
-if (player_is_in_LOS == true && distance_to_object(obj_player) < aggroRadius)
+if (suspicion_level == suspicion_max && player_is_in_range)
 {
 	last_known_player_x = obj_player.x
 	last_known_player_y = obj_player.y
@@ -14,13 +33,13 @@ if (player_is_in_LOS == true && distance_to_object(obj_player) < aggroRadius)
 
 
 //if there is a player and no pathfinding has started yet
-if (instance_exists(obj_player) && pathFindingStarted == false && player_is_in_LOS && distance_to_object(obj_player) < aggroRadius)
+if (instance_exists(obj_player) && pathFindingStarted == false && suspicion_level == suspicion_max && player_is_in_range)
 {
 	//clears the pathfinding GRID (grid is created in obj_system Create event)
 	mp_grid_clear_all(AI_grid); 
 	
 	//adds obj_block objects as obstacles;
-	mp_grid_add_instances(AI_grid, obj_block, false); 
+	mp_grid_add_instances(AI_grid, obj_block, true); 
 	
 	//compute a path on the created GRID towards the last known player position
 	mp_grid_path(AI_grid, path_smartAI, x, y, last_known_player_x, last_known_player_y, true); 
@@ -72,40 +91,3 @@ if(direction > 90 && direction < 270)
     directionFacing = -1
 else
     directionFacing = 1
-
-/// @description PATHFINDING
-//CHECK TO SEE IF THE PLAYER IS ALIVE AND A PATHFIND HASN'T ALREADY STARTED
-/*
-if (instance_exists(obj_player) && pathFindingStarted == false && distance_to_object(obj_player) < aggroRadius )
-{
-    mp_grid_clear_all(AI_grid);       //creates a GRID
-    mp_grid_add_instances(AI_grid, obj_block, false); //adds obj_block objects as obstacles;
-    mp_grid_path(AI_grid, path_smartAI, x, y, obj_player.x, obj_player.y, true);  //compute a path on the created GRID towards the player position 
-    if (path_exists(path_smartAI))
-    {
-        if (isCharger == true && distance_to_object(obj_player) < chargeRadius)
-        {
-           if (canCharge == true)
-           {
-               speed_current = speed_charge
-               canCharge = false
-               alarm[2]  = stunTimeAfterCharge
-           }
-           else
-           {
-               speed_current = speed_stun
-           }
-        }
-        else
-           speed_current = speed_normal
-        pathFindingStarted = true;
-        alarm[0] = AI_path_scan_refresh_rate;
-        path_start(path_smartAI, speed_current, 0, 1) //start moving on the previously created path
-    }
-}
-else if ( distance_to_object(obj_player) > aggroRadius)
-{   
-    path_speed = 0
-    path_end();
-}
-*/

@@ -13,18 +13,22 @@ xp_reward		= 5
 //--AI Variables----------------------------------
 directionFacing             = 1 // 0 = right; 1 = left
 player_is_in_LOS			= false
+player_is_in_range			= false
 isMoving                    = 0
 path_smartAI                = path_add()
 pathFindingStarted          = false
 shouldSpread                = true
-aggroRadius                 = 2000
+aggroRadius                 = 500
 chargeRadius                = 25
 isCharger                   = false
 canCharge                   = true
 stunTimeAfterCharge         = 60
-AI_path_scan_refresh_rate   = 60 * 0.1
+AI_path_scan_refresh_rate   = 60 * 0.03
 last_known_player_x			= 0
 last_known_player_y			= 0
+suspicion_level				= 0
+suspicion_gain_rate			= 6
+suspicion_max				= 60 * 3
 //------------------------------------------------
 
 //----DRAW VARIABLES------------------------------

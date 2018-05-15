@@ -4,6 +4,19 @@ draw_sprite_ext(shadow_sprite, image_index, x + shadow_offset_X, y + shadow_offs
 //DRAW SELF
 draw_sprite_ext(main_sprite, image_index, x, y + hopVar, image_xscale * directionFacing, image_yscale, image_angle, image_blend, image_alpha);  
 
+//DRAW SUSPICION METER
+if (suspicion_level > 0)
+{
+	draw_sprite(spr_suspicion_meter_bck, 0, x, y - 9)
+	draw_sprite_ext(spr_suspicion_meter_gain, 0, x, y - 9, 1, suspicion_level * 1/suspicion_max, 0, c_white, 1)	
+	if (suspicion_level == suspicion_max)
+		draw_sprite(spr_suspicion_meter_full, 0, x, y - 9)
+}
+
+
+
+//-------------DEBUG DRAW--------------
+
 //DRAW PATH
 if path_exists(path_smartAI)
 {
@@ -13,8 +26,12 @@ if path_exists(path_smartAI)
 }
 
 //SEE FOV scan in real time
-if (distance_to_object(obj_player) < aggroRadius)
+if (player_is_in_range)
 {
+	draw_set_color(c_gray)
+    draw_line(x, y, obj_player.x , obj_player.y)
+	draw_set_color(c_gray)
+	/*
     if player_is_in_LOS == true
     {
         draw_set_color(c_red)
@@ -27,7 +44,8 @@ if (distance_to_object(obj_player) < aggroRadius)
         draw_line(x, y, obj_player.x , obj_player.y)
 		draw_set_color(c_white)
     }
+	*/
 }
 
 //DEBUG DRAW
-//draw_text(x,y, string(path_speed))
+//draw_text(x,y, string(suspicion_level))
