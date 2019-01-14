@@ -31,6 +31,24 @@ if (suspicion_level == suspicion_max && player_is_in_range)
 	last_known_player_y = obj_player.y
 }
 
+//return to origin if player is no longer in LOS
+if (suspicion_level == 0 && player_is_in_LOS == false  && pathFindingStartedHOME == false)
+{
+	mp_grid_clear_all(AI_grid); 
+	mp_grid_add_instances(AI_grid, obj_block, true); 
+	mp_grid_path(AI_grid, path_AI_return_home, x, y, x_origin, y_origin, true); 
+	
+	if (path_exists(path_AI_return_home))
+	{
+		pathFindingStartedHOME = true
+		speed_current = speed_normal
+		path_start(path_AI_return_home, speed_current, path_action_stop, 1) 
+	}
+	
+	if (x_origin == x && y_origin == y)
+		pathFindingStartedHOME = true
+}
+
 
 //if there is a player and no pathfinding has started yet
 if (instance_exists(obj_player) && pathFindingStarted == false && suspicion_level == suspicion_max && player_is_in_range)

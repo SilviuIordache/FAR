@@ -1,6 +1,6 @@
 //--Base Stats------------------------------------
 hp				= 50
-speed_current   = 0.4
+speed_current   = 0.2
 speed_normal	= speed_current
 speed_roaming	= speed_current / 2
 speed_charge	= speed_current* 3
@@ -16,9 +16,11 @@ player_is_in_LOS			= false
 player_is_in_range			= false
 isMoving                    = 0
 path_smartAI                = path_add()
+path_AI_return_home         = path_add()
 pathFindingStarted          = false
+pathFindingStartedHOME		= false
 shouldSpread                = true
-aggroRadius                 = 500
+aggroRadius                 = 800
 chargeRadius                = 25
 isCharger                   = false
 canCharge                   = true
@@ -29,6 +31,8 @@ last_known_player_y			= 0
 suspicion_level				= 0
 suspicion_gain_rate			= 6
 suspicion_max				= 60 * 3
+x_origin					= x
+y_origin					= y
 //------------------------------------------------
 
 //----DRAW VARIABLES------------------------------
