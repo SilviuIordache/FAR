@@ -1,7 +1,8 @@
 event_inherited()
 
 //--Base Stats------------------------------------
-hp           = 35
+hp_initial   = 35
+hp_current   = hp_initial
 spd          = 0.5
 dmg          = 1
 xp_reward    = 6

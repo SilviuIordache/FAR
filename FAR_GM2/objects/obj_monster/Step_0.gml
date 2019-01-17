@@ -1,36 +1,63 @@
+switch (currentState)
+{
+	case AIStates.neutral:
+		script_execute(scr_AI_neutral);
+		break;
+	case AIStates.suspicious:
+		script_execute(scr_AI_suspicious);
+		break;
+	case AIStates.following:
+		script_execute(scr_AI_following);
+		break;
+	case AIStates.investigating:
+		script_execute(scr_AI_investigating())
+		break;
+	case AIStates.returning:
+		script_execute(scr_AI_returning())
+		break;
+	case AIStates.combat:
+		break;
+	case AIStates.dead:
+		break;
+}
+
+/*
 //Check if the player is in the line of sight
 if collision_line( x, y, obj_player.x, obj_player.y, obj_block, false, true )
 	player_is_in_LOS = false
 else
 	player_is_in_LOS = true
+*/
 
+/*
 //Player in range logic check
 if (distance_to_object(obj_player) <= aggroRadius)
 	player_is_in_range = true
 else
 	player_is_in_range = false
+*/
 
-
+/*
 //Suspicion logic check
 if (player_is_in_LOS && player_is_in_range)
 {
 	if (suspicion_level < suspicion_max)
 		suspicion_level += suspicion_gain_rate
 }
-else
-{
-	if (suspicion_level > 0)
+else if (suspicion_level > 0)
 		suspicion_level -= suspicion_gain_rate
-}
-	
+*/
 
+/*
 //record the player x & y as long as he in in LOS and within range
 if (suspicion_level == suspicion_max && player_is_in_range)
 {
 	last_known_player_x = obj_player.x
 	last_known_player_y = obj_player.y
 }
+*/
 
+/*
 //return to origin if player is no longer in LOS
 if (suspicion_level == 0 && player_is_in_LOS == false  && pathFindingStartedHOME == false)
 {
@@ -48,8 +75,9 @@ if (suspicion_level == 0 && player_is_in_LOS == false  && pathFindingStartedHOME
 	if (x_origin == x && y_origin == y)
 		pathFindingStartedHOME = true
 }
+*/
 
-
+/*
 //if there is a player and no pathfinding has started yet
 if (instance_exists(obj_player) && pathFindingStarted == false && suspicion_level == suspicion_max && player_is_in_range)
 {
@@ -75,6 +103,7 @@ if (instance_exists(obj_player) && pathFindingStarted == false && suspicion_leve
 		
 	}
 }
+*/
 
 /*
 //check if player is out of range
@@ -85,18 +114,20 @@ if (distance_to_object(obj_player) > aggroRadius )
 	path_end();
 }
 */
-		
+
+/*
 //IF THE PLAYER DIED, STOP PATHFINDING
 if (!instance_exists(obj_player))
-{
 	path_end();
-}
+*/
 
+/*
 ///MOVING STATE
 if (path_position == 1)
 	isMoving = 0
 else if (path_position == 0 && pathFindingStarted)
 	isMoving = 1
+
 
 ///HOP VAR - Make the object hop only when moving
 if (isMoving == true)
@@ -105,7 +136,8 @@ else
     hopVar = 0;
 
 ///DIRECTION FACING
-if(direction > 90 && direction < 270)
-    directionFacing = -1
-else
-    directionFacing = 1
+if(direction > 90 && direction < 270) 
+	directionFacing = -1
+else directionFacing = 1
+
+*/

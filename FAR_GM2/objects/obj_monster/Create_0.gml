@@ -1,5 +1,16 @@
+//--HP bar GUI draw variables-------------------------
+
+///grab the width and height of view
+var cw = camera_get_view_width(view_camera);
+var ch = camera_get_view_height(view_camera);
+
+///set some variables to hold the value and div that by width and height
+display_scalex = display_get_gui_width()/cw;
+display_scaley = display_get_gui_height()/ch;
+
 //--Base Stats------------------------------------
-hp				= 50
+hp_initial      = 50
+hp_current	    = hp_initial
 speed_current   = 0.2
 speed_normal	= speed_current
 speed_roaming	= speed_current / 2
@@ -17,6 +28,7 @@ player_is_in_range			= false
 isMoving                    = 0
 path_smartAI                = path_add()
 path_AI_return_home         = path_add()
+canPathFind					= true
 pathFindingStarted          = false
 pathFindingStartedHOME		= false
 shouldSpread                = true
@@ -44,17 +56,7 @@ hopVar                      = 0
 //------------------------------------------------
 
 //States
-
-enum states
-{
-	neutral			  = true,			
-	suspicious		  = false,			
-	investigating	  = false,		
-	aggresive		  = false,
-	returningToOrigin = false
-}
-
-state = states.neutral;
+currentState = AIStates.neutral;
 
 
 

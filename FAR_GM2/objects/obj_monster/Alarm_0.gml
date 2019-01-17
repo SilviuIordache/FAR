@@ -1,2 +1,2 @@
-pathFindingStarted = false;
+canPathFind = true;
 
