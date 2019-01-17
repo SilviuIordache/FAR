@@ -1,8 +1,8 @@
 {
-    "id": "a54e1e2b-56e3-4a23-b56e-fc6401144afb",
+    "id": "4aeca7fb-ee82-4080-83ed-2b7f027e81b8",
     "modelName": "GMScript",
     "mvc": "1.0",
-    "name": "scr_AI_remember_last_player_pos",
+    "name": "scrAICheckPlayerRangeAndLos",
     "IsCompatibility": false,
     "IsDnD": false
 }

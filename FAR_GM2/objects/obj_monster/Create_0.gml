@@ -23,8 +23,9 @@ xp_reward		= 5
 
 //--AI Variables----------------------------------
 directionFacing             = 1 // 0 = right; 1 = left
-player_is_in_LOS			= false
-player_is_in_range			= false
+playerInLos					= false
+playerInRange				= false
+playerInLosAndRange			= false
 isMoving                    = 0
 path_smartAI                = path_add()
 path_AI_return_home         = path_add()
@@ -41,7 +42,7 @@ AI_path_scan_refresh_rate   = 60 * 0.03
 last_known_player_x			= 0
 last_known_player_y			= 0
 suspicion_level				= 0
-suspicion_gain_rate			= 6
+suspicion_gain_rate			= 1
 suspicion_max				= 60 * 3
 x_origin					= x
 y_origin					= y

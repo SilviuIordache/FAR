@@ -25,20 +25,23 @@ draw_sprite_ext(main_sprite,
 //DRAW SUSPICION METER
 if (suspicion_level > 0) {
 	//meter background
-	draw_sprite(spr_suspicion_meter_bck, 0, x, y - 9)
+	draw_sprite(spr_suspicion_meter_bck,
+				0, 
+				x - 6, 
+				y - 11)
 	
 	//draw fill
 	draw_sprite_ext(spr_suspicion_meter_gain, 
 					0, 
-					x, 
-					y - 9, 
+					x - 6, 
+					y - 11, 
 					1, 
 					suspicion_level * 1/suspicion_max, 
 					0, 
 					c_white,
 					1)	
 	if (suspicion_level == suspicion_max)
-		draw_sprite(spr_suspicion_meter_full, 0, x, y - 9)
+		draw_sprite(spr_suspicion_meter_full, 0, x - 6, y - 11)
 }
 
 
@@ -53,12 +56,12 @@ if path_exists(path_smartAI)
 }
 
 //SEE FOV scan in real time
-if (player_is_in_range)
+if (playerInRange)
 {
 	draw_set_color(c_gray)
     draw_line(x, y, obj_player.x , obj_player.y)
 	draw_set_color(c_gray)
-	/*
+	
     if player_is_in_LOS == true
     {
         draw_set_color(c_red)
@@ -71,7 +74,7 @@ if (player_is_in_range)
         draw_line(x, y, obj_player.x , obj_player.y)
 		draw_set_color(c_white)
     }
-	*/
+	
 }
 
 //DEBUG DRAW

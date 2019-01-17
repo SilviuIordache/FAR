@@ -1,14 +1,19 @@
-script_execute(scr_AI_check_player_in_LOS());
-script_execute(scr_AI_check_player_in_range());
+script_execute(scrAICheckPlayerRangeAndLos())
 
 //suspicion meter logic
-if (suspicion_level < suspicion_max)
-	suspicion_level += suspicion_gain_rate;
+if (script_execute(scrAICheckPlayerRangeAndLos()))
+{
+	if (suspicion_level < suspicion_max)
+		suspicion_level += suspicion_gain_rate;
+		
+	if (suspicion_level >= suspicion_max)
+		suspicion_level = suspicion_max
+}
 else if (suspicion_level > 0)
 	suspicion_level -= suspicion_gain_rate;
-	
+
 //remember last known player position
-script_execute(scr_AI_remember_last_player_pos());
+script_execute(scrAiRememberLastPlayerPos());
 
 if (suspicion_level <= 0)
 	currentState = AIStates.neutral;
