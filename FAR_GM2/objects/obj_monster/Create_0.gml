@@ -11,7 +11,7 @@ display_scaley = display_get_gui_height()/ch;
 //--Base Stats------------------------------------
 hp_initial      = 50
 hp_current	    = hp_initial
-speed_current   = 0.2
+speed_current   = 0.1
 speed_normal	= speed_current
 speed_roaming	= speed_current / 2
 speed_charge	= speed_current* 3
@@ -42,7 +42,7 @@ AI_path_scan_refresh_rate   = 60 * 0.03
 last_known_player_x			= 0
 last_known_player_y			= 0
 suspicion_level				= 0
-suspicion_gain_rate			= 1
+suspicion_gain_rate			= 3
 suspicion_max				= 60 * 3
 x_origin					= x
 y_origin					= y

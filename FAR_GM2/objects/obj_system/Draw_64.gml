@@ -54,7 +54,7 @@ if (room != room_menu && instance_exists(obj_player) )
 	draw_text(x + 20,y + 200, "canPathFind: " + string(obj_skeleton.canPathFind))
 	draw_text(x + 20,y + 220, "playerInLOS: " + string(obj_skeleton.playerInLos))
 	draw_text(x + 20,y + 240, "playerInRange: " + string(obj_skeleton.playerInRange))
-	//draw_text(x + 20,y + 260, "plInRangeAndLos: " + string(script_execute(scrAICheckPlayerRangeAndLos())))
+	//draw_text(x + 20,y + 260, "DebugScr: " + string(script_execute(scrTest())));
 	/*
     draw_text(x + 20,y + 80, string_hash_to_newline("cos: " + string((point_direction(obj_player.x, obj_player.y, mouse_x, mouse_y)))))
     draw_text(x + 20,y + 100,string_hash_to_newline("sin: " + string((point_direction(obj_player.x, obj_player.y, mouse_x, mouse_y)))))

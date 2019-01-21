@@ -1,24 +1,22 @@
-script_execute(scrAiRememberLastPlayerPos());
+scrAiRememberLastPlayerPos();
 
 if (instance_exists(obj_player))
 {
-	if (script_execute(scrAICheckPlayerRangeAndLos()))
-		script_execute(scr_AI_init_grid());
-	
-	//compute path towards player
-	if (player_is_in_LOS && player_is_in_range)
-		mp_grid_path(AI_grid, path_smartAI, x, y, obj_player.x, obj_player.y, true);
+	if (scrAICheckPlayerRangeAndLos())
+	{
+		scr_AI_init_grid();
+		if (mp_grid_path(AI_grid, path_smartAI, x, y, last_known_player_x, last_known_player_y, true))
+			scr_AI_initialize_path();
+	}
 	else
-		path_smartAI = 0;
-	
-	if (path_exists(path_smartAI))
-		script_execute(scr_AI_initialize_path())
-	else
-		currentState = AIStates.investigating;
+	{
+		currentState = AIStates.returning
+	}
+		
 }
 else
 {
 	path_end();
 	currentState = AIStates.neutral;
 }	
-script_execute(scr_AI_hop_animation());
+scr_AI_hop_animation();

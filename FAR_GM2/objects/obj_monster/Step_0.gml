@@ -1,19 +1,19 @@
 switch (currentState)
 {
 	case AIStates.neutral:
-		script_execute(scr_AI_neutral);
+		scr_AI_neutral();
 		break;
 	case AIStates.suspicious:
-		script_execute(scr_AI_suspicious);
+		scr_AI_suspicious();
 		break;
 	case AIStates.following:
-		script_execute(scr_AI_following);
+		scr_AI_following();
 		break;
 	case AIStates.investigating:
-		script_execute(scr_AI_investigating())
+		scr_AI_investigating();
 		break;
 	case AIStates.returning:
-		script_execute(scr_AI_returning())
+		scr_AI_returning();
 		break;
 	case AIStates.combat:
 		break;

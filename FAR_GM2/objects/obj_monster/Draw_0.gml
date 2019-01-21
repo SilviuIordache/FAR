@@ -56,13 +56,13 @@ if path_exists(path_smartAI)
 }
 
 //SEE FOV scan in real time
-if (playerInRange)
+if scrAiCheckPlayerInRange()
 {
 	draw_set_color(c_gray)
     draw_line(x, y, obj_player.x , obj_player.y)
 	draw_set_color(c_gray)
 	
-    if player_is_in_LOS == true
+    if scrAiCheckPlayerInLos()
     {
         draw_set_color(c_red)
         draw_line(x, y, obj_player.x , obj_player.y)

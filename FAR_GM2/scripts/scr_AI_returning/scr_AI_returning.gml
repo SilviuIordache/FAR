@@ -1,4 +1,4 @@
-script_execute(scr_AI_init_grid());
+scr_AI_init_grid();
 
 mp_grid_path(AI_grid, path_AI_return_home, x, y, x_origin, y_origin, true); 
 	
@@ -10,7 +10,9 @@ if (path_exists(path_AI_return_home))
 }
 	
 if (x_origin == x && y_origin == y)
+{
 	pathFindingStartedHOME = true
+}
 
 
-script_execute(scr_AI_hop_animation());
+scr_AI_hop_animation();
