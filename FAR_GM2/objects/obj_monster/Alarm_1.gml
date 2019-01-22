@@ -1,2 +1,2 @@
-spd = 0.4;
-
+///@description lastPlPosInvest = true
+lastPlayerPosInvestigated = true;

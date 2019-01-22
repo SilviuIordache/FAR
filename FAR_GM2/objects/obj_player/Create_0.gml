@@ -1,6 +1,3 @@
-//delete after
-debugVar = scrTest()
-
 //-----Player Logic Variables-------
 isMoving                    = false;
 global.playerMouseAngle     = 45;

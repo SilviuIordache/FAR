@@ -27,6 +27,7 @@ horCameraAdjustment   = 11
 
 
 //----AI Variables------------------------------------------------
+/*
 enum AIStates {
 	neutral,
 	suspicious,
@@ -36,6 +37,7 @@ enum AIStates {
 	returning,
 	dead
 }
+*/
 
 globalvar AI_grid;
           AI_grid = mp_grid_create(0, 0, room_width / 16, room_height / 16, 16, 16);

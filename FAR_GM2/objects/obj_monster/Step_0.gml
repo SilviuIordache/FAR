@@ -1,24 +1,23 @@
 switch (currentState)
 {
-	case AIStates.neutral:
+	case AIStates.neutral: //0
 		scr_AI_neutral();
 		break;
-	case AIStates.suspicious:
+	case AIStates.suspicious: //1
 		scr_AI_suspicious();
 		break;
-	case AIStates.following:
+	case AIStates.following: //2
 		scr_AI_following();
 		break;
-	case AIStates.investigating:
-		scr_AI_investigating();
-		break;
-	case AIStates.returning:
+	case AIStates.returning: //3
 		scr_AI_returning();
 		break;
-	case AIStates.combat:
-		break;
-	case AIStates.dead:
-		break;
+	default:
+		instance_destroy(); //4;
+	//case AIStates.combat:
+	//	break;
+	//case AIStates.dead:
+	//	break;
 }
 
 /*

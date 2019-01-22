@@ -10,6 +10,8 @@ var xx = (x-cx)*display_scalex;
 var yy = (y-cy)*display_scaley;
 
 draw_set_text(c_white, fnt_default, fa_left, fa_top)
-draw_text(xx - 20, yy - 60, string(hp_current) + "/" + string(hp_initial));
 
+draw_text(xx - 20, yy - 60, string(hp_current) + "/" + string(hp_initial));
 draw_text(xx - 20, yy - 80, "state: " + string(currentState));
+draw_text(xx - 20, yy - 100, "path: " + string(path_position));
+draw_text(xx - 20, yy - 120, "lPPInv: " + string(lastPlayerPosInvestigated));

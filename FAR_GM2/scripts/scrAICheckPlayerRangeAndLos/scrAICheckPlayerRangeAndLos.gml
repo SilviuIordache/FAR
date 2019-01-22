@@ -1,1 +1,2 @@
-return (scrAiCheckPlayerInLos() && scrAiCheckPlayerInRange());
+return (scrAiCheckPlayerInLos() && 
+	    scrAiCheckPlayerInRange());

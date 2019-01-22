@@ -2,21 +2,39 @@ scrAiRememberLastPlayerPos();
 
 if (instance_exists(obj_player))
 {
-	if (scrAICheckPlayerRangeAndLos())
+	if (scrAICheckPlayerRangeAndLos() && canPathFind == true)
 	{
-		scr_AI_init_grid();
-		if (mp_grid_path(AI_grid, path_smartAI, x, y, last_known_player_x, last_known_player_y, true))
-			scr_AI_initialize_path();
-	}
-	else
-	{
-		currentState = AIStates.returning
-	}
+		canPathFind = false;
+		alarm[0] = pathScanRefreshRate;
 		
+		lastPlayerPosInvestigated = false;
+
+		scr_AI_init_grid();
+		
+		if (mp_grid_path(AI_grid, path_smartAI, x, y, last_known_player_x, last_known_player_y, true))
+		{
+			speed_current = speed_normal;
+			path_start (path_smartAI, 
+						speed_current, 
+						path_action_stop, 
+						false);
+		}
+	}
+	//check if path end has been reached; 0 = path start, 1 = path end
+	if (path_position == 1)
+	{
+		alarm[1] = investigateTime;
+	}	
 }
 else
 {
 	path_end();
 	currentState = AIStates.neutral;
 }	
+
+if (lastPlayerPosInvestigated == true)
+{
+	currentState = AIStates.returning;
+}
+
 scr_AI_hop_animation();
