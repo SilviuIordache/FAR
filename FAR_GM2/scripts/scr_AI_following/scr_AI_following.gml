@@ -23,7 +23,8 @@ if (instance_exists(obj_player))
 	//check if path end has been reached; 0 = path start, 1 = path end
 	if (path_position == 1)
 	{
-		alarm[1] = investigateTime;
+		//alarm[1] = investigateTime;
+		currentState = AIStates.returning;
 	}	
 }
 else
@@ -34,7 +35,7 @@ else
 
 if (lastPlayerPosInvestigated == true)
 {
-	currentState = AIStates.returning;
+	///
 }
 
 scr_AI_hop_animation();

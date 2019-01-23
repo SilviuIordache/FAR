@@ -13,9 +13,9 @@ hp_initial      = 50;
 hp_current	    = hp_initial;
 
 speed_current   = 0;
-speed_normal	= 0.5;
+speed_normal	= 0.35;
 speed_roaming	= speed_normal / 2;
-speed_returning = speed_normal / 3;
+speed_returning = speed_normal / 1.5;
 speed_charge	= speed_normal* 3;
 speed_stun		= speed_normal / 1.5;
 
@@ -39,7 +39,7 @@ currentState				= AIStates.neutral;
 directionFacing             = 1; // 0 = right; 1 = left
 
 lastPlayerPosInvestigated   = false;
-investigateTime             = 60 * 0.1;
+investigateTime             = 60 * 0.2;
 
 
 playerInLos					= false;
@@ -49,7 +49,7 @@ playerInLosAndRange			= false;
 isMoving                    = 0;
 
 path_smartAI                = path_add();
-path_AI_return_home         = path_add();
+pathReturningAI				= path_add();
 
 canPathFind					= true;
 pathFindingStarted          = false;
