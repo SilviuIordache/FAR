@@ -16,3 +16,4 @@ draw_text(xx - 20, yy - 80, "state: " + string(currentState));
 draw_text(xx - 20, yy - 100, "path: " + string(path_position));
 draw_text(xx - 20, yy - 120, "p index: " + string(path_index));
 draw_text(xx - 20, yy - 140, "lPPInv: " + string(lastPlayerPosInvestigated));
+draw_text(xx - 20, yy - 160, "al[0]: " + string(alarm[0]));

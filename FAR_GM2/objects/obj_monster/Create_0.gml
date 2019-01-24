@@ -13,7 +13,7 @@ hp_initial      = 50;
 hp_current	    = hp_initial;
 
 speed_current   = 0;
-speed_normal	= 0.35;
+speed_normal	= 0.6;
 speed_roaming	= speed_normal / 2;
 speed_returning = speed_normal / 1.5;
 speed_charge	= speed_normal* 3;
@@ -29,9 +29,8 @@ enum AIStates {
 	neutral,
 	suspicious,
 	following,
-	combat,
+	investigating,
 	returning,
-	dead
 }
 
 currentState				= AIStates.neutral;
@@ -39,7 +38,7 @@ currentState				= AIStates.neutral;
 directionFacing             = 1; // 0 = right; 1 = left
 
 lastPlayerPosInvestigated   = false;
-investigateTime             = 60 * 0.2;
+investigateTime             = 60 * 3;
 
 
 playerInLos					= false;
@@ -55,13 +54,13 @@ canPathFind					= true;
 pathFindingStarted          = false;
 pathFindingStartedHOME		= false;
 
-aggroRadius                 = 800;
+aggroRadius                 = 1500;
 chargeRadius                = 25;
 isCharger                   = false;
 canCharge                   = true;
 
 stunTimeAfterCharge         = 60;
-pathScanRefreshRate         = 60 * 0.2;
+pathScanRefreshRate         = 60 * 0.1;
 
 last_known_player_x			= 0;
 last_known_player_y			= 0;

@@ -1,22 +1,16 @@
 scr_AI_init_grid();
 
-
-if (pathFindingStarted == false)
+if (pathFindingStartedHOME == false)
 {
-	pathFindingStarted = true;
-	mp_grid_path(AI_grid, path_smartAI, x, y, x_origin, y_origin, true); 
-	
-	if (path_exists(path_smartAI))
+	pathFindingStartedHOME = true;
+	if (mp_grid_path(AI_grid, path_smartAI, x, y, x_origin, y_origin, true))
 	{
-		pathFindingStarted = true;
 		speed_current = speed_returning;
-		path_start (path_smartAI, speed_current, path_action_stop, false) ;
+		path_start (path_smartAI, speed_current, path_action_stop, false);
 	}
 }
 
-//path_get_name(0) == "path_smartAI" 
-
-if ( path_position == 1)
+if (path_position == 1)
 {
 	currentState = AIStates.neutral;
 }
