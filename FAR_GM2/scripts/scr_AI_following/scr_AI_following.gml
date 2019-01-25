@@ -29,4 +29,9 @@ else
 	currentState = AIStates.neutral;
 }	
 
+if (distance_to_object(obj_player) < combatRange)
+{
+	currentState = AIStates.combat;
+}
+
 scr_AI_hop_animation();

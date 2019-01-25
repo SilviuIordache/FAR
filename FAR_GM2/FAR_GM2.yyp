@@ -391,6 +391,14 @@
             }
         },
         {
+            "Key": "360f6400-641e-4a53-b376-4eeb6b51cbe1",
+            "Value": {
+                "id": "791412ca-7188-40a5-86eb-9eb1ecfae08c",
+                "resourcePath": "scripts\\scr_AI_combat\\scr_AI_combat.yy",
+                "resourceType": "GMScript"
+            }
+        },
+        {
             "Key": "37f3d21b-84a6-45cb-be66-5d3b2fd57f7b",
             "Value": {
                 "id": "36a29f11-af57-4b3c-9668-2841275075fa",
@@ -1597,6 +1605,7 @@
         "6fb36d87-4904-4c54-b334-d21eeee48168",
         "724505a7-029b-4983-ab9d-44c68cb1a65a",
         "3add383b-d722-48c7-807d-d259dc9efafb",
+        "360f6400-641e-4a53-b376-4eeb6b51cbe1",
         "9ccdc053-112f-460f-9a08-18eb8d02b6aa",
         "458b615d-088a-4a50-845f-2c37fd95049e",
         "25a46dc3-0217-41cb-a05d-6ca2b0a6bc71",

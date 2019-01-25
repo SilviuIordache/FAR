@@ -15,6 +15,9 @@ switch (currentState)
 	case AIStates.returning: //4
 		scr_AI_returning();
 		break;
+	case AIStates.combat: //5
+		scr_AI_combat();
+		break;
 	default:
 		instance_destroy(); //4;
 	//case AIStates.combat:

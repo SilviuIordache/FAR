@@ -13,7 +13,7 @@ hp_initial      = 50;
 hp_current	    = hp_initial;
 
 speed_current   = 0;
-speed_normal	= 0.6;
+speed_normal	= 0.35;
 speed_roaming	= speed_normal / 2;
 speed_returning = speed_normal / 1.5;
 speed_charge	= speed_normal* 3;
@@ -31,6 +31,7 @@ enum AIStates {
 	following,
 	investigating,
 	returning,
+	combat,
 }
 
 currentState				= AIStates.neutral;
@@ -39,7 +40,6 @@ directionFacing             = 1; // 0 = right; 1 = left
 
 lastPlayerPosInvestigated   = false;
 investigateTime             = 60 * 3;
-
 
 playerInLos					= false;
 playerInRange				= false;
@@ -55,6 +55,7 @@ pathFindingStarted          = false;
 pathFindingStartedHOME		= false;
 
 aggroRadius                 = 1500;
+combatRange					= 15;
 chargeRadius                = 25;
 isCharger                   = false;
 canCharge                   = true;
