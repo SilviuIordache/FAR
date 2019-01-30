@@ -8,8 +8,6 @@ script_execute(scr_KB_Movement, 5/100 * spd, 0.2, spd); //friction, speedGain, s
 global.playerMouseAngle = point_direction(x, y, mouse_x, mouse_y)
 
 
-
-
 ///MELEE & RANGED COMBAT LOGIC
 
 //Mouse shooting

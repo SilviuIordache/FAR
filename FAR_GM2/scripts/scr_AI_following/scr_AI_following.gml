@@ -1,5 +1,7 @@
 scrAiRememberLastPlayerPos();
 
+isMoving = true;
+
 if (instance_exists(obj_player))
 {
 	if (scrAICheckPlayerRangeAndLos() && canPathFind == true)
@@ -31,6 +33,7 @@ else
 
 if (distance_to_object(obj_player) < combatRange)
 {
+	path_end();
 	currentState = AIStates.combat;
 }
 

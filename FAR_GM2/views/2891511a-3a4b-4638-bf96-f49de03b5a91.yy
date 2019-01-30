@@ -7,7 +7,8 @@
         "59bed8b5-c759-4573-8887-130b79f92f33",
         "6b851391-cc41-4472-9428-cdf8815180c4",
         "d60e45fe-9e32-4630-90bc-27b983731eb2",
-        "acfc1659-94a6-424b-892e-93f461c78a51"
+        "acfc1659-94a6-424b-892e-93f461c78a51",
+        "e138e276-9ad3-42fa-b7fb-47bf0b5fa00b"
     ],
     "filterType": "GMObject",
     "folderName": "monsters",

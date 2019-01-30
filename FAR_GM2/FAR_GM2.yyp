@@ -1375,6 +1375,14 @@
             }
         },
         {
+            "Key": "e138e276-9ad3-42fa-b7fb-47bf0b5fa00b",
+            "Value": {
+                "id": "c96d411e-dc97-4ee5-996d-aefe60874f1d",
+                "resourcePath": "objects\\obj_magician\\obj_magician.yy",
+                "resourceType": "GMObject"
+            }
+        },
+        {
             "Key": "e2ac8992-77ad-464e-8adc-c3e75377f826",
             "Value": {
                 "id": "96e628a8-636e-4c3e-896f-107fece2bbed",

@@ -14,7 +14,4 @@ draw_set_text(c_white, fnt_default, fa_left, fa_top)
 draw_text(xx - 20, yy - 60, string(hp_current) + "/" + string(hp_initial));
 
 draw_text(xx - 20, yy - 80, "state: " + string(currentState));
-draw_text(xx - 20, yy - 100, "path: " + string(path_position));
-draw_text(xx - 20, yy - 120, "p index: " + string(path_index));
-draw_text(xx - 20, yy - 140, "lPPInv: " + string(lastPlayerPosInvestigated));
-draw_text(xx - 20, yy - 160, "al[0]: " + string(alarm[0]));
+draw_text(xx - 20, yy - 100, "dirToPl: " + string(dirRelativeToPlayer));

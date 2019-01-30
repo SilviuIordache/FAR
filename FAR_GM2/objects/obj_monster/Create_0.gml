@@ -37,6 +37,7 @@ enum AIStates {
 currentState				= AIStates.neutral;
 
 directionFacing             = 1; // 0 = right; 1 = left
+dirRelativeToPlayer         = 0;
 
 lastPlayerPosInvestigated   = false;
 investigateTime             = 60 * 3;
@@ -45,7 +46,7 @@ playerInLos					= false;
 playerInRange				= false;
 playerInLosAndRange			= false;
 
-isMoving                    = 0;
+isMoving                    = false;
 
 path_smartAI                = path_add();
 pathReturningAI				= path_add();
@@ -54,8 +55,8 @@ canPathFind					= true;
 pathFindingStarted          = false;
 pathFindingStartedHOME		= false;
 
-aggroRadius                 = 1500;
-combatRange					= 15;
+aggroRadius                 = 50;
+combatRange					= 2;
 chargeRadius                = 25;
 isCharger                   = false;
 canCharge                   = true;
@@ -67,7 +68,7 @@ last_known_player_x			= 0;
 last_known_player_y			= 0;
 
 suspicion_level				= 0;
-suspicion_gain_rate			= 3;
+suspicion_gain_rate			= 1;
 suspicion_max				= 60 * 3;
 
 x_origin					= x;

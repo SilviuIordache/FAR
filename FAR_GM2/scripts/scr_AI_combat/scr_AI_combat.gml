@@ -1,14 +1,18 @@
-if (distance_to_object(obj_player) > combatRange)
+if instance_exists(obj_player)
 {
-	currentState = AIStates.following;
-}
-
-with (obj_player)
-{
-	if(canTakeDamage == true)
+	if (distance_to_object(obj_player) > combatRange)
 	{
-	    hp_Current -= other.dmg
-	    canTakeDamage = false;
-	    alarm[4] = invincibleFrames;
+		currentState = AIStates.following;
+	}
+
+	if(obj_player.canTakeDamage == true)
+	{
+		dirRelativeToPlayer = point_direction(x,y, obj_player.x, obj_player.y);
+		//instance_create(x,y,objAICombatProjectile);
+		
+		scr_knockBack(obj_player, 5, dirRelativeToPlayer);
+		obj_player.hp_Current -= dmg
+		obj_player.canTakeDamage = false;
+		obj_player.alarm[4] = obj_player.invincibleFrames;
 	}
 }
