@@ -1,3 +1,7 @@
+///@param objectToKick
+///@param kickPower
+///@param kickDirection
+
 objectToKick  = argument0
 kickPower     = argument1
 kickDirection = argument2

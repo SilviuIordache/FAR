@@ -38,7 +38,7 @@ if (room != room_menu && instance_exists(obj_player) )
 //Draw center of screen for camera - player optimal positioning
 //draw_sprite(spr_magic_bolt, 0, view_wport[0] /2, view_hport[0] / 2  )
  
-                 
+/*        
     draw_set_alpha(0.7)
     draw_rectangle_colour(5, 90, 200, 320, c_gray, c_gray, c_gray, c_gray, false); 
     draw_set_alpha(1)
@@ -47,6 +47,7 @@ if (room != room_menu && instance_exists(obj_player) )
     draw_set_font(fnt_damage)
 	draw_text(x + 20,y + 80, "x: " + string(obj_player.x))
 	draw_text(x + 20,y + 100,"y: " + string(obj_player.y))
+	
 	draw_text(x + 20,y + 120, "last x: " + string(obj_skeleton.last_known_player_x))
 	draw_text(x + 20,y + 140, "last y: " + string(obj_skeleton.last_known_player_y))
 	draw_text(x + 20,y + 160, "enemy x: " + string(obj_skeleton.x))
@@ -55,7 +56,6 @@ if (room != room_menu && instance_exists(obj_player) )
 	draw_text(x + 20,y + 220, "playerInLOS: " + string(obj_skeleton.playerInLos))
 	draw_text(x + 20,y + 240, "playerInRange: " + string(obj_skeleton.playerInRange))
 	//draw_text(x + 20,y + 260, "DebugScr: " + string(script_execute(scrTest())));
-	/*
     draw_text(x + 20,y + 80, string_hash_to_newline("cos: " + string((point_direction(obj_player.x, obj_player.y, mouse_x, mouse_y)))))
     draw_text(x + 20,y + 100,string_hash_to_newline("sin: " + string((point_direction(obj_player.x, obj_player.y, mouse_x, mouse_y)))))
     draw_text(x + 20,y + 120,string_hash_to_newline("mouse x: " + string(mouse_x)))

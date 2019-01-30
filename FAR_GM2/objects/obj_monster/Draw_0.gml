@@ -47,6 +47,7 @@ if (suspicion_level > 0) {
 
 //-------------DEBUG DRAW--------------
 
+
 //DRAW PATH
 if path_exists(path_smartAI)
 {

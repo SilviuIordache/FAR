@@ -15,8 +15,12 @@ if (instance_exists(obj_player))
 						obj_player.dmg_ranged)
     } 
     
+	
+	scr_knockBack(other, 5, direction);
+	
     with (other) 
-    { 
+    {
+		
         hp_current -= other.finalDamage 
         if(hp_current <= 0)
         {
