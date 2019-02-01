@@ -5,12 +5,14 @@ if instance_exists(obj_player)
 		currentState = AIStates.following;
 	}
 
-	if(obj_player.canTakeDamage == true)
+	if (obj_player.canTakeDamage)
 	{
-		dirRelativeToPlayer = point_direction(x,y, obj_player.x, obj_player.y);
-		//instance_create(x,y,objAiCombatProjectile);
+		dirRelativeToPlayer = point_direction(x, y, obj_player.x, obj_player.y);
 		
-		scr_knockBack(obj_player, 5, dirRelativeToPlayer);
+		scrCreateProjectile(obj_bolt_monster, 3, 1, dirRelativeToPlayer);
+		
+		
+		
 		obj_player.hp_Current -= dmg
 		obj_player.canTakeDamage = false;
 		obj_player.alarm[4] = obj_player.invincibleFrames;

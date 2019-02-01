@@ -1,14 +1,19 @@
-projectileSpeed      = argument0;
-projectileDamage     = argument1;
-projectileDirection  = argument2;
-objectToDamage       = obj_monster;
+///@param projectileToCreate
+///@param projectileSpeed 
+///@param projectileDamage
+///@param projectileDirection
 
-idd = instance_create(x, y, obj_bolt);
+
+projectileToCreate   = argument0
+projectileSpeed      = argument1;
+projectileDamage     = argument2;
+projectileDirection  = argument3;
+
+idd = instance_create(x, y, projectileToCreate);
 
 with (idd)
 {
-	speed = projectileSpeed;
-	dmg   = projectileDamage;
-	direction = projectileDirection;
-	objTarget = objectToDamage;
+	speed = other.projectileSpeed;
+	dmg   = other.projectileDamage;
+	direction = other.projectileDirection;
 }

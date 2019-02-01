@@ -32,8 +32,8 @@ chosenClass           = 0;
 isMoving              = false;
 spd                   = 1;
 
-hp_Current            = 10;
-hp_Max                = 10;
+healthPointsMax       = 10;
+healthPointsCurrent   = healthPointsMax
 
 gold_Current          = 3;
 

@@ -8,11 +8,11 @@ draw_text(x + window_get_width() - 120, y + 15, "target: " + string(fpsDynamicTa
 if (room != room_menu && instance_exists(obj_player) ) 
 {
 	//HEALTH POINTS
-    for ( i = 1; i <= obj_player.hp_Current; i++ )
+    for ( i = 1; i <= obj_player.healthPointsCurrent; i++ )
     {
         draw_sprite_ext(spr_heart, image_index, x - 20 + i * 30, y, image_xscale * 3, image_yscale * 3, image_angle, c_white, image_alpha );
     }
-    for ( i = 1; i <= obj_player.hp_Max; i++ )
+    for ( i = 1; i <= obj_player.healthPointsMax; i++ )
     {
         draw_sprite_ext(spr_heart_outline, image_index, x - 20 + i * 30, y, image_xscale * 3, image_yscale * 3, image_angle, c_white, image_alpha );
     }
@@ -38,7 +38,7 @@ if (room != room_menu && instance_exists(obj_player) )
 //Draw center of screen for camera - player optimal positioning
 //draw_sprite(spr_magic_bolt, 0, view_wport[0] /2, view_hport[0] / 2  )
  
-/*        
+     
     draw_set_alpha(0.7)
     draw_rectangle_colour(5, 90, 200, 320, c_gray, c_gray, c_gray, c_gray, false); 
     draw_set_alpha(1)
@@ -47,15 +47,11 @@ if (room != room_menu && instance_exists(obj_player) )
     draw_set_font(fnt_damage)
 	draw_text(x + 20,y + 80, "x: " + string(obj_player.x))
 	draw_text(x + 20,y + 100,"y: " + string(obj_player.y))
+	draw_text(x + 20,y + 120,"sta: " + string(obj_player.staminaCurrent))
+	draw_text(x + 20,y + 140,"y: " + string(obj_player.y))
 	
-	draw_text(x + 20,y + 120, "last x: " + string(obj_skeleton.last_known_player_x))
-	draw_text(x + 20,y + 140, "last y: " + string(obj_skeleton.last_known_player_y))
-	draw_text(x + 20,y + 160, "enemy x: " + string(obj_skeleton.x))
-	draw_text(x + 20,y + 180, "enemy y: " + string(obj_skeleton.y))
-	draw_text(x + 20,y + 200, "canPathFind: " + string(obj_skeleton.canPathFind))
-	draw_text(x + 20,y + 220, "playerInLOS: " + string(obj_skeleton.playerInLos))
-	draw_text(x + 20,y + 240, "playerInRange: " + string(obj_skeleton.playerInRange))
 	//draw_text(x + 20,y + 260, "DebugScr: " + string(script_execute(scrTest())));
+	/*
     draw_text(x + 20,y + 80, string_hash_to_newline("cos: " + string((point_direction(obj_player.x, obj_player.y, mouse_x, mouse_y)))))
     draw_text(x + 20,y + 100,string_hash_to_newline("sin: " + string((point_direction(obj_player.x, obj_player.y, mouse_x, mouse_y)))))
     draw_text(x + 20,y + 120,string_hash_to_newline("mouse x: " + string(mouse_x)))

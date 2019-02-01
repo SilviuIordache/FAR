@@ -1,9 +1,10 @@
 if (instance_exists(obj_player))
 {
-	// prevent enemy melt with 1 projectile
+	// prevent player melt with 1 projectile
     if (dealtDamage == false) 
 	{
         dealtDamage = true;
+		finalDamage = obj_monster.rangedAttackDamage;
         finalDamage =  scr_Calculate_Damage (obj_player.rangedAttackDamage, 
 											 obj_player.crit_Chance_Percent, 
 											 obj_player.crit_Damage_Percent);
@@ -16,8 +17,8 @@ if (instance_exists(obj_player))
 	
     with (other) 
     {
-        hp_current -= other.finalDamage 
-        if(hp_current <= 0)
+        healthPointsCurrent -= other.finalDamage 
+        if(healthPointsCurrent <= 0)
         {
             instance_destroy() 
         }

@@ -11,15 +11,23 @@ global.playerMouseAngle = point_direction(x, y, mouse_x, mouse_y)
 
 
 //Mouse shooting
-if (rangedAttackStaminaCost >= staminaCurrent)
+if (rangedAttackStaminaCost <= staminaCurrent)
 {
     if (mouse_check_button(mb_left) && rangedAttackPossible == true)
     {
+		
+		scrCreateProjectile( obj_bolt,
+							 rangedAttackSpeed, 
+							 rangedAttackDamage, 
+							 point_direction(x, y, mouse_x, mouse_y));
+		/*
 		idd = instance_create(x, y, obj_bolt)
         with (idd)
 		{
 	        direction = point_direction(x, y, mouse_x, mouse_y);
+			speed = 2;
 		}
+		*/
 
         rangedAttackPossible = false;
         alarm[0] = rangedAttackCd;
@@ -33,7 +41,7 @@ if (rangedAttackStaminaCost >= staminaCurrent)
 //Sword combat
 if( staminaCurrent >= meleeAttackStaminaCost)
 {
-    if( mouse_check_button(mb_right) && canAttackMelee == true)
+    if( mouse_check_button(mb_right) && meleeAttackPossible == true)
     {
         idd				= instance_create(x, y, obj_sword);
         canAttackMelee	= false;

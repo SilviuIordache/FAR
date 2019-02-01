@@ -1,9 +1,17 @@
+//-------------Draw text on GUI variables-------------------------------------
+///grab the width and height of view
+var cw = camera_get_view_width(view_camera);
+var ch = camera_get_view_height(view_camera);
+
+///set some variables to hold the value and div that by width and height
+display_scalex = display_get_gui_width()/cw;
+display_scaley = display_get_gui_height()/ch;
+//----------------------------------------------------------------------------
 
 speed       = 0;
 dealtDamage = false;
 finalDamage = 0;
 dmg         = 1;
-objTarget   = obj_nothing;
 
 initX = x;
 initY = y;

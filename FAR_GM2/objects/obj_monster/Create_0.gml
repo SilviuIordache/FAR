@@ -19,7 +19,8 @@ speed_returning = speed_normal / 1.5;
 speed_charge	= speed_normal* 3;
 speed_stun		= speed_normal / 1.5;
 
-dmg				= 1;
+rangedAttackDamage = 1;
+
 xp_reward		= 5;
 //------------------------------------------------
 
@@ -55,7 +56,7 @@ canPathFind					= true;
 pathFindingStartedHOME		= false;
 
 aggroRadius                 = 70;
-combatRange					= 2;
+combatRange					= 25;
 
 suspicion_level				= 0;
 suspicion_gain_rate			= 1.5;

@@ -399,6 +399,14 @@
             }
         },
         {
+            "Key": "36a351ae-29b4-4d86-83fd-077a7ddd6a36",
+            "Value": {
+                "id": "d7f16e2a-1505-48f4-bc80-6e8b62812dd1",
+                "resourcePath": "objects\\obj_bolt_monster\\obj_bolt_monster.yy",
+                "resourceType": "GMObject"
+            }
+        },
+        {
             "Key": "37f3d21b-84a6-45cb-be66-5d3b2fd57f7b",
             "Value": {
                 "id": "36a29f11-af57-4b3c-9668-2841275075fa",
