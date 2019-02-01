@@ -1,8 +1,10 @@
-currentPlayerSpeed = obj_player.speed
-speed = obj_player.range_Attack_Speed;
 
+speed       = 0;
 dealtDamage = false;
 finalDamage = 0;
+dmg         = 1;
+objTarget   = obj_nothing;
+
 initX = x;
 initY = y;
 

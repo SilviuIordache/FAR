@@ -1,4 +1,5 @@
 scrAiRememberLastPlayerPos();
+scrHopAnimation();
 
 isMoving = true;
 
@@ -36,5 +37,3 @@ if (distance_to_object(obj_player) < combatRange)
 	path_end();
 	currentState = AIStates.combat;
 }
-
-scr_AI_hop_animation();

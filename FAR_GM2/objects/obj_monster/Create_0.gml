@@ -52,24 +52,19 @@ path_smartAI                = path_add();
 pathReturningAI				= path_add();
 
 canPathFind					= true;
-pathFindingStarted          = false;
 pathFindingStartedHOME		= false;
 
-aggroRadius                 = 50;
+aggroRadius                 = 70;
 combatRange					= 2;
-chargeRadius                = 25;
-isCharger                   = false;
-canCharge                   = true;
 
-stunTimeAfterCharge         = 60;
-pathScanRefreshRate         = 60 * 0.1;
+suspicion_level				= 0;
+suspicion_gain_rate			= 1.5;
+suspicion_max				= 60 * 3;
+
+pathScanRefreshRate         = 60 * 0.15;
 
 last_known_player_x			= 0;
 last_known_player_y			= 0;
-
-suspicion_level				= 0;
-suspicion_gain_rate			= 1;
-suspicion_max				= 60 * 3;
 
 x_origin					= x;
 y_origin					= y;
@@ -82,9 +77,4 @@ shadow_sprite               = spr_shadow;
 shadow_offset_X             = -6;
 shadow_offset_Y             = 0;
 hopVar                      = 0;
-//------------------------------------------------
-
-
-
-
 

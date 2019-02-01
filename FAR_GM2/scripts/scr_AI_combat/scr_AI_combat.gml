@@ -8,7 +8,7 @@ if instance_exists(obj_player)
 	if(obj_player.canTakeDamage == true)
 	{
 		dirRelativeToPlayer = point_direction(x,y, obj_player.x, obj_player.y);
-		//instance_create(x,y,objAICombatProjectile);
+		//instance_create(x,y,objAiCombatProjectile);
 		
 		scr_knockBack(obj_player, 5, dirRelativeToPlayer);
 		obj_player.hp_Current -= dmg

@@ -1,8 +1,8 @@
 {
-    "id": "170f4a38-b81d-4e15-a425-c305ec1bcc97",
+    "id": "87238e0c-b1fd-4b2f-8ca9-e0411f5d0ac4",
     "modelName": "GMScript",
     "mvc": "1.0",
-    "name": "scrTest",
+    "name": "scrCheckDirectionFacing",
     "IsCompatibility": false,
     "IsDnD": false
 }

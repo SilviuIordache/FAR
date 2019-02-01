@@ -1,35 +1,32 @@
+scrCheckDirectionFacing();
+
 switch (currentState)
 {
-	case AIStates.neutral: //0
+	//0
+	case AIStates.neutral: 
 		scr_AI_neutral();
 		break;
-	case AIStates.suspicious: //1
+	//1
+	case AIStates.suspicious: 
 		scr_AI_suspicious();
 		break;
-	case AIStates.following: //2
+	//2
+	case AIStates.following: 
 		scr_AI_following();
 		break;
-	case AIStates.investigating: //3
+	//3
+	case AIStates.investigating:
 		scr_AI_investigating();
 		break;
-	case AIStates.returning: //4
+	//4
+	case AIStates.returning: 
 		scr_AI_returning();
 		break;
-	case AIStates.combat: //5
+	//5
+	case AIStates.combat: 
 		scr_AI_combat();
 		break;
+	//6;
 	default:
-		instance_destroy(); //4;
-	//case AIStates.combat:
-	//	break;
-	//case AIStates.dead:
-	//	break;
+		instance_destroy(); 
 }
-
-
-///DIRECTION FACING
-if(direction > 90 && direction < 270) 
-	directionFacing = -1
-else directionFacing = 1
-
-

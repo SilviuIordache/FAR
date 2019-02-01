@@ -1,4 +1,5 @@
 scr_AI_init_grid();
+scrHopAnimation();
 
 if (pathFindingStartedHOME == false)
 {
@@ -14,5 +15,3 @@ if (path_position == 1)
 {
 	currentState = AIStates.neutral;
 }
-
-scr_AI_hop_animation();

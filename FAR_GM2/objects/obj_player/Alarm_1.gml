@@ -1,3 +1,3 @@
-/// @description canAttackMelee = true
-canAttackMelee = true
+/// @description meleeAttackPossible = true;
+meleeAttackPossible = true;
 

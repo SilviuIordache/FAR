@@ -135,6 +135,14 @@
             }
         },
         {
+            "Key": "134996fc-b7fd-4b27-80b5-3785f33e5b5e",
+            "Value": {
+                "id": "c6bb57de-bf2a-4df1-ae32-32ed5a0b78af",
+                "resourcePath": "objects\\obj_nothing\\obj_nothing.yy",
+                "resourceType": "GMObject"
+            }
+        },
+        {
             "Key": "13c66f01-33ca-4d61-b85f-c907a1ee17ed",
             "Value": {
                 "id": "3f35681e-f427-45c7-8386-42c3feef7ce7",
@@ -163,14 +171,6 @@
             "Value": {
                 "id": "282b0aa4-c664-4068-bdab-21df99e528a2",
                 "resourcePath": "scripts\\scr_Valid_Chamber_Position\\scr_Valid_Chamber_Position.yy",
-                "resourceType": "GMScript"
-            }
-        },
-        {
-            "Key": "170f4a38-b81d-4e15-a425-c305ec1bcc97",
-            "Value": {
-                "id": "e1d0d3d3-9063-484c-9a01-970ba9f94a41",
-                "resourcePath": "scripts\\scrTest\\scrTest.yy",
                 "resourceType": "GMScript"
             }
         },
@@ -551,6 +551,14 @@
             }
         },
         {
+            "Key": "56d8cf59-f0cc-4123-8bdd-af9fed709a64",
+            "Value": {
+                "id": "0c7e5a8c-eec7-443a-bf8b-78624ddf8fc6",
+                "resourcePath": "scripts\\scrCreateProjectile\\scrCreateProjectile.yy",
+                "resourceType": "GMScript"
+            }
+        },
+        {
             "Key": "57c5b68e-48bf-44a8-ac81-c2fb8dcc5fa4",
             "Value": {
                 "id": "a7d14e72-d072-4363-810f-9d462c56c1f2",
@@ -847,6 +855,14 @@
             }
         },
         {
+            "Key": "87238e0c-b1fd-4b2f-8ca9-e0411f5d0ac4",
+            "Value": {
+                "id": "bffccbec-c721-4d16-9928-edb90ea7d98d",
+                "resourcePath": "scripts\\scrCheckDirectionFacing\\scrCheckDirectionFacing.yy",
+                "resourceType": "GMScript"
+            }
+        },
+        {
             "Key": "8787e302-7088-45dc-8c86-18b961406b9f",
             "Value": {
                 "id": "dfb92f1f-ac46-4220-86e6-18604ae06687",
@@ -986,7 +1002,7 @@
             "Key": "9ccdc053-112f-460f-9a08-18eb8d02b6aa",
             "Value": {
                 "id": "121e91dd-13eb-4a02-b307-1cc6c24d671e",
-                "resourcePath": "scripts\\scr_AI_hop_animation\\scr_AI_hop_animation.yy",
+                "resourcePath": "scripts\\scrHopAnimation\\scrHopAnimation.yy",
                 "resourceType": "GMScript"
             }
         },
@@ -1543,6 +1559,14 @@
             }
         },
         {
+            "Key": "f8c5aa7b-fd0f-4a91-b790-3efa8cb484e6",
+            "Value": {
+                "id": "3cf81e4f-05c5-4d99-9834-87d71746cdf7",
+                "resourcePath": "objects\\objAiCombatProjectile\\objAiCombatProjectile.yy",
+                "resourceType": "GMObject"
+            }
+        },
+        {
             "Key": "fc31068e-f80c-4fa8-bc1d-072875661a29",
             "Value": {
                 "id": "a4a6d3c1-d584-422d-ba2f-01b1ada7ef64",
@@ -1611,7 +1635,8 @@
         "7627f9eb-be48-426a-86dd-9ab889417f78",
         "a54e1e2b-56e3-4a23-b56e-fc6401144afb",
         "4aeca7fb-ee82-4080-83ed-2b7f027e81b8",
-        "170f4a38-b81d-4e15-a425-c305ec1bcc97"
+        "87238e0c-b1fd-4b2f-8ca9-e0411f5d0ac4",
+        "56d8cf59-f0cc-4123-8bdd-af9fed709a64"
     ],
     "tutorial": ""
 }

@@ -1,3 +1,3 @@
-/// @description  canAttackRanged = true
-canAttackRanged = true;
+/// @description  rangedAttackPossible = true;
+rangedAttackPossible = true;
 

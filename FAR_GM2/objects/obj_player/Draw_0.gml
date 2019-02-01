@@ -1,5 +1,3 @@
-
-
 //Draw player shadow
 draw_sprite_ext(spr_shadow, 
                 image_index, 
@@ -16,7 +14,7 @@ draw_sprite_ext(spr_player_rogue1,
                 image_index, 
                 x, 
                 y + hopVar, 
-                image_xscale, 
+                image_xscale * directionFacing, 
                 image_yscale, 
                 image_angle,
                 image_blend, 
