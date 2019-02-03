@@ -19,13 +19,17 @@ speed_returning = speed_normal / 1.5;
 speed_charge	= speed_normal* 3;
 speed_stun		= speed_normal / 1.5;
 
-rangedAttackDamage = 1;
+rangedAttackPossible        = true;
+rangedAttackDamage			= 1;
+rangedAttackSpeed           = 2 * 60;
+rangedAttackProjectileSpeed = 1;
+rangedAttackKnockbackPower  = 1;
 
-xp_reward		= 5;
+xp_reward					= 5;
 //------------------------------------------------
 
 
-//--AI Variables----------------------------------
+//--AI Logic variables----------------------------------
 enum AIStates {
 	neutral,
 	suspicious,
@@ -55,11 +59,11 @@ pathReturningAI				= path_add();
 canPathFind					= true;
 pathFindingStartedHOME		= false;
 
-aggroRadius                 = 70;
-combatRange					= 25;
+aggroRadius                 = 55;
+combatRange					= 10;
 
 suspicion_level				= 0;
-suspicion_gain_rate			= 1.5;
+suspicion_gain_rate			= 2;
 suspicion_max				= 60 * 3;
 
 pathScanRefreshRate         = 60 * 0.15;
@@ -78,4 +82,3 @@ shadow_sprite               = spr_shadow;
 shadow_offset_X             = -6;
 shadow_offset_Y             = 0;
 hopVar                      = 0;
-

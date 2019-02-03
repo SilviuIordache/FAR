@@ -4,9 +4,7 @@ global.playerMouseAngleLAST = 45;
 global.playerImageSpeed     = 0.15;
 //----------------------------------
 
-
 //-------DRAW variables----------------------------------------------------------
-
 ///grab the width and height of view
 var cw = camera_get_view_width(view_camera);
 var ch = camera_get_view_height(view_camera);
@@ -27,15 +25,15 @@ hopVar				= 0;
 
 
 //---------General Variables------------
-idd                   = 0;
-chosenClass           = 0;
-isMoving              = false;
-spd                   = 1;
+idd                      = 0;
+chosenClass              = 0;
+isMoving                 = false;
+spd                      = 1;
 
-healthPointsMax       = 10;
-healthPointsCurrent   = healthPointsMax
+healthPointsMax          = 10;
+healthPointsCurrent      = healthPointsMax
 
-gold_Current          = 3;
+gold_Current			 = 3;
 
 staminaMax               = 10;
 staminaCurrent           = 10;

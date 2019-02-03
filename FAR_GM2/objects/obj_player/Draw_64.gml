@@ -6,4 +6,4 @@ var cy = camera_get_view_y(view_camera);
 var xx = (x-cx)*display_scalex;
 var yy = (y-cy)*display_scaley;
 
-draw_text(xx,yy, string(id));
+draw_text(xx,yy, string(healthPointsCurrent));

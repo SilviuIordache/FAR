@@ -10,20 +10,18 @@ if (instance_exists(obj_player))
 											 obj_player.crit_Damage_Percent);
 											 
         scr_createDamageNumber (finalDamage, obj_player.rangedAttackDamage);
-    } 
-    
-	
-	scr_knockBack(other, 5, direction);
-	
-    with (other) 
-    {
-        healthPointsCurrent -= other.finalDamage 
-        if(healthPointsCurrent <= 0)
-        {
-            instance_destroy() 
-        }
-    }      
-	
+		
+		scr_knockBack(other, obj_monster.rangedAttackKnockbackPower, direction);
+		
+		with (other) 
+	    {
+	        healthPointsCurrent -= other.finalDamage 
+	        if(healthPointsCurrent <= 0)
+	        {
+	            instance_destroy() 
+	        }
+	    }
+    }	 
     instance_destroy(); 
 }
 

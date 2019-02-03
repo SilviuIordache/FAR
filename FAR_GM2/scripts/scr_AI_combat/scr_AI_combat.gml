@@ -1,20 +1,29 @@
+scrAICheckPlayerRangeAndLos();
+scrAiRememberLastPlayerPos();
+
 if instance_exists(obj_player)
 {
-	if (distance_to_object(obj_player) > combatRange)
+	
+	if (!scrAICheckPlayerRangeAndLos())
 	{
 		currentState = AIStates.following;
 	}
-
-	if (obj_player.canTakeDamage)
+	
+	/*
+	if (!scrAiCheckPlayerInLos())
 	{
+		currentState = AIStates.investigating;
+	}
+	*/
+	if (rangedAttackPossible)
+	{
+		rangedAttackPossible = false;
+		alarm[1] = rangedAttackSpeed;
 		dirRelativeToPlayer = point_direction(x, y, obj_player.x, obj_player.y);
 		
-		scrCreateProjectile(obj_bolt_monster, 3, 1, dirRelativeToPlayer);
-		
-		
-		
-		obj_player.hp_Current -= dmg
-		obj_player.canTakeDamage = false;
-		obj_player.alarm[4] = obj_player.invincibleFrames;
+		scrCreateProjectile(obj_bolt_monster, 
+							rangedAttackProjectileSpeed, 
+							rangedAttackDamage, 
+							dirRelativeToPlayer);
 	}
 }
