@@ -59,8 +59,8 @@ pathReturningAI				= path_add();
 canPathFind					= true;
 pathFindingStartedHOME		= false;
 
-aggroRadius                 = 55;
-combatRange					= 10;
+aggroRadius                 = 65;
+combatRange					= 5;
 
 suspicion_level				= 0;
 suspicion_gain_rate			= 2;

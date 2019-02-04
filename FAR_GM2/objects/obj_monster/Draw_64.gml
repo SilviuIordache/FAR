@@ -8,6 +8,7 @@ var yy = (y-cy)*display_scaley;
 
 draw_set_text(c_white, fnt_default, fa_left, fa_top)
 
+draw_text(xx - 20, yy - 140, "LKPPI: " + string(scrAILastKnownPlayerPosInvestigated()));
 draw_text(xx - 20, yy - 120, "LOS " + string(scrAiCheckPlayerInLos()));
 draw_text(xx - 20, yy - 100, "R " + string(scrAiCheckPlayerInRange()));
 draw_text(xx - 20, yy - 60, "hp " + string(hp_current) + "/" + string(hp_initial));

@@ -4,17 +4,11 @@ scrAiRememberLastPlayerPos();
 if instance_exists(obj_player)
 {
 	
-	if (!scrAICheckPlayerRangeAndLos())
+	if (!scrAICheckPlayerInCombatRange())
 	{
 		currentState = AIStates.following;
 	}
 	
-	/*
-	if (!scrAiCheckPlayerInLos())
-	{
-		currentState = AIStates.investigating;
-	}
-	*/
 	if (rangedAttackPossible)
 	{
 		rangedAttackPossible = false;

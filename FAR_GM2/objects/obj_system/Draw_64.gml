@@ -47,8 +47,12 @@ if (room != room_menu && instance_exists(obj_player) )
     draw_set_font(fnt_damage)
 	draw_text(x + 20,y + 80, "x: " + string(obj_player.x))
 	draw_text(x + 20,y + 100,"y: " + string(obj_player.y))
-	draw_text(x + 20,y + 120,"sta: " + string(obj_player.staminaCurrent))
-	draw_text(x + 20,y + 140,"y: " + string(obj_player.y))
+	draw_text(x + 20,y + 120,"lkp_x: " + string(obj_monster.last_known_player_x))
+	draw_text(x + 20,y + 140,"lkp_y: " + string(obj_monster.last_known_player_y))
+	draw_text(x + 20,y + 160,"mon_x: " + string(obj_monster.x))
+	draw_text(x + 20,y + 180,"mon_y: " + string(obj_monster.y))
+	//draw_text(x + 20,y + 200,"sta: " + string(obj_player.staminaCurrent))
+	
 	
 	//draw_text(x + 20,y + 260, "DebugScr: " + string(script_execute(scrTest())));
 	/*

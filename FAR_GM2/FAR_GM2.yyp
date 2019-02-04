@@ -1071,6 +1071,14 @@
             }
         },
         {
+            "Key": "a2224edb-ed14-414c-8452-8929038d9230",
+            "Value": {
+                "id": "5bc18ceb-f0ba-440a-865a-e143c8132481",
+                "resourcePath": "scripts\\scrAILastKnownPlayerPosInvestigated\\scrAILastKnownPlayerPosInvestigated.yy",
+                "resourceType": "GMScript"
+            }
+        },
+        {
             "Key": "a2a8586d-b34d-4024-9b55-3f660d8ca680",
             "Value": {
                 "id": "1444ed21-8091-40ef-87b9-e2e1433a73e8",
@@ -1348,6 +1356,14 @@
                 "id": "366d8a91-76bd-4883-bc28-d266e48cbdd1",
                 "resourcePath": "options\\windows\\options_windows.yy",
                 "resourceType": "GMWindowsOptions"
+            }
+        },
+        {
+            "Key": "ce5282ee-af4d-45f4-b923-fdc3439568ad",
+            "Value": {
+                "id": "41826744-9fa7-4be2-b5e6-3e6a16ff2075",
+                "resourcePath": "scripts\\scrAICheckPlayerInCombatRange\\scrAICheckPlayerInCombatRange.yy",
+                "resourceType": "GMScript"
             }
         },
         {
@@ -1655,6 +1671,8 @@
         "a54e1e2b-56e3-4a23-b56e-fc6401144afb",
         "4aeca7fb-ee82-4080-83ed-2b7f027e81b8",
         "7627f9eb-be48-426a-86dd-9ab889417f78",
+        "ce5282ee-af4d-45f4-b923-fdc3439568ad",
+        "a2224edb-ed14-414c-8452-8929038d9230",
         "9387be3c-280e-4499-bd47-cfa1efef38aa",
         "936cdf20-e3e6-4f87-bbad-8fa71daeb9b7",
         "205addba-9f8e-4c2a-8cce-0fd106f6d222",

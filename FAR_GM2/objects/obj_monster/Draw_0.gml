@@ -51,32 +51,38 @@ if (suspicion_level > 0) {
 //DRAW PATH
 if path_exists(path_smartAI)
 {
-	draw_set_color(c_yellow)
+	draw_set_color(c_white)
 	draw_path(path_smartAI, x, y, true);
 	draw_set_color(c_white)
 }
 
-//SEE FOV scan in real time
-if scrAiCheckPlayerInRange()
+
+//AI Vision debug draw lines
+if scrAICheckPlayerInCombatRange()
 {
-	draw_set_color(c_gray)
+	draw_set_color(c_red)
     draw_line(x, y, obj_player.x , obj_player.y)
-	draw_set_color(c_gray)
-	
-    if scrAiCheckPlayerInLos()
-    {
-        draw_set_color(c_red)
-        draw_line(x, y, obj_player.x , obj_player.y)
-		draw_set_color(c_white)
-    }
-    else
-    {
-        draw_set_color(c_gray)
-        draw_line(x, y, obj_player.x , obj_player.y)
-		draw_set_color(c_white)
-    }
-	
+	draw_set_color(c_white)
 }
+else if scrAiCheckPlayerInRange()
+{
+	draw_set_color(c_orange)
+    draw_line(x, y, obj_player.x , obj_player.y)
+	draw_set_color(c_white)
+}
+else if scrAiCheckPlayerInLos()
+{
+    draw_set_color(c_yellow)
+    draw_line(x, y, obj_player.x , obj_player.y)
+	draw_set_color(c_white)
+}
+else
+{
+    draw_set_color(c_gray)
+    draw_line(x, y, obj_player.x , obj_player.y)
+	draw_set_color(c_white)
+}
+	
 
 //DEBUG DRAW
 //draw_text(x,y, string(suspicion_level))

@@ -1,4 +1,3 @@
-scrAiRememberLastPlayerPos();
 scrHopAnimation();
 
 isMoving = true;
@@ -7,11 +6,10 @@ if (instance_exists(obj_player))
 {
 	if (scrAICheckPlayerRangeAndLos() && canPathFind == true)
 	{
+		scrAiRememberLastPlayerPos();
 		canPathFind = false;
 		alarm[0] = pathScanRefreshRate;
 		
-		lastPlayerPosInvestigated = false;
-
 		scr_AI_init_grid();
 		
 		if (mp_grid_path(AI_grid, path_smartAI, x, y, last_known_player_x, last_known_player_y, true))
@@ -32,7 +30,7 @@ else
 	currentState = AIStates.neutral;
 }	
 
-if (distance_to_object(obj_player) < combatRange)
+if (scrAICheckPlayerInCombatRange())
 {
 	path_end();
 	currentState = AIStates.combat;

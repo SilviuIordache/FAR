@@ -14,7 +14,7 @@ draw_set_font(fnt_default);
 GUI_scaleFactor = 4
 GUI_defaultScaleFactor = 1;
 globalvar pxSize;
-          pxSize = 16;
+          pxSize = 8;
 //---------------------------------------
 
 //------CAMERA VARIABLES-----------------
@@ -29,7 +29,12 @@ horCameraAdjustment   = 11
 //----AI Variables------------------------------------------------
 
 globalvar AI_grid;
-          AI_grid = mp_grid_create(0, 0, room_width / 16, room_height / 16, 16, 16);
+          AI_grid = mp_grid_create(0,
+							       0, 
+								   room_width / pxSize, 
+								   room_height / pxSize, 
+								   pxSize, 
+								   pxSize);
 //-----------------------------------------------------------
 
 // DEBUG BLOCK IDS
